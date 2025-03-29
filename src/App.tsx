@@ -38,7 +38,7 @@ function App() {
     setLoading(true);
     setError('');
     try {
-      const response = await axios.post('http://localhost:5050/generate-meme-text', {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/generate-meme-text`, {
         mode,
         feeling,
         problem,
