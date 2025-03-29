@@ -1,0 +1,39 @@
+.intro-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+  
+  .intro-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .intro-button {
+    border-radius: 15px;
+    color: #fff;
+    padding: 12px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
+  .classic-btn {
+    background: linear-gradient(135deg, #8e2de2, #4a00e0);
+  }
+  
+  .roast-btn {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  }
+  
+  .hr-btn {
+    background: linear-gradient(135deg, #232526, #414345);
+  }
+  
