@@ -58,6 +58,7 @@ Do NOT give multiple alternatives. Return only ONE meme text. Make it short, mod
   }
 });
 
+
 app.get("/", (req, res) => {
   res.send("🚀 Backend Working! API is active.");
 });
