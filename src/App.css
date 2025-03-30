@@ -1,69 +1,80 @@
-.app-wrapper {
-  min-height: 100vh;
-  width: 100%;
-  background: linear-gradient(135deg, #ca98fc 0%, #f0abfc 50%, #a5b4fc 100%);
-  background-size: 200% 200%;
-  animation: gradientXY 10s ease infinite;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
+* {
   box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  font-family: 'Inter', sans-serif;
   overflow-x: hidden;
 }
 
-.app-container {
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(15px);
-  border-radius: 1.5rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-  padding: 2.5rem;
-  max-width: 600px;
+body {
+  background: linear-gradient(135deg, #ca98fc 0%, #f0abfc 50%, #a5b4fc 100%);
+  background-size: 200% 200%;
+  animation: gradientXY 10s ease infinite;
+}
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
   width: 100%;
-  box-sizing: border-box;
+  padding: 1rem;
+}
+
+.app-card {
+  width: 100%;
+  max-width: 540px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.meme-button {
+.text-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #8b5cf6;
+  text-align: center;
+  margin-bottom: 1rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.meme-button,
+.restart-button {
   background: linear-gradient(135deg, #8e2de2, #4a00e0);
   border-radius: 15px;
   color: #fff;
-  padding: 12px 28px;
+  padding: 12px 24px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: all 0.3s ease;
   border: none;
   font-weight: bold;
-  display: block;
-  margin: 1rem auto 0;
+  margin-top: 1rem;
+  width: 100%;
   text-align: center;
 }
 
-.restart-button {
-  background: linear-gradient(135deg, #8e2de2, #4a00e0);
-  border-radius: 10px;
-  color: #fff;
-  padding: 10px 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 1rem;
+.meme-button:hover,
+.restart-button:hover {
+  transform: scale(1.02);
 }
 
 .roast-description {
   color: rgb(21, 20, 20);
-  font-size: 1.125rem;
+  font-size: 1rem;
   text-align: center;
   margin-top: 0.5rem;
-}
-
-.text-title {
-  font-size: 1.9rem;
-  font-weight: 600;
-  color: #8b5cf6;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 @keyframes gradientXY {
@@ -78,19 +89,9 @@
 }
 
 @media (max-width: 768px) {
-  .app-wrapper {
-    padding: 1rem;
-  }
-
-  .app-container {
+  .app-card {
     padding: 1.5rem;
     border-radius: 1rem;
-  }
-
-  .meme-button,
-  .restart-button {
-    width: 100%;
-    font-size: 1rem;
   }
 
   .text-title {

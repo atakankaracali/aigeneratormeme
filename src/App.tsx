@@ -93,16 +93,10 @@ function App() {
 
         {step === 1 && !isRoastMode && (
           <Question
-            title={
-              isManifestMode
-                ? "What is your biggest dream right now?"
-                : "How do you feel today?"
-            }
-            options={
-              isManifestMode
-                ? ['Find love', 'Land a dream job', 'Become rich', 'Be truly happy', 'Travel the world']
-                : ['Happy', 'Sad', 'Angry', 'Relaxed', 'Tired']
-            }
+            title={isManifestMode ? "What is your biggest dream right now?" : "How do you feel today?"}
+            options={isManifestMode
+              ? ['Find love', 'Land a dream job', 'Become rich', 'Be truly happy', 'Travel the world']
+              : ['Happy', 'Sad', 'Angry', 'Relaxed', 'Tired']}
             selected={feeling}
             setSelected={(val) => { setFeeling(val); setStep(2); }}
           />
@@ -110,16 +104,10 @@ function App() {
 
         {step === 2 && !isRoastMode && (
           <Question
-            title={
-              isManifestMode
-                ? "What's stopping you from achieving it?"
-                : "What's your biggest problem?"
-            }
-            options={
-              isManifestMode
-                ? ['Self-doubt', 'Money', 'Bad luck', 'No opportunities', 'Laziness']
-                : ['Work', 'HR', 'Life', 'Money', 'Partner', 'School']
-            }
+            title={isManifestMode ? "What's stopping you from achieving it?" : "What's your biggest problem?"}
+            options={isManifestMode
+              ? ['Self-doubt', 'Money', 'Bad luck', 'No opportunities', 'Laziness']
+              : ['Work', 'HR', 'Life', 'Money', 'Partner', 'School']}
             selected={problem}
             setSelected={(val) => { setProblem(val); setStep(3); }}
           />
@@ -127,16 +115,10 @@ function App() {
 
         {step === 3 && !isRoastMode && (
           <Question
-            title={
-              isManifestMode
-                ? "How would you feel if it came true tomorrow?"
-                : "Last thing you enjoyed?"
-            }
-            options={
-              isManifestMode
-                ? ['Empowered', 'Grateful', 'Euphoric', 'Unstoppable', 'Peaceful']
-                : ['Movie', 'Food', 'Vacation', 'Partner', 'Friends']
-            }
+            title={isManifestMode ? "How would you feel if it came true tomorrow?" : "Last thing you enjoyed?"}
+            options={isManifestMode
+              ? ['Empowered', 'Grateful', 'Euphoric', 'Unstoppable', 'Peaceful']
+              : ['Movie', 'Food', 'Vacation', 'Partner', 'Friends']}
             selected={lastEnjoyed}
             setSelected={(val) => { setLastEnjoyed(val); setStep(4); }}
           />
@@ -166,7 +148,7 @@ function App() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={restart}
-              className="meme-button secondary"
+              className="restart-button"
             >
               🔄 Create Another Meme
             </motion.button>

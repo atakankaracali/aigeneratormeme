@@ -4,14 +4,11 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(135deg, #ca98fc 0%, #f0abfc 50%, #a5b4fc 100%);
-  color: #333;
-  min-height: 100vh;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
 }
 @keyframes gradientXY {
   0%, 100% { background-size: 200% 200%; background-position: left bottom; }
@@ -30,4 +27,3 @@ body {
     width: 100%;
   }
 }
-

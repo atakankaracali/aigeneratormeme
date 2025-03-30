@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import './styles/memeDisplay.css';
 import { toPng } from 'html-to-image';
 import { saveAs } from 'file-saver';
+import useWindowSize from 'react-use/lib/useWindowSize';
 
 type MemeDisplayProps = { meme: string };
 
@@ -11,6 +12,7 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
   const [showConfetti, setShowConfetti] = useState(true);
   const [copied, setCopied] = useState(false);
   const memeRef = useRef<HTMLDivElement>(null);
+  const { width, height } = useWindowSize();
 
   useEffect(() => {
     const timer = setTimeout(() => setShowConfetti(false), 5500);
@@ -37,7 +39,7 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
 
   return (
     <>
-      {showConfetti && <Confetti />}
+      {showConfetti && <Confetti width={width} height={height} />}
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
