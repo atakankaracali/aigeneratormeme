@@ -1,0 +1,22 @@
+{
+    "name": "AI Meme Generator - Funniest AI Powered Memes",
+    "short_name": "MemeGen",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#8e2de2",
+    "description": "Create hilarious, motivational, or roast memes using AI. Free, instant, and addictive meme generator for everyone.",
+    "icons": [
+      {
+        "src": "/icon-256.png",
+        "sizes": "256x256",
+        "type": "image/png"
+      },
+      {
+        "src": "/icon-512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
+  
