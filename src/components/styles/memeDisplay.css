@@ -10,7 +10,7 @@
   margin-right: auto;
   box-sizing: border-box;
   overflow-wrap: break-word;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease; 
 }
 
 .meme-container:hover {
