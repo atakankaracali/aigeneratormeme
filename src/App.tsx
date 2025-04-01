@@ -61,17 +61,7 @@ function App() {
         try {
             const response = await axios.post(
                 `${import.meta.env.VITE_BACKEND_URL}/generate-meme-text`,
-                {
-                    mode,
-                    feeling,
-                    problem,
-                    lastEnjoyed,
-                },
-                {
-                    headers: {
-                        "X-API-SIGNATURE": import.meta.env.VITE_API_SIGNATURE || ""
-                    }
-                }
+                { mode, feeling, problem, lastEnjoyed }
             );
 
             let memeText = response.data.memeText;
