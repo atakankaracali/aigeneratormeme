@@ -45,7 +45,7 @@ RATE_LIMIT_WINDOW=15
 RATE_LIMIT_MAX=100
 ```
 
-#### For Frontend (`frontend/.env`)
+#### For Frontend (`.env`)
 ```
 VITE_BACKEND_URL=https://your-backend
 ```
@@ -62,7 +62,6 @@ npm install
 
 #### Frontend
 ```bash
-cd ../frontend
 npm install
 ```
 
@@ -78,7 +77,6 @@ npm run dev
 
 #### Frontend
 ```bash
-cd ../frontend
 npm run dev
 ```
 
