@@ -149,7 +149,7 @@ function App() {
                     />
                 )}
 
-                {((step === 1 && isRoastMode && !meme) || (step === 4 && !loading && !meme)) && (
+                {((step === 1 && isRoastMode && !meme && !loading) || (step === 4 && !loading && !meme)) && (
                     <>
                         <p className="text-title">
                             Brutally honest, AI-powered roast. Ready to cry or laugh?
