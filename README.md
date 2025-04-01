@@ -1,54 +1,104 @@
-# React + TypeScript + Vite
+# AI Meme Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Generate funny, dark, motivational, or sarcastic memes powered by AI. Supports Classic, Roast, and Manifest modes. Built with React, Express, OpenRouter, and hosted on Vercel & Railway.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## Expanding the ESLint configuration
+- ✅ Viral-style AI-generated meme captions
+- ✅ 3 Meme Modes: Classic / Roast / Manifest
+- ✅ Secure Backend (Anti-Injection + Input Sanitization)
+- ✅ Rate Limiting & Logging
+- ✅ Fully responsive frontend
+- ✅ Meme history & local storage
+- ✅ Free & production ready
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🛠️ Tech Stack
+
+- Frontend: React + Vite + Framer Motion
+- Backend: Express + OpenRouter AI
+- Deployment: Vercel (Frontend) + Railway (Backend)
+- Security: Helmet, CORS, Rate Limiter, Custom Prompt Injection Protection
+
+---
+
+## 🚀 Installation
+
+### 1️⃣ Clone
+```bash
+git clone https://github.com/atakankaracali/aigeneratormeme
+cd aigeneratormeme
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2️⃣ Environment Variables
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Create two `.env` files:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+#### For Backend (`backend/.env`)
 ```
+OPENROUTER_API_KEY=your_key
+ALLOWED_ORIGINS=https://www.aigeneratememe.com
+RATE_LIMIT_WINDOW=15
+RATE_LIMIT_MAX=100
+```
+
+#### For Frontend (`frontend/.env`)
+```
+VITE_BACKEND_URL=https://your-backend
+```
+
+---
+
+### 3️⃣ Install Dependencies
+
+#### Backend
+```bash
+cd backend
+npm install
+```
+
+#### Frontend
+```bash
+cd ../frontend
+npm install
+```
+
+---
+
+### 4️⃣ Local Development
+
+#### Backend
+```bash
+cd backend
+npm run dev
+```
+
+#### Frontend
+```bash
+cd ../frontend
+npm run dev
+```
+
+Frontend will be available at `http://localhost:5173`  
+Backend will be available at `http://localhost:8080`
+
+---
+
+## ✅ Production
+
+- Frontend: Deploy to Vercel
+- Backend: Deploy to Railway
+
+---
+
+## ℹ️ Notes
+
+- Logs are automatically saved daily in `/logs`.
+- All inputs are filtered against prompt injections.
+- Supports OpenRouter free models.
+- If you get 429, the rate limit is triggered.
+
+---
