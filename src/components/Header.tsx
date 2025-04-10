@@ -8,7 +8,7 @@ const Header = () => {
       </div>
       <div className="header-right">
         <a
-          href="https://github.com/your-repo"
+          href="https://github.com/atakankaracali/aigeneratormeme"
           target="_blank"
           rel="noopener noreferrer"
           className="header-link"
