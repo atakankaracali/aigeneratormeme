@@ -1,29 +1,29 @@
 .header {
-  width: 100%;
-  padding: 1rem 2rem;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  color: white;
+  font-weight: 600;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  margin-bottom: 1rem;
 }
 
 .logo {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: white;
+  font-size: 1.2rem;
+  white-space: nowrap;
 }
 
-.header a {
+.right-links a {
   color: white;
-  font-weight: 500;
+  margin: 0 0.5rem;
+  font-size: 0.95rem;
   text-decoration: none;
-  margin-left: 1rem;
-  transition: color 0.2s ease;
 }
 
-.header a:hover {
-  color: #f9a8d4;
+.right-links a:hover {
+  text-decoration: underline;
 }

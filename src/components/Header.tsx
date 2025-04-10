@@ -1,16 +1,14 @@
 import './styles/header.css';
 
-const Header = () => {
-  return (
-    <header className="header">
-      <h1 className="logo">😂 AI Meme Generator</h1>
-      <nav>
-        <a href="https://github.com/atakankaracali" target="_blank" rel="noopener noreferrer">
-          GitHub
-        </a>
-      </nav>
-    </header>
-  );
-};
+const Header = () => (
+  <header className="header">
+    <div className="logo">😂 AI Meme Generator</div>
+    <div className="right-links">
+      <a href="https://github.com/atakankara" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <span>•</span>
+      <a href="https://atakankaracali.com" target="_blank" rel="noopener noreferrer">Made with ❤️</a>
+    </div>
+  </header>
+);
 
 export default Header;
