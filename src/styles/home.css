@@ -1,0 +1,27 @@
+.header {
+  width: 100%;
+  padding: 1rem 2rem;
+  text-align: left;
+}
+
+.header-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+.footer {
+  margin-top: 2rem;
+  padding: 1rem;
+  font-size: 0.95rem;
+  text-align: center;
+  color: #f0f0f0;
+  opacity: 0.8;
+}
+
+.footer a {
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: underline;
+}
