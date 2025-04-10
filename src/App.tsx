@@ -101,9 +101,20 @@ function App() {
     const isRoastMode = mode === "roast";
 
     return (
-        <div className="app-wrapper">
-            <div className="app-card">
-                {step === 0 && <Intro onNext={handleNextStep} />}
+        <div className="app-wrapper flex items-center justify-center min-h-screen p-4 bg-gradient-to-b from-pink-300 to-purple-400">
+            <div className="app-card w-full max-w-xl bg-white bg-opacity-10 backdrop-blur-md rounded-3xl shadow-lg p-6 sm:p-10 text-center">
+
+                {step === 0 && (
+                    <>
+                        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+                            🚀 Boost Your Mood with AI Memes!
+                        </h1>
+                        <p className="text-white text-base sm:text-lg max-w-lg mx-auto mb-6">
+                            Instantly generate <strong>funny</strong>, <strong>roasty</strong>, or <strong>motivational memes</strong> using artificial intelligence. No login, no cost — just pure internet humor.
+                        </p>
+                        <Intro onNext={handleNextStep} />
+                    </>
+                )}
 
                 {step === 1 && !isRoastMode && (
                     <Question
@@ -140,13 +151,13 @@ function App() {
 
                 {((step === 1 && isRoastMode && !meme && !loading) || (step === 4 && !loading && !meme)) && (
                     <>
-                        <p className="text-title">
+                        <p className="text-title text-white mb-4">
                             Brutally honest, AI-powered roast. Ready to cry or laugh?
                         </p>
                         <motion.button
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.95 }}
-                            className="meme-button"
+                            className="meme-button bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-full transition-all"
                             onClick={generateMeme}
                         >
                             {isRoastMode ? '🥩 Roast Me' : '🚀 Generate Meme'}
@@ -162,7 +173,7 @@ function App() {
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={restart}
-                            className="restart-button"
+                            className="restart-button mt-4 bg-white text-black py-2 px-5 rounded-full shadow-md"
                         >
                             🔄 Create Another Meme
                         </motion.button>
