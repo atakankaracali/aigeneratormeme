@@ -26,15 +26,10 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
   };
 
   const handleDownload = () => {
-    if (memeRef.current === null) return;
-
+    if (!memeRef.current) return;
     toPng(memeRef.current, { cacheBust: true })
-      .then((dataUrl) => {
-        saveAs(dataUrl, 'meme.png');
-      })
-      .catch((err) => {
-        console.error('❌ Download Error:', err);
-      });
+      .then((dataUrl) => saveAs(dataUrl, 'meme.png'))
+      .catch((err) => console.error('❌ Download Error:', err));
   };
 
   return (
@@ -48,7 +43,6 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
         ref={memeRef}
       >
         <h3 className="meme-title">🔥 Your Meme 🔥</h3>
-
         <p className="meme-text">{meme}</p>
 
         <div className="button-group">

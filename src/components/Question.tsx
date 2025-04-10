@@ -8,26 +8,32 @@ type QuestionProps = {
   setSelected: (val: string) => void;
 };
 
-const Question = ({ title, options, setSelected }: QuestionProps) => (
+const Question = ({ title, options, selected, setSelected }: QuestionProps) => (
   <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
+    initial={{ opacity: 0, y: 10 }}
+    animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5 }}
     className="question-container"
   >
-    <h2 className="question-title">{title}</h2>
+    <h3 className="question-title">{title}</h3>
+
     <div className="option-group">
-      {options.map((option) => (
-        <motion.button
-          key={option}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => setSelected(option)}
-          className="option-button"
-        >
-          {option}
-        </motion.button>
-      ))}
+      {options.map((option) => {
+        const isActive = selected === option;
+
+        return (
+          <motion.button
+            key={option}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setSelected(option)}
+            className={`option-button ${isActive ? 'selected' : ''}`}
+            aria-pressed={isActive}
+          >
+            {option}
+          </motion.button>
+        );
+      })}
     </div>
   </motion.div>
 );

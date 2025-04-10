@@ -11,7 +11,7 @@ const Intro = ({ onNext }: IntroProps) => (
     transition={{ duration: 0.5 }}
     className="intro-container"
   >
-    <h2 className="intro-title">
+    <h2 className="intro-title" aria-label="AI Meme Generator animated title">
       <Typewriter
         words={['😂 AI Meme Generator', '🔥 Meme Your Life', '🚀 Boost Your Mood!']}
         loop={0}
