@@ -98,3 +98,58 @@ body {
     font-size: 1.5rem;
   }
 }
+
+.hero-card {
+  width: 100%;
+  max-width: 540px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  text-align: center;
+  animation: fadeIn 0.8s ease;
+}
+
+.hero-card h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+  color: #f9f9f9;
+}
+
+@media (max-width: 768px) {
+  .hero-card {
+    padding: 1.5rem;
+    border-radius: 1rem;
+  }
+
+  .hero-card h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-card p {
+    font-size: 0.95rem;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
