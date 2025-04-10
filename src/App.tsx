@@ -28,17 +28,6 @@ function App() {
     useEffect(() => {
         const history = JSON.parse(localStorage.getItem("memeHistory") || "[]");
         setMemeHistory(history);
-
-        if ("Notification" in window) {
-            Notification.requestPermission().then(permission => {
-                if (permission === "granted") {
-                    new Notification("😂 AI Meme Generator", {
-                        body: "Ready to create your daily meme?",
-                        icon: "/icon.png",
-                    });
-                }
-            });
-        }
     }, []);
 
     const generateMeme = async () => {
