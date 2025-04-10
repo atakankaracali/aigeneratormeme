@@ -1,4 +1,3 @@
-// src/pages/MemeApp.tsx
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Intro from '../components/Intro';
@@ -106,9 +105,16 @@ const MemeApp = () => {
     <div className="app-wrapper">
       <div className="app-card">
 
-        <div className="mb-4 text-sm text-white text-center underline">
-          <Link to="/">← Go Back Home</Link>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="back-home-wrapper"
+        >
+          <Link to="/" className="back-home-button">
+            ← Back to Homepage
+          </Link>
+        </motion.div>
 
         {step === 0 && <Intro onNext={handleNextStep} />}
 

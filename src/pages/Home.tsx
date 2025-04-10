@@ -2,12 +2,14 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import '../styles/home.css';
 import Footer from '../components/Footer';
+import Header from '../components/Header';
 
 const Home = () => {
   const navigate = useNavigate();
 
   return (
     <>
+      <Header />
       <motion.div
         className="home-container"
         initial={{ opacity: 0, y: 30 }}
@@ -16,7 +18,10 @@ const Home = () => {
         transition={{ duration: 0.5 }}
       >
         <div className="home-card">
-          <h1 className="home-title">😂 AI Meme Generator</h1>
+          <h1 className="home-title">
+            <span role="img" aria-label="laugh">😂</span> 
+            <strong>AI Meme Generator</strong> – Instantly Create Funny, Roasty, Motivational Memes
+          </h1>
           <p className="home-subtitle">
             Instantly generate funny, roasty, or motivational memes using AI. No login, no cost — just laughs.
           </p>
