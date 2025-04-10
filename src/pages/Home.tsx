@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import './styles/home.css';
+import '../styles/home.css';
 
 const Home = () => {
   const navigate = useNavigate();
