@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom';
 import './styles/header.css';
 import logo from '/icon-256.png';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : 'auto';
+  }, [menuOpen]);
 
   return (
     <header className="header">
