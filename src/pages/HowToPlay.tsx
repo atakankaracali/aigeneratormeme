@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import '../styles/howtoplay.css';
+import Footer from '../components/Footer';
 
 const HowToPlay = () => {
   return (
@@ -53,6 +54,8 @@ const HowToPlay = () => {
           🚀 Try it Now
         </Link>
       </motion.div>
+
+      <Footer />
     </div>
   );
 };
