@@ -1,13 +1,19 @@
+import { Link } from 'react-router-dom';
 import './styles/header.css';
+import logo from '/icon-256.png';
 
 const Header = () => (
   <header className="header">
-    <div className="logo">😂 AI Meme Generator</div>
-    <div className="right-links">
-      <a href="https://github.com/atakankara" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <span>•</span>
-      <a href="https://atakankaracali.com" target="_blank" rel="noopener noreferrer">Made with ❤️</a>
+    <div className="header-left">
+      <Link to="/" className="logo-link">
+        <img src={logo} alt="AI Meme Generator Logo" className="logo-img" />
+        <span className="logo-text">AI Meme Generator</span>
+      </Link>
     </div>
+    <nav className="header-right">
+      <Link to="/how-to-play">How to Play</Link>
+      <Link to="/about">About</Link>
+    </nav>
   </header>
 );
 

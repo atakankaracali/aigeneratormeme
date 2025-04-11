@@ -1,0 +1,24 @@
+.about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    min-height: 80vh;
+  }
+  
+  .about-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    padding: 2rem;
+    border-radius: 1.5rem;
+    text-align: center;
+    color: white;
+    max-width: 400px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  .about-card a {
+    color: #a5b4fc;
+    text-decoration: underline;
+  }
+  

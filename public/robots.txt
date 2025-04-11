@@ -1,5 +1,8 @@
 User-agent: *
-Allow: /
-Host: https://www.aigeneratememe.com
+Disallow:
+
 Sitemap: https://www.aigeneratememe.com/sitemap.xml
-# Made with ❤️ by atakankaracali.com
+Host: https://www.aigeneratememe.com
+
+# Allow all bots to crawl everything
+# Made with ❤️ by https://atakankaracali.com
