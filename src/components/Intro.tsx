@@ -16,6 +16,9 @@ const Intro = ({ onNext }: IntroProps) => (
         words={['😂 AI Meme Generator', '🔥 Meme Your Life', '🚀 Boost Your Mood!']}
         loop={0}
         cursor
+        cursorStyle="|"
+        typeSpeed={50}
+        deleteSpeed={30}
       />
     </h2>
 

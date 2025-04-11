@@ -7,20 +7,19 @@
   padding: 1.4rem;
   max-width: 100%;
   margin: 0 auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .intro-title {
-  font-size: 1.9rem;
-  font-weight: 550;
+  font-size: clamp(1.2rem, 5vw, 2rem);
+  font-weight: 600;
   color: white;
   text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   line-height: 1.3;
-}
-
-@media (min-width: 640px) {
-  .intro-title {
-    font-size: 2.2rem;
-  }
+  max-width: 90%;
+  margin: 0 auto;
+  word-break: break-word;
 }
 
 .intro-button {
@@ -35,6 +34,7 @@
   font-weight: 500;
   width: 90%;
   max-width: 300px;
+  text-align: center;
 }
 
 .intro-button:hover {
@@ -60,6 +60,10 @@
 @media (max-width: 480px) {
   .intro-button {
     padding: 10px 20px;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+  }
+
+  .intro-title {
+    font-size: 1.3rem;
   }
 }

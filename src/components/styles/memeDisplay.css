@@ -96,11 +96,11 @@
   }
 
   .meme-title {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
   }
 
   .meme-text {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 
   .button-group {
@@ -111,6 +111,6 @@
   .tweet-button,
   .copy-button,
   .download-button {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 }
