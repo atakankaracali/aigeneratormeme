@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import '../styles/about.css';
-import Footer from '../components/Footer';
 
 const About = () => {
   return (
@@ -29,7 +28,6 @@ const About = () => {
         <p style={{ fontStyle: 'italic' }}>Thanks for stopping by! 😊</p>
       </motion.div>
 
-      <Footer />
     </div>
   );
 };
