@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
   background: rgba(255, 255, 255, 0.1);
   padding: 1rem 2rem;
   color: #fff;
@@ -32,36 +31,111 @@
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
-.nav-links {
+.desktop-links {
   display: flex;
   gap: 1rem;
 }
 
-.nav-links a {
+.desktop-links a {
   color: #8e2de2;
   font-weight: 500;
   text-decoration: none;
   transition: color 0.2s;
 }
 
-.nav-links a:hover {
+.desktop-links a:hover {
   color: #e0e0ff;
   text-decoration: underline;
 }
 
-@media (max-width: 480px) {
-  .header {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+.mobile-menu-icon {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #8e2de2;
+}
+
+.mobile-dropdown {
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  padding: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-dropdown a {
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.mobile-dropdown a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .desktop-links {
+    display: none;
+  }
+
+  .mobile-menu-icon {
+    display: block;
+  }
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 18px;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.bar {
+  height: 3px;
+  background-color: #8e2de2;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.rotate-top {
+  transform: rotate(45deg) translateY(8px);
+}
+.fade-out {
+  opacity: 0;
+}
+.rotate-bottom {
+  transform: rotate(-45deg) translateY(-8px);
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
   }
 
   .nav-links {
-    gap: 0.7rem;
-    font-size: 0.9rem;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 10px;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    display: none;
   }
 
-  .logo-text {
-    font-size: 1.1rem;
+  .nav-links.open {
+    display: flex;
   }
 }
