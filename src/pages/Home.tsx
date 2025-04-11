@@ -17,7 +17,6 @@ const Home = () => {
       >
         <div className="home-card">
           <h1 className="home-title">
-            <span role="img" aria-label="laugh">😂</span> 
             <strong>AI Meme Generator</strong> – Instantly Create Funny, Roasty, Motivational Memes
           </h1>
           <p className="home-subtitle">
