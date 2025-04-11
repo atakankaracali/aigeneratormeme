@@ -5,6 +5,7 @@ import MemeApp from './pages/MemeApp';
 import Header from './components/Header';
 import HowToPlay from './pages/HowToPlay';
 import About from './pages/About';
+import NotFound from './pages/NotFound';
 
 const App = () => {
   const location = useLocation();
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/meme" element={<MemeApp />} />
           <Route path="/about" element={<About />} />
           <Route path="/how-to-play" element={<HowToPlay />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </AnimatePresence>
     </>
