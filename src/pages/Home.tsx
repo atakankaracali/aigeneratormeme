@@ -2,14 +2,12 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import '../styles/home.css';
 import Footer from '../components/Footer';
-import Header from '../components/Header';
 
 const Home = () => {
   const navigate = useNavigate();
 
   return (
     <>
-      <Header />
       <motion.div
         className="home-container"
         initial={{ opacity: 0, y: 30 }}
