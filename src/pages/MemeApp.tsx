@@ -5,7 +5,6 @@ import Question from '../components/Question';
 import MemeDisplay from '../components/MemeDisplay';
 import Loader from '../components/Loader';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import '../App.css';
 
 const forbiddenWords = ["forget", "ignore", "prompt", "as an ai", "jailbroken", "system", "role:", "write me", "act as", "pretend to", "assistant", "developer mode", "simulate"];
@@ -104,17 +103,6 @@ const MemeApp = () => {
   return (
     <div className="app-wrapper">
       <div className="app-card">
-
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="back-home-wrapper"
-        >
-          <Link to="/" className="back-home-button">
-            ← Back to Homepage
-          </Link>
-        </motion.div>
 
         {step === 0 && <Intro onNext={handleNextStep} />}
 

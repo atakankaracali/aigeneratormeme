@@ -12,13 +12,13 @@
     padding: 2rem;
     border-radius: 1.5rem;
     text-align: center;
-    color: #4a00e0;
+    color: #8e2de2;
     max-width: 400px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
   }
   
   .about-card a {
-    color: #a5b4fc;
+    color: #fafafa;
     text-decoration: underline;
   }
   
