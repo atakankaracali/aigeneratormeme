@@ -52,7 +52,7 @@ const BlogPost = () => {
         "headline": title,
         "author": {
           "@type": "Person",
-          "name": "Atakan Karacalı"
+          "name": "Atakan Karacali"
         },
         "url": `https://www.aigeneratememe.com/blog/${slug}`,
         "datePublished": date || "2025-04-13"
