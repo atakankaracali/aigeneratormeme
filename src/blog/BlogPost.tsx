@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 import useCanonical from '../hooks/useCanonical';
 import '../styles/blog.css';
@@ -17,10 +16,24 @@ const BlogPost = () => {
     fetch(`/posts/${slug}.md`)
       .then((res) => res.text())
       .then((text) => {
-        const { content, data } = matter(text);
-        setContent(content);
-        setTitle(data.title);
-        setDate(data.date);
+        const frontmatterMatch = text.match(/^---\n([\s\S]*?)\n---\n/);
+        let markdownContent = text;
+        let metadata: Record<string, string> = {};
+
+        if (frontmatterMatch) {
+          const rawMetadata = frontmatterMatch[1];
+          markdownContent = text.slice(frontmatterMatch[0].length);
+
+          rawMetadata.split('\n').forEach((line) => {
+            const [key, ...rest] = line.split(':');
+            metadata[key.trim()] = rest.join(':').trim().replace(/^"|"$/g, '');
+          });
+
+          setTitle(metadata.title || '');
+          setDate(metadata.date || '');
+        }
+
+        setContent(markdownContent);
       })
       .catch((err) => {
         console.error('Markdown fetch error:', err);
@@ -44,6 +57,7 @@ const BlogPost = () => {
         "url": `https://www.aigeneratememe.com/blog/${slug}`,
         "datePublished": date || "2025-04-13"
       });
+
       document.head.appendChild(script);
 
       return () => {
