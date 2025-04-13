@@ -13,6 +13,7 @@ const BlogHome = () => {
               <Link to={`/blog/${post.slug}`}>{post.title}</Link>
             </h2>
             <p className="blog-card-desc">{post.description}</p>
+            <Link className="blog-readmore" to={`/blog/${post.slug}`}>Read More →</Link>
           </div>
         ))}
       </div>

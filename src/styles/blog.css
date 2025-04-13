@@ -38,6 +38,29 @@
   .blog-card:hover {
     transform: scale(1.02);
   }
+
+  .blog-readmore {
+    font-size: 0.9rem;
+    color: #4a00e0;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 1rem;
+    display: inline-block;
+  }
+  
+  .blog-readmore:hover {
+    text-decoration: underline;
+  }
+  
+  @media (min-width: 1024px) {
+    .blog-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .blog-card-title {
+    margin-bottom: 0.5rem;
+  }
   
   .blog-card-title a {
     color: #4a00e0;
@@ -55,7 +78,7 @@
     font-size: 0.95rem;
     opacity: 0.85;
   }  
-  
+
   .blog-container {
     padding: 2rem 1rem;
     max-width: 900px;
@@ -139,3 +162,10 @@
       font-size: 1.7rem;
     }
   }  
+
+  .blog-date {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }

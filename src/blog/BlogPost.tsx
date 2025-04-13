@@ -46,16 +46,16 @@ const BlogPost = () => {
 
   useEffect(() => {
     if (!slug) return;
-  
+
     const canonicalLink = document.createElement('link');
     canonicalLink.setAttribute('rel', 'canonical');
     canonicalLink.setAttribute('href', `https://www.aigeneratememe.com/blog/${slug}`);
     document.head.appendChild(canonicalLink);
-  
+
     return () => {
       document.head.removeChild(canonicalLink);
     };
-  }, [slug]);  
+  }, [slug]);
 
   useEffect(() => {
     if (title && slug) {
@@ -85,6 +85,11 @@ const BlogPost = () => {
   return (
     <div className="blog-container">
       <h1 className="blog-title">{title}</h1>
+      {date && (
+        <p className="blog-date">
+          🗓️ Published on <time dateTime={date}>{date}</time>
+        </p>
+      )}
       <div className="blog-content">
         <ReactMarkdown>{content}</ReactMarkdown>
       </div>
