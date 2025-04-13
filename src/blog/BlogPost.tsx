@@ -13,7 +13,7 @@ const BlogPost = () => {
   useEffect(() => {
     if (!slug) return;
 
-    fetch(`/posts/${slug}.md`)
+    fetch(`/posts/${slug?.toString().toLowerCase()}.md`)
       .then((res) => res.text())
       .then((text) => {
         const frontmatterMatch = text.match(/^---\n([\s\S]*?)\n---\n/);
@@ -37,10 +37,25 @@ const BlogPost = () => {
       })
       .catch((err) => {
         console.error('Markdown fetch error:', err);
+        setTitle('Post Not Found');
+        setContent('Sorry, this blog post could not be loaded.');
       });
   }, [slug]);
 
   useCanonical();
+
+  useEffect(() => {
+    if (!slug) return;
+  
+    const canonicalLink = document.createElement('link');
+    canonicalLink.setAttribute('rel', 'canonical');
+    canonicalLink.setAttribute('href', `https://www.aigeneratememe.com/blog/${slug}`);
+    document.head.appendChild(canonicalLink);
+  
+    return () => {
+      document.head.removeChild(canonicalLink);
+    };
+  }, [slug]);  
 
   useEffect(() => {
     if (title && slug) {
