@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion';
 import '../styles/about.css';
+import useCanonical from '../hooks/useCanonical';
 
 const About = () => {
+  useCanonical();
   return (
     <div className="about-container">
       <motion.div
@@ -28,6 +30,17 @@ const About = () => {
         <p style={{ fontStyle: 'italic' }}>Thanks for stopping by! 😊</p>
       </motion.div>
 
+      <div className="seo-about-block">
+        <h3>About AI Meme Generator</h3>
+        <p>
+          AI Meme Generator is a free online tool created by Atakan Karacali — a frontend developer passionate about AI and creative web tools.
+          This platform helps users easily create <strong>funny memes</strong>, <strong>motivational AI memes</strong>, or even <strong>brutal roast memes</strong> using artificial intelligence.
+        </p>
+        <p>
+          Whether you're a meme lover, a social media content creator, or just here for fun,
+          our <strong>AI-powered meme generator</strong> delivers quick and entertaining results without any sign-up.
+        </p>
+      </div>
     </div>
   );
 };

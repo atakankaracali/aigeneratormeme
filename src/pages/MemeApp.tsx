@@ -6,6 +6,7 @@ import MemeDisplay from '../components/MemeDisplay';
 import Loader from '../components/Loader';
 import { motion } from 'framer-motion';
 import '../App.css';
+import useCanonical from '../hooks/useCanonical';
 
 const forbiddenWords = ["forget", "ignore", "prompt", "as an ai", "jailbroken", "system", "role:", "write me", "act as", "pretend to", "assistant", "developer mode", "simulate"];
 
@@ -15,6 +16,7 @@ function hasInjection(text: string) {
 }
 
 const MemeApp = () => {
+  useCanonical();
   const [step, setStep] = useState(0);
   const [mode, setMode] = useState<"classic" | "roast" | "manifest" | null>(null);
   const [feeling, setFeeling] = useState('');

@@ -6,6 +6,8 @@ import Header from './components/Header';
 import HowToPlay from './pages/HowToPlay';
 import About from './pages/About';
 import NotFound from './pages/NotFound';
+import BlogHome from './blog/BlogHome';
+import BlogPost from './blog/BlogPost';
 
 const App = () => {
   const location = useLocation();
@@ -19,6 +21,8 @@ const App = () => {
           <Route path="/meme" element={<MemeApp />} />
           <Route path="/about" element={<About />} />
           <Route path="/how-to-play" element={<HowToPlay />} />
+          <Route path="/blog" element={<BlogHome />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </AnimatePresence>

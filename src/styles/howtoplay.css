@@ -73,4 +73,32 @@
   .try-button:hover {
     transform: scale(1.05);
   }
+
+  .seo-howto-block {
+    margin-top: 3rem;
+    padding: 1.5rem 2rem;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 1.2rem;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+    color: #333;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+  }
+  
+  .seo-howto-block h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #8e2de2;
+    margin-bottom: 1rem;
+  }
+  
+  .seo-howto-block strong {
+    color: #4a00e0;
+    font-weight: 600;
+  }  
   

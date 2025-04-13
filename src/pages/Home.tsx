@@ -31,6 +31,20 @@ const Home = () => {
             🚀 Try It Now
           </motion.button>
         </div>
+
+        <div className="seo-content-block">
+          <h2>Why Choose Our AI Meme Generator?</h2>
+          <p>
+            Looking for the best <strong>AI meme generator</strong> in 2025? Our platform lets you create <strong>funny memes</strong>,
+            <strong> motivational memes</strong>, and hilarious <strong>roast me memes</strong> instantly with artificial intelligence.
+            Perfect for anyone who wants a fast, free meme maker without sign-ups or complicated tools.
+          </p>
+          <p>
+            Join thousands who are using our <strong>meme creator AI</strong> to share laughs, inspire friends, or just have fun online.
+            Whether you're into <strong>AI humor tools</strong> or just want to try the latest <strong>viral meme generator</strong>,
+            we have got you covered.
+          </p>
+        </div>
       </motion.div>
 
       <Footer />

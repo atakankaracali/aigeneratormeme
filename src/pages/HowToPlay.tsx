@@ -2,8 +2,10 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import '../styles/howtoplay.css';
 import Footer from '../components/Footer';
+import useCanonical from '../hooks/useCanonical';
 
 const HowToPlay = () => {
+  useCanonical();
   return (
     <div className="howto-container">
       <motion.h1
@@ -54,6 +56,18 @@ const HowToPlay = () => {
           🚀 Try it Now
         </Link>
       </motion.div>
+      <div className="seo-howto-block">
+        <h2>How Does AI Meme Generator Work?</h2>
+        <p>
+          Our <strong>AI Meme Generator</strong> uses natural language processing and creative AI to turn your feelings and inputs into
+          hilarious memes. Whether you choose <strong>Classic</strong>, <strong>Roast Me</strong>, or <strong>Manifest</strong> mode,
+          the system adapts to your vibe and creates a unique meme instantly.
+        </p>
+        <p>
+          It is the best tool in 2025 for creating <strong>funny memes with AI</strong>, and it is completely free to use — no account needed.
+          Try the <strong>AI meme creator</strong> today and share your personalized meme with friends in seconds!
+        </p>
+      </div>
 
       <Footer />
     </div>
