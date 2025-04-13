@@ -1,20 +1,21 @@
 import { Link } from 'react-router-dom';
 import posts from './posts.json';
+import '../styles/blog.css';
 
 const BlogHome = () => {
   return (
-    <div style={{ padding: '2rem', maxWidth: '800px', margin: 'auto' }}>
-      <h1 style={{ color: '#8e2de2' }}>📝 Blog Articles</h1>
-      <ul>
+    <div className="blog-home-container">
+      <h1 className="blog-home-title">📝 Blog Articles</h1>
+      <div className="blog-grid">
         {posts.map((post) => (
-          <li key={post.slug} style={{ marginBottom: '1rem' }}>
-            <Link to={`/blog/${post.slug}`} style={{ color: '#4a00e0', fontWeight: '600' }}>
-              {post.title}
-            </Link>
-            <p style={{ fontSize: '0.9rem', opacity: 0.7 }}>{post.description}</p>
-          </li>
+          <div className="blog-card" key={post.slug}>
+            <h2 className="blog-card-title">
+              <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+            </h2>
+            <p className="blog-card-desc">{post.description}</p>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

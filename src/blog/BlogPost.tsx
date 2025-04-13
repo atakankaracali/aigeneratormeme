@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 import useCanonical from '../hooks/useCanonical';
+import '../styles/blog.css';
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -11,13 +12,18 @@ const BlogPost = () => {
   const [date, setDate] = useState('');
 
   useEffect(() => {
-    import(`./posts/${slug}.md`)
-      .then((res) => fetch(res.default).then((r) => r.text()))
+    if (!slug) return;
+
+    fetch(`/posts/${slug}.md`)
+      .then((res) => res.text())
       .then((text) => {
         const { content, data } = matter(text);
         setContent(content);
         setTitle(data.title);
         setDate(data.date);
+      })
+      .catch((err) => {
+        console.error('Markdown fetch error:', err);
       });
   }, [slug]);
 
@@ -44,12 +50,15 @@ const BlogPost = () => {
         document.head.removeChild(script);
       };
     }
+    return () => {};
   }, [title, slug, date]);
 
   return (
-    <div style={{ padding: '2rem', maxWidth: '800px', margin: 'auto' }}>
-      <h1 style={{ color: '#8e2de2' }}>{title}</h1>
-      <ReactMarkdown>{content}</ReactMarkdown>
+    <div className="blog-container">
+      <h1 className="blog-title">{title}</h1>
+      <div className="blog-content">
+        <ReactMarkdown>{content}</ReactMarkdown>
+      </div>
     </div>
   );
 };

@@ -1,48 +1,56 @@
 .about-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-    min-height: 80vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  min-height: 80vh;
+}
+
+.about-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  padding: 2rem;
+  border-radius: 1.5rem;
+  text-align: center;
+  color: #8e2de2;
+  max-width: 400px;
+  flex: 1 1 300px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.about-card a {
+  color: #4a00e0;
+  text-decoration: underline;
+}
+
+.seo-about-block {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  border-radius: 1.2rem;
+  padding: 2rem;
+  flex: 1 1 300px;
+  max-width: 600px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  color: #333;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.seo-about-block h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #8e2de2;
+  margin-bottom: 1rem;
+}
+
+.seo-about-block strong {
+  color: #4a00e0;
+  font-weight: 600;
+}
+@media (max-width: 480px) {
+  .about-container {
+    flex-direction: column;
+    padding: 1.5rem 1rem;
   }
-  
-  .about-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
-    padding: 2rem;
-    border-radius: 1.5rem;
-    text-align: center;
-    color: #8e2de2;
-    max-width: 400px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  }
-  
-  .about-card a {
-    color: #4a00e0;
-    text-decoration: underline;
-  }
-  
-  .seo-about-block {
-    max-width: 600px;
-    margin: 3rem auto 0;
-    padding: 1.5rem 2rem;
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(12px);
-    border-radius: 1.2rem;
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
-    color: #333;
-    font-size: 0.95rem;
-    line-height: 1.6;
-  }
-  
-  .seo-about-block h3 {
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: #8e2de2;
-    margin-bottom: 1rem;
-  }
-  
-  .seo-about-block strong {
-    color: #4a00e0;
-    font-weight: 600;
-  }    
+}
