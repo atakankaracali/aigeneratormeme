@@ -1,10 +1,23 @@
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import '../styles/home.css';
 import Footer from '../components/Footer';
 
 const Home = () => {
   const navigate = useNavigate();
+  const [memeCount, setMemeCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/meme-count`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (typeof data.count === 'number') {
+          setMemeCount(data.count);
+        }
+      })
+      .catch(() => setMemeCount(null));
+  }, []);
 
   return (
     <>
@@ -22,6 +35,13 @@ const Home = () => {
           <p className="home-subtitle">
             Instantly generate funny, roasty, or motivational memes using AI. No login, no cost — just laughs.
           </p>
+
+          {memeCount !== null && (
+            <p className="meme-count-text">
+              🎉 <strong>{memeCount.toLocaleString()}</strong> memes generated so far!
+            </p>
+          )}
+
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
