@@ -91,55 +91,18 @@ app.post("/generate-meme-text", async (req, res) => {
   let prompt = "";
 
   if (mode === "roast") {
-    prompt = `You are a clever, dark-humored internet comedian. Write ONE short and savage roast-style meme caption (max 2 lines) that feels like it belongs on Reddit or Twitter. It should be:
-- Unexpectedly funny
-- Smart and ironic
-- Never offensive, racist, sexist, or political
-- Just enough edge to make people laugh, not cringe
-- Clever and creative.
-
-Rules:
-- Only use plain English (A-Z), no emojis or symbols.
-- No intros, explanations, or formatting.
-- Make it feel like a punchline that ends a roast battle.`;
+    prompt = `You are a clever, dark-humored internet comedian. Write ONE short and savage roast-style meme caption (max 2 lines). It should be smart, unexpected, ironic. No intros or formatting.`;
   } else if (mode === "manifest") {
-    prompt = `You're a startup founder known for creating meme-style motivational quotes that are equal parts hilarious and real. Write ONE caption (max 2 lines) for a hustler who:
-- Dreams of: ${safeFeeling}
-- Is blocked by: ${safeProblem}
-- Would feel: ${safeLastEnjoyed} if they succeed
-
-Style:
-- Blend startup pain with hopeful sarcasm
-- Use dry humor, internet wisdom, and surprise
-- No toxic hustle, just relatable honesty
-- Clever and creative.
-
-Rules:
-- English only (A-Z), no emojis or symbols
-- Output just the meme caption. No extra content.`;
+    prompt = `You're a founder who makes savage motivational meme quotes. Write ONE caption (max 2 lines) for someone who dreams of ${safeFeeling}, blocked by ${safeProblem}, and would feel ${safeLastEnjoyed} if they succeed. Dry humor, startup pain, no emojis.`;
   } else if (mode === "classic") {
-    prompt = `You're a master of meme culture. Based on the user's vibe, write ONE short and funny meme caption (max 2 lines) using:
-- Mood: ${safeFeeling}
-- Problem: ${safeProblem}
-- Last thing enjoyed: ${safeLastEnjoyed}
-
-Style:
-- Make it relatable
-- Add an unexpected twist
-- Think Twitter, Tumblr, Reddit humor (clever, ironic, subtle chaos)
-- Clever and creative.
-
-Rules:
-- English (A-Z only), no emojis or formatting
-- No edgy/offensive content
-- Just return one witty caption.`;
+    prompt = `You're a meme wizard. Based on mood: ${safeFeeling}, problem: ${safeProblem}, and last enjoyed: ${safeLastEnjoyed}, write ONE short and funny meme caption (max 2 lines). Make it relatable, ironic, clever.`;
   }
 
   try {
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
-        model: "agentica-org/deepcoder-14b-preview:free",
+        model: "deepseek/deepseek-chat-v3-0324:free",
         messages: [{ role: "user", content: prompt }],
       },
       {
@@ -151,6 +114,8 @@ Rules:
         },
       }
     );
+    console.log("🔥 RAW RESPONSE from OpenRouter:");
+    console.log(JSON.stringify(response.data, null, 2));
 
     const memeText = response.data.choices?.[0]?.message?.content?.trim();
     const firstValidLine = memeText
