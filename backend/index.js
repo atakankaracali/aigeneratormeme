@@ -84,21 +84,32 @@ app.post("/generate-meme-text", async (req, res) => {
   let prompt = "";
 
   if (mode === "roast") {
+    const flavors = [
+      "🧠 sarcastic genius", 
+      "🎯 short and sharp", 
+      "🪓 savage but witty", 
+      "🔥 Gen Z internet humor", 
+      "💀 ironic and absurd", 
+      "👻 ghost of Twitter 2012"
+    ];
+    const randomFlavor = flavors[Math.floor(Math.random() * flavors.length)];
+  
     prompt = `You're a ruthless internet comedian with viral-level roast skills. Your job is to write ONE roast meme caption (max 2 lines) that:
-    - Hits with clever sarcasm
-    - Feels like something from Reddit roast threads or Twitter dark humor
-    - Makes people laugh out loud, not just smile
-    - Uses real internet wit, not dad jokes
-    - No weak wordplay or puns
-    - Cleaver and creative.
-    - The person who reads it should be shocked and laugh a lot.
-
-    ⚠️ Rules:
-    - No offensive, racist, sexist, or political content
-    - Use plain English only (A-Z), no emojis or symbols
-    - Be smart, bold, and funny
-    - Return just the one roast caption. No explanation, no intro.`;
-
+  - Hits with clever sarcasm
+  - Feels like something from Reddit roast threads or Twitter dark humor
+  - Makes people laugh out loud, not just smile
+  - Uses real internet wit, not dad jokes
+  - No weak wordplay or puns
+  - Cleaver and creative.
+  - The person who reads it should be shocked and laugh a lot.
+  
+  🧪 Style flavor: ${randomFlavor}
+  
+  ⚠️ Rules:
+  - No offensive, racist, sexist, or political content
+  - Use plain English only (A-Z), no emojis or symbols
+  - Be smart, bold, and funny
+  - Return just the one roast caption. No explanation, no intro.`;  
   } else if (mode === "manifest") {
     prompt = `You're a startup founder known for creating meme-style motivational quotes that are equal parts hilarious and real. Write ONE caption (max 2 lines) for a hustler who:
 - Dreams of: ${safeFeeling}
