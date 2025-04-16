@@ -44,7 +44,18 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
 
   return (
     <>
-      {showConfetti && <Confetti width={width} height={height} />}
+      {showConfetti && (
+        <Confetti
+          width={width}
+          height={height}
+          numberOfPieces={150}
+          gravity={0.2}
+          colors={["#fcd34d", "#f9a8d4", "#c4b5fd", "#93c5fd", "#6ee7b7"]}
+          recycle={false}
+          wind={0.01}
+          initialVelocityY={5}
+        />
+      )}
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
