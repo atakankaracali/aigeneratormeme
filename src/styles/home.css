@@ -94,11 +94,12 @@
 }
 
 .funny-robot {
-  width: 160px;
+  width: 180px;
   height: auto;
-  margin: 0 auto 1rem;
   display: block;
+  margin: 0 auto 1.5rem;
   animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.15));
 }
 
 @keyframes float {

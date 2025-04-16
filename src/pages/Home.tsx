@@ -28,7 +28,6 @@ const Home = () => {
         exit={{ opacity: 0, y: -30 }}
         transition={{ duration: 0.5 }}
       >
-        {/* 👇 Robot illüstrasyonu */}
         <motion.img
           src="/assets/funny-robot.png"
           alt="Funny Robot"
