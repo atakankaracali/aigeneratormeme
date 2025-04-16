@@ -10,18 +10,12 @@
   margin-right: auto;
   box-sizing: border-box;
   overflow-wrap: break-word;
-  transition: all 0.3s ease; 
+  transition: all 0.3s ease;
 }
 
 .meme-container:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
-}
-
-.export-mode .meme-container {
-  background: white !important;
-  backdrop-filter: none !important;
-  box-shadow: none !important;
 }
 
 .meme-title {
@@ -88,6 +82,7 @@
   transform: translateY(-2px);
   opacity: 0.9;
 }
+
 .tweet-button:focus,
 .copy-button:focus,
 .download-button:focus {
@@ -119,21 +114,4 @@
   .download-button {
     font-size: 0.85rem;
   }
-}
-
-.export-toggle-button {
-  background-color: #f0f0f0;
-  color: #333;
-  border: 2px dashed #aaa;
-  padding: 0.5rem 1rem;
-  border-radius: 1rem;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-}
-
-.export-toggle-button:hover {
-  background-color: #e4e4e4;
-  color: #111;
-  border-color: #888;
 }
