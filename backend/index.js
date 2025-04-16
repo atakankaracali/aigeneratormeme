@@ -97,26 +97,29 @@ app.post("/generate-meme-text", async (req, res) => {
       "ghost of Twitter 2012",
       "ironic and absurd",
       "weird and unhinged",
+      "weird but brilliant like Tumblr in 2014",
       "unexpectedly deep and chaotic"
     ];
     const randomFlavor = flavors[Math.floor(Math.random() * flavors.length)];
   
     prompt = `You're a ruthless internet comedian with viral-level roast skills. Your job is to write ONE roast meme caption (max 2 lines) that:
-  - Hits with clever sarcasm
-  - Feels like something from Reddit roast threads or Twitter dark humor
-  - Makes people laugh out loud, not just smile
-  - Uses real internet wit, not dad jokes
-  - No weak wordplay or puns
-  - Cleaver and creative.
-  - The person who reads it should be shocked and laugh a lot.
-  
-  Additional Style Instruction: Use the flavor "${randomFlavor}" in tone and delivery.
-  
-  ⚠️ Rules:
-  - No offensive, racist, sexist, or political content
-  - Use plain English only (A-Z), no emojis or symbols
-  - Be smart, bold, and funny
-  - Return just the one roast caption. No explanation, no intro.`;  
+
+    - Hits with clever sarcasm  
+    - Feels like something from Reddit roast threads or Twitter dark humor  
+    - Makes people laugh out loud, not just smile  
+    - Uses real internet wit, not dad jokes  
+    - No weak wordplay or puns  
+    - Clever and creative  
+    - Avoid generic tech jokes like “software updates” or “404 errors.”  
+    - The person who reads it should be shocked and laugh a lot
+    
+    Additional Style Instruction: Use the flavor "${randomFlavor}" in tone and delivery.
+    
+    Rules:  
+    - No offensive, racist, sexist, or political content  
+    - Use plain English only (A-Z), no emojis or symbols  
+    - Be smart, bold, and funny  
+    - Return just the one roast caption. No explanation, no intro.`;    
   } else if (mode === "manifest") {
     prompt = `You're a startup founder known for creating meme-style motivational quotes that are equal parts hilarious and real. Write ONE caption (max 2 lines) for a hustler who:
 - Dreams of: ${safeFeeling}
@@ -157,7 +160,7 @@ Rules:
         model: "openai/gpt-4o-mini",
         temperature: 1.3,
         top_p: 0.95,
-        presence_penalty: 0.6,
+        presence_penalty: 0.5,
         messages: [{ role: "user", content: prompt }],
       },
       {
