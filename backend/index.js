@@ -85,12 +85,19 @@ app.post("/generate-meme-text", async (req, res) => {
 
   if (mode === "roast") {
     const flavors = [
-      "🧠 sarcastic genius", 
-      "🎯 short and sharp", 
-      "🪓 savage but witty", 
-      "🔥 Gen Z internet humor", 
-      "💀 ironic and absurd", 
-      "👻 ghost of Twitter 2012"
+      "short and brutal",
+      "short and sharp",
+      "a sarcastic genius voice",
+      "dry and dark Reddit-style wit",
+      "savage but clever",
+      "savage but witty",
+      "Gen Z internet humor",
+      "internet Gen Z humor style",
+      "roast style like a viral tweet",
+      "ghost of Twitter 2012",
+      "ironic and absurd",
+      "weird and unhinged",
+      "unexpectedly deep and chaotic"
     ];
     const randomFlavor = flavors[Math.floor(Math.random() * flavors.length)];
   
@@ -103,7 +110,7 @@ app.post("/generate-meme-text", async (req, res) => {
   - Cleaver and creative.
   - The person who reads it should be shocked and laugh a lot.
   
-  🧪 Style flavor: ${randomFlavor}
+  Additional Style Instruction: Use the flavor "${randomFlavor}" in tone and delivery.
   
   ⚠️ Rules:
   - No offensive, racist, sexist, or political content
@@ -148,6 +155,9 @@ Rules:
       "https://openrouter.ai/api/v1/chat/completions",
       {
         model: "openai/gpt-4o-mini",
+        temperature: 1.3,
+        top_p: 0.95,
+        presence_penalty: 0.6,
         messages: [{ role: "user", content: prompt }],
       },
       {
