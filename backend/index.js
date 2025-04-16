@@ -141,7 +141,7 @@ Rules:
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
-        model: "arliai/qwq-32b-arliai-rpr-v1:free",
+        model: "arliai/qwq-32b-rpr-v1:free",
         messages: [
           {
             role: "user",
