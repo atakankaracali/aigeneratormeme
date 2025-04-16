@@ -91,6 +91,7 @@ app.post("/generate-meme-text", async (req, res) => {
     - Uses real internet wit, not dad jokes
     - No weak wordplay or puns
     - Cleaver and creative.
+    - The person who reads it should be shocked and laugh a lot.
     
     ⚠️ Rules:
     - No offensive, racist, sexist, or political content
