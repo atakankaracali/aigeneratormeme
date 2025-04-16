@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import '../styles/home.css';
 import Footer from '../components/Footer';
+import QuestionMark from '../components/QuestionMark';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -75,6 +76,7 @@ const Home = () => {
           </p>
         </div>
       </motion.div>
+      <QuestionMark />
 
       <Footer />
     </>

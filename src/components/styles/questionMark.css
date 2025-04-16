@@ -1,0 +1,15 @@
+.question-mark-home {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    font-size: 2.2rem;
+    cursor: pointer;
+    z-index: 999;
+    color: #7c3aed;
+    transition: transform 0.3s ease;
+  }
+  
+  .question-mark-home:hover .tooltip-text {
+    opacity: 1;
+    transform: translateY(-120%);
+  }

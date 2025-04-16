@@ -94,7 +94,7 @@
 }
 
 .funny-robot {
-  width: 180px;
+  width: 2200px;
   height: auto;
   display: block;
   margin: 0 auto 1.5rem;
@@ -104,6 +104,6 @@
 
 @keyframes float {
   0%   { transform: translateY(0); }
-  50%  { transform: translateY(-10px); }
+  50%  { transform: translateY(-15px); }
   100% { transform: translateY(0); }
 }
