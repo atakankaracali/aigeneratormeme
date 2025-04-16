@@ -18,6 +18,12 @@
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
 }
 
+.export-mode .meme-container {
+  background: white !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+
 .meme-title {
   font-size: 1.5rem;
   font-weight: 700;
