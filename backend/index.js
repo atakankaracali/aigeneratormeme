@@ -92,13 +92,13 @@ app.post("/generate-meme-text", async (req, res) => {
     - No weak wordplay or puns
     - Cleaver and creative.
     - The person who reads it should be shocked and laugh a lot.
-    
+
     ⚠️ Rules:
     - No offensive, racist, sexist, or political content
     - Use plain English only (A-Z), no emojis or symbols
     - Be smart, bold, and funny
     - Return just the one roast caption. No explanation, no intro.`;
-    
+
   } else if (mode === "manifest") {
     prompt = `You're a startup founder known for creating meme-style motivational quotes that are equal parts hilarious and real. Write ONE caption (max 2 lines) for a hustler who:
 - Dreams of: ${safeFeeling}
@@ -136,7 +136,7 @@ Rules:
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
-        model: "qwen/qwen2.5-coder-7b-instruct",
+        model: "openai/gpt-4o-mini",
         messages: [{ role: "user", content: prompt }],
       },
       {
