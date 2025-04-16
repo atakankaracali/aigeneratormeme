@@ -56,9 +56,7 @@ app.use(limiter);
 
 function logToFile(ip, data, ua = "") {
   const date = new Date().toISOString().split("T")[0];
-  const logLine = `[${new Date().toISOString()}] [${ip}] [${ua}] ${JSON.stringify(
-    data
-  )}\n`;
+  const logLine = `[${new Date().toISOString()}] [${ip}] [${ua}] ${JSON.stringify(data)}\n`;
   const logPath = path.join("logs", `${date}.txt`);
   fs.appendFileSync(logPath, logLine);
 }
@@ -98,7 +96,7 @@ app.post("/generate-meme-text", async (req, res) => {
 - Smart and ironic
 - Never offensive, racist, sexist, or political
 - Just enough edge to make people laugh, not cringe
-- Cleaver and creative.
+- Clever and creative.
 
 Rules:
 - Only use plain English (A-Z), no emojis or symbols.
@@ -114,7 +112,7 @@ Style:
 - Blend startup pain with hopeful sarcasm
 - Use dry humor, internet wisdom, and surprise
 - No toxic hustle, just relatable honesty
-- Cleaver and creative.
+- Clever and creative.
 
 Rules:
 - English only (A-Z), no emojis or symbols
@@ -129,7 +127,7 @@ Style:
 - Make it relatable
 - Add an unexpected twist
 - Think Twitter, Tumblr, Reddit humor (clever, ironic, subtle chaos)
-- Cleaver and creative.
+- Clever and creative.
 
 Rules:
 - English (A-Z only), no emojis or formatting
@@ -141,13 +139,8 @@ Rules:
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
-        model: "arliai/qwq-32b-rpr-v1:free",
-        messages: [
-          {
-            role: "user",
-            content: prompt,
-          },
-        ],
+        model: "agentica-org/deepcoder-14b-preview:free",
+        messages: [{ role: "user", content: prompt }],
       },
       {
         headers: {
@@ -177,7 +170,14 @@ Rules:
 
     res.json({ memeText: firstValidLine });
   } catch (error) {
-    logToFile(ip, { error: error.response?.data || error.message }, ua);
+    const detailedError = {
+      status: error.response?.status,
+      data: error.response?.data,
+      message: error.message,
+    };
+
+    console.error("❌ OpenRouter Error:", JSON.stringify(detailedError, null, 2));
+    logToFile(ip, { error: detailedError }, ua);
     res.status(500).json({ error: "AI failed to generate a meme." });
   }
 });
