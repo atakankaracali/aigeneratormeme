@@ -98,6 +98,7 @@ app.post("/generate-meme-text", async (req, res) => {
 - Smart and ironic
 - Never offensive, racist, sexist, or political
 - Just enough edge to make people laugh, not cringe
+- Cleaver and creative.
 
 Rules:
 - Only use plain English (A-Z), no emojis or symbols.
@@ -113,6 +114,7 @@ Style:
 - Blend startup pain with hopeful sarcasm
 - Use dry humor, internet wisdom, and surprise
 - No toxic hustle, just relatable honesty
+- Cleaver and creative.
 
 Rules:
 - English only (A-Z), no emojis or symbols
@@ -127,6 +129,7 @@ Style:
 - Make it relatable
 - Add an unexpected twist
 - Think Twitter, Tumblr, Reddit humor (clever, ironic, subtle chaos)
+- Cleaver and creative.
 
 Rules:
 - English (A-Z only), no emojis or formatting
@@ -138,7 +141,7 @@ Rules:
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
-        model: "meta-llama/llama-4-scout:free",
+        model: "arliai/qwq-32b-arliai-rpr-v1:free",
         messages: [
           {
             role: "user",
