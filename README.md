@@ -2,7 +2,7 @@
 
 Generate funny, dark, motivational, or sarcastic memes powered by AI. Supports Classic, Roast, and Manifest modes. Built with React, Express, OpenRouter, and hosted on Vercel & Railway.
 
-Link: [a link](https://www.aigeneratememe.com/)
+Link: [aigeneratememe.com](https://www.aigeneratememe.com/)
 
 ---
 
@@ -111,6 +111,6 @@ Backend will be available at `http://localhost:8080`
 ## 🧑‍💻 Author
 Atakan Karacali
 
-- Portfolio: [a link](https://atakankaracali.com/)
-- LinkedIn: [a link](https://www.linkedin.com/in/atakankaracali)
-- GitHub: [a link](https://github.com/atakankaracali)
+- Portfolio: [atakankaracali.com](https://atakankaracali.com/)
+- LinkedIn: [in/atakankaracali](https://www.linkedin.com/in/atakankaracali)
+- GitHub: [github.com/atakankaracali](https://github.com/atakankaracali)
