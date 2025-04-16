@@ -12,7 +12,7 @@ const QuestionMark = () => {
       whileHover={{ rotate: [0, 10, -10, 0], scale: 1.2 }}
       onClick={() => navigate('/how-to-play')}
     >
-      <HelpCircle size={40} strokeWidth={2.5} color="#7c3aed" />
+      <HelpCircle size={60} strokeWidth={2.5} color="#7c3aed" />
     </motion.div>
   );
 };

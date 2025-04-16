@@ -9,5 +9,5 @@
   
   .question-mark-home:hover .tooltip-text {
     opacity: 1;
-    transform: translateY(-120%);
+    transform: translateY(-150%);
   }
