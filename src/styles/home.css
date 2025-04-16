@@ -92,3 +92,17 @@
   font-weight: 600;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
+
+.funny-robot {
+  width: 160px;
+  height: auto;
+  margin: 0 auto 1rem;
+  display: block;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}

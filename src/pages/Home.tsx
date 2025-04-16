@@ -28,6 +28,16 @@ const Home = () => {
         exit={{ opacity: 0, y: -30 }}
         transition={{ duration: 0.5 }}
       >
+        {/* 👇 Robot illüstrasyonu */}
+        <motion.img
+          src="/assets/funny-robot.png"
+          alt="Funny Robot"
+          className="funny-robot"
+          initial={{ scale: 0.8, rotate: -5, opacity: 0 }}
+          animate={{ scale: 1, rotate: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        />
+
         <div className="home-card">
           <h1 className="home-title">
             <strong>AI Meme Generator</strong> – Instantly Create Funny, Roasty, Motivational Memes
