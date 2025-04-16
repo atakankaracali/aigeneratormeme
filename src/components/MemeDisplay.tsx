@@ -48,9 +48,9 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
         <Confetti
           width={width}
           height={height}
-          numberOfPieces={150}
+          numberOfPieces={350}
           gravity={0.2}
-          colors={["#fcd34d", "#f9a8d4", "#c4b5fd", "#93c5fd", "#6ee7b7"]}
+          colors={["#f87171", "#fb923c", "#facc15", "#34d399", "#60a5fa", "#a78bfa"]}
           recycle={false}
           wind={0.01}
           initialVelocityY={5}
