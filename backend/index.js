@@ -84,17 +84,20 @@ app.post("/generate-meme-text", async (req, res) => {
   let prompt = "";
 
   if (mode === "roast") {
-    prompt = `You are a clever, dark-humored internet comedian. Write ONE short and savage roast-style meme caption (max 2 lines) that feels like it belongs on Reddit or Twitter. It should be:
-- Unexpectedly funny
-- Smart and ironic
-- Never offensive, racist, sexist, or political
-- Just enough edge to make people laugh, not cringe
-- Clever and creative.
-
-Rules:
-- Only use plain English (A-Z), no emojis or symbols.
-- No intros, explanations, or formatting.
-- Make it feel like a punchline that ends a roast battle.`;
+    prompt = `You're a ruthless internet comedian with viral-level roast skills. Your job is to write ONE roast meme caption (max 2 lines) that:
+    - Hits with clever sarcasm
+    - Feels like something from Reddit roast threads or Twitter dark humor
+    - Makes people laugh out loud, not just smile
+    - Uses real internet wit, not dad jokes
+    - No weak wordplay or puns
+    - Cleaver and creative.
+    
+    ⚠️ Rules:
+    - No offensive, racist, sexist, or political content
+    - Use plain English only (A-Z), no emojis or symbols
+    - Be smart, bold, and funny
+    - Return just the one roast caption. No explanation, no intro.`;
+    
   } else if (mode === "manifest") {
     prompt = `You're a startup founder known for creating meme-style motivational quotes that are equal parts hilarious and real. Write ONE caption (max 2 lines) for a hustler who:
 - Dreams of: ${safeFeeling}
