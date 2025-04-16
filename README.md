@@ -2,17 +2,20 @@
 
 Generate funny, dark, motivational, or sarcastic memes powered by AI. Supports Classic, Roast, and Manifest modes. Built with React, Express, OpenRouter, and hosted on Vercel & Railway.
 
+Link: [a link](https://www.aigeneratememe.com/)
+
 ---
 
 ## ✨ Features
 
-- ✅ Viral-style AI-generated meme captions
-- ✅ 3 Meme Modes: Classic / Roast / Manifest
-- ✅ Secure Backend (Anti-Injection + Input Sanitization)
-- ✅ Rate Limiting & Logging
-- ✅ Fully responsive frontend
-- ✅ Meme history & local storage
-- ✅ Free & production ready
+- Three Meme Modes: Classic, Roast Me, and Manifest (motivational)
+- AI-powered Captions using OpenRouter (ChatGPT-level results)
+- Secure Backend with Anti-Prompt-Injection + Rate Limiting
+- Meme History with LocalStorage
+- Framer Motion animations + Confetti FX
+- Mobile-first, fully responsive UI
+- Helmet, CORS, and sanitized inputs
+- Logs + Monitoring enabled
 
 ---
 
@@ -57,7 +60,8 @@ VITE_BACKEND_URL=https://your-backend
 #### Backend
 ```bash
 cd backend
-npm install
+cd backend && npm install
+cd ../frontend && npm install
 ```
 
 #### Frontend
@@ -98,5 +102,15 @@ Backend will be available at `http://localhost:8080`
 - All inputs are filtered against prompt injections.
 - Supports OpenRouter free models.
 - If you get 429, the rate limit is triggered.
+- Inputs are sanitized to avoid prompt injection
+- Rate limit = 100 req / 15 min
+- Logs saved under /logs folder
 
 ---
+
+## 🧑‍💻 Author
+Atakan Karacali
+
+- Portfolio: [a link](https://atakankaracali.com/)
+- LinkedIn: [a link](https://www.linkedin.com/in/atakankaracali)
+- GitHub: [a link](https://github.com/atakankaracali)
