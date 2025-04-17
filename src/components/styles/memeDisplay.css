@@ -48,10 +48,9 @@
   box-sizing: border-box;
 }
 
-.tweet-button,
+.share-button,
 .copy-button,
-.download-button,
-.share-button {
+.download-button {
   padding: 0.6rem 1.5rem;
   border-radius: 9999px;
   font-size: 0.95rem;
@@ -65,8 +64,8 @@
   text-align: center;
 }
 
-.tweet-button {
-  background: linear-gradient(135deg, #1DA1F2, #0d8de1);
+.share-button {
+  background: linear-gradient(135deg, #ec4899, #f472b6);
 }
 
 .copy-button {
@@ -77,22 +76,16 @@
   background: linear-gradient(135deg, #22c55e, #16a34a);
 }
 
-.share-button {
-  background: linear-gradient(135deg, #ec4899, #f472b6);
-}
-
-.tweet-button:hover,
+.share-button:hover,
 .copy-button:hover,
-.download-button:hover,
-.share-button:hover {
+.download-button:hover {
   transform: translateY(-2px);
   opacity: 0.9;
 }
 
-.tweet-button:focus,
+.share-button:focus,
 .copy-button:focus,
-.download-button:focus,
-.share-button:focus {
+.download-button:focus {
   outline: 2px solid rgba(255, 255, 255, 0.5);
   outline-offset: 2px;
 }
@@ -116,10 +109,9 @@
     gap: 0.5rem;
   }
 
-  .tweet-button,
+  .share-button,
   .copy-button,
-  .download-button,
-  .share-button {
+  .download-button {
     font-size: 0.85rem;
   }
 }
@@ -170,6 +162,7 @@
   margin-top: 0.8rem;
   font-size: 1rem;
   color: #a78bfa;
+  animation: fadeInUp 0.4s ease forwards;
 }
 
 .badge-popup {

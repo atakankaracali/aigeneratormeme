@@ -1,20 +1,36 @@
 import { motion } from "framer-motion";
 import "./styles/shareModal.css";
+import { toPng } from "html-to-image";
+import { saveAs } from "file-saver";
+import { RefObject } from "react";
 
 interface ShareOptionsModalProps {
   onClose: () => void;
   meme: string;
+  memeRef: React.RefObject<HTMLDivElement | null>;
 }
 
-const ShareOptionsModal = ({ onClose, meme }: ShareOptionsModalProps) => {
+const ShareOptionsModal = ({ onClose, meme, memeRef }: ShareOptionsModalProps) => {
   const shareOnTwitter = () => {
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(meme)}`;
     window.open(twitterUrl, "_blank");
   };
 
-  const handleInstagramShare = () => {
-    const instagramText = encodeURIComponent(meme);
-    alert(`📸 Instagram: Please paste this meme in your story: "${meme}"`);
+  const handleInstagramShare = async () => {
+    if (!memeRef.current) return;
+    try {
+      const dataUrl = await toPng(memeRef.current, {
+        cacheBust: true,
+        backgroundColor: "#ffffff",
+        width: 1080,
+        height: 1920,
+      });
+      saveAs(dataUrl, "meme-instagram.png");
+      alert("✅ Meme saved!\nNow open Instagram → Create Story → Upload your meme!");
+    } catch (err) {
+      console.error("❌ Instagram Story error:", err);
+      alert("Download failed. Please try again.");
+    }
   };
 
   const handleLinkedInShare = () => {

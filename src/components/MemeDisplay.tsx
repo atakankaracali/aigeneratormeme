@@ -73,7 +73,15 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
           initialVelocityY={5}
         />
       )}
-      {showShareModal && <ShareOptionsModal onClose={() => setShowShareModal(false)} meme={meme} />}
+
+      {showShareModal && (
+        <ShareOptionsModal
+          onClose={() => setShowShareModal(false)}
+          meme={meme}
+          memeRef={memeRef}
+        />
+      )}
+
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
