@@ -21,8 +21,10 @@ export const downloadStoryImage = async (targetRef: React.RefObject<HTMLElement>
     if (!ctx) return;
 
     const gradient = ctx.createLinearGradient(0, 0, storyWidth, storyHeight);
-    gradient.addColorStop(0, "#fdf4ff");
-    gradient.addColorStop(1, "#fce7f3");
+    gradient.addColorStop(0, "#ca98fc");
+    gradient.addColorStop(0.5, "#f0abfc");
+    gradient.addColorStop(1, "#a5b4fc");
+
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, storyWidth, storyHeight);
 
