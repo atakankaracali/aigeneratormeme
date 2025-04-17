@@ -1,13 +1,12 @@
 import { motion } from "framer-motion";
 import "./styles/shareModal.css";
 import { RefObject } from "react";
-import { toPng } from "html-to-image";
-import { saveAs } from "file-saver";
+import { downloadStoryImage } from "../utils/storyImage";
 
 interface ShareOptionsModalProps {
   onClose: () => void;
   meme: string;
-  memeRef: RefObject<HTMLDivElement | null>;
+  memeRef: RefObject<HTMLDivElement>;
 }
 
 const ShareOptionsModal = ({ onClose, meme, memeRef }: ShareOptionsModalProps) => {
@@ -17,22 +16,17 @@ const ShareOptionsModal = ({ onClose, meme, memeRef }: ShareOptionsModalProps) =
     window.open(twitterUrl, "_blank");
   };
 
-  const handleInstagramShare = async () => {
+  const handleInstagramShare = () => {
     if (!memeRef.current) return;
-
-    try {
-      const dataUrl = await toPng(memeRef.current);
-      saveAs(dataUrl, "aigenerated-meme.png");
-      alert("📸 Meme image downloaded!\nNow share it manually to your Instagram story.\nDon't forget to add: https://aigeneratememe.com 🚀");
-    } catch (err) {
-      alert("Failed to generate image. Try again.");
-      console.error(err);
-    }
+    downloadStoryImage(memeRef);
+    alert("📸 Instagram Story image downloaded!\nNow open Instagram and upload it manually.\nDon't forget to tag https://aigeneratememe.com 🚀");
   };
 
   const handleLinkedInShare = () => {
-    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=https://www.aigeneratememe.com/&summary=${encodeURIComponent("🔥 AI Meme Generator 🔥\n" + meme + "\nTry it now: aigeneratememe.com")}`;
-    window.open(linkedInUrl, "_blank");    
+    navigator.clipboard.writeText(meme);
+    alert("💼 LinkedIn: Meme copied to clipboard!\nPaste it in your post and inspire others. You got this 💪");
+    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=https://www.aigeneratememe.com/`;
+    window.open(linkedInUrl, "_blank");
   };
 
   return (
@@ -46,14 +40,14 @@ const ShareOptionsModal = ({ onClose, meme, memeRef }: ShareOptionsModalProps) =
         onClick={(e) => e.stopPropagation()}
       >
         <h3 className="share-title">📤 Share Your Meme</h3>
-        <p className="share-subtext">Choose a platform and earn a badge!</p>
+        <p className="share-subtext">Choose a platform and earn your badge!</p>
 
         <div className="share-button-list">
           <button className="share-option-button twitter" onClick={shareOnTwitter}>
             🐦 Twitter
           </button>
           <button className="share-option-button instagram" onClick={handleInstagramShare}>
-            📸 Instagram Story (download first)
+            📸 Instagram Story (Download)
           </button>
           <button className="share-option-button linkedin" onClick={handleLinkedInShare}>
             💼 LinkedIn

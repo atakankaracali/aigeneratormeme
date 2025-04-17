@@ -8,6 +8,7 @@ import useWindowSize from 'react-use/lib/useWindowSize';
 import { sendEmojiReaction } from '../utils/sendEmojiReaction';
 import { listenToEmojiStats } from '../utils/getEmojiStats';
 import ShareOptionsModal from "./shareOptionsModal";
+import { downloadStoryImage } from '../utils/storyImage';
 
 interface MemeDisplayProps {
   meme: string;
@@ -19,7 +20,7 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
   const [selectedEmoji, setSelectedEmoji] = useState<string | null>(null);
   const [emojiCounts, setEmojiCounts] = useState<Record<string, number>>({});
   const [showShareModal, setShowShareModal] = useState(false);
-  const memeRef = useRef<HTMLDivElement>(null);
+  const memeRef = useRef<HTMLDivElement>(null!)
   const { width, height } = useWindowSize();
 
   useEffect(() => {
@@ -75,7 +76,11 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
       )}
 
       {showShareModal && (
-        <ShareOptionsModal onClose={() => setShowShareModal(false)} meme={meme} memeRef={memeRef} />
+        <ShareOptionsModal
+          onClose={() => setShowShareModal(false)}
+          meme={meme}
+          memeRef={memeRef}
+        />
       )}
 
       <motion.div
@@ -89,38 +94,53 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
         <p className="meme-text">{meme}</p>
 
         <div className="button-group">
-          <button className="share-button" onClick={() => setShowShareModal(true)}>📤 Share</button>
+          <button className="share-button" onClick={() => setShowShareModal(true)}>
+            📤 Share
+          </button>
           <button onClick={handleCopy} className="copy-button">
             {copied ? "✅ Copied!" : "📋 Copy Meme"}
           </button>
           <button onClick={handleDownload} className="download-button">
             📥 Download PNG
           </button>
+          <button
+            onClick={() => downloadStoryImage(memeRef)}
+            className="download-button"
+          >
+            📲 Download for Story
+          </button>
         </div>
 
         <div className="emoji-reaction-container">
           <p>How did this meme make you feel?</p>
-          {!selectedEmoji ? (
-            <div className="emoji-list">
-              {["😂", "😐", "😮", "😢", "🔥"].map((emoji) => (
+          <div className="emoji-list">
+            {["😂", "😐", "😮", "😢", "🔥"].map((emoji) => {
+              const count = emojiCounts[emoji] || 0;
+              const isSelected = selectedEmoji === emoji;
+
+              return (
                 <button
                   key={emoji}
-                  className="emoji-button"
+                  className={`emoji-button ${isSelected ? "selected" : ""}`}
                   onClick={() => handleEmojiClick(emoji)}
+                  disabled={!!selectedEmoji}
                 >
                   {emoji}
+                  {count > 0 && <span className="emoji-count"> {count}</span>}
                 </button>
-              ))}
-            </div>
-          ) : (
-            <>
-              <div className="emoji-list">
-                <button className="emoji-button selected">
-                  {selectedEmoji} {emojiCounts[selectedEmoji] || 1}
-                </button>
-              </div>
-              <motion.p className="thanks-text">Thanks for your feedback! 💜</motion.p>
-            </>
+              );
+            })}
+          </div>
+
+          {selectedEmoji && (
+            <motion.p
+              className="thanks-text"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              Thanks for your feedback! 💜
+            </motion.p>
           )}
         </div>
       </motion.div>

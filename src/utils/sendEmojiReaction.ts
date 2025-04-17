@@ -5,6 +5,8 @@ import {
   doc,
   increment,
   setDoc,
+  updateDoc,
+  getDoc,
 } from "firebase/firestore";
 import { db } from "../firebase";
 
@@ -18,13 +20,18 @@ export const sendEmojiReaction = async (memeText: string, emoji: string) => {
     console.log("✅ Emoji reaction saved!");
 
     const emojiDocRef = doc(db, "emojiStats", memeText);
-    await setDoc(
-      emojiDocRef,
-      {
+
+    const docSnap = await getDoc(emojiDocRef);
+    if (docSnap.exists()) {
+      await updateDoc(emojiDocRef, {
         [emoji]: increment(1),
-      },
-      { merge: true }
-    );
+      });
+    } else {
+      await setDoc(emojiDocRef, {
+        [emoji]: 1,
+      });
+    }
+
     console.log("📊 Emoji count updated!");
   } catch (err) {
     console.error("❌ Failed to send emoji:", err);
