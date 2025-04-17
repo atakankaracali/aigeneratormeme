@@ -39,8 +39,8 @@ export const downloadStoryImage = async (targetRef: React.RefObject<HTMLElement>
 
     ctx.drawImage(memeCanvas, x, y, memeWidth, memeHeight);
 
-    ctx.font = "bold 28px Arial";
-    ctx.fillStyle = "rgba(255, 255, 255, 0.4)";
+    ctx.font = "bold 32px Arial";
+    ctx.fillStyle = "rgba(18, 17, 17, 0.4)";
     ctx.textAlign = "center";
     ctx.fillText("aigeneratememe.com", storyWidth / 2, storyHeight - 80);
 
