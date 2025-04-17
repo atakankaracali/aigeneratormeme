@@ -6,8 +6,7 @@
   padding: 2rem;
   max-width: 720px;
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 2rem auto;
   box-sizing: border-box;
   overflow-wrap: break-word;
   transition: all 0.3s ease;
@@ -83,39 +82,6 @@
   opacity: 0.9;
 }
 
-.share-button:focus,
-.copy-button:focus,
-.download-button:focus {
-  outline: 2px solid rgba(255, 255, 255, 0.5);
-  outline-offset: 2px;
-}
-
-@media (max-width: 480px) {
-  .meme-container {
-    padding: 1.5rem;
-    border-radius: 1rem;
-  }
-
-  .meme-title {
-    font-size: 1.2rem;
-  }
-
-  .meme-text {
-    font-size: 0.9rem;
-  }
-
-  .button-group {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .share-button,
-  .copy-button,
-  .download-button {
-    font-size: 0.85rem;
-  }
-}
-
 .emoji-reaction-container {
   margin-top: 1.5rem;
   text-align: center;
@@ -148,9 +114,28 @@
 }
 
 @media (max-width: 500px) {
-  .emoji-list {
-    justify-content: center;
-    padding: 0 0.5rem;
+  .meme-container {
+    padding: 1.5rem;
+    border-radius: 1rem;
+  }
+
+  .meme-title {
+    font-size: 1.2rem;
+  }
+
+  .meme-text {
+    font-size: 0.9rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .share-button,
+  .copy-button,
+  .download-button {
+    font-size: 0.85rem;
   }
 
   .emoji-button {
@@ -162,67 +147,4 @@
   margin-top: 0.8rem;
   font-size: 1rem;
   color: #a78bfa;
-  animation: fadeInUp 0.4s ease forwards;
-}
-
-.badge-popup {
-  position: fixed;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(to right, #a78bfa, #f472b6);
-  color: white;
-  padding: 0.8rem 1.5rem;
-  border-radius: 9999px;
-  font-size: 1rem;
-  font-weight: 600;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-  z-index: 1000;
-  text-align: center;
-  animation: fadeInUp 0.4s ease forwards;
-}
-
-@media (max-width: 480px) {
-  .badge-popup {
-    bottom: 1.5rem;
-    font-size: 0.9rem;
-    padding: 0.6rem 1.2rem;
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translate(-50%, 20px);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, 0);
-  }
-}
-
-.emoji-count-summary {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-top: 1rem;
-  padding: 0 0.5rem;
-}
-
-.emoji-count-bubble {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 9999px;
-  padding: 0.3rem 0.8rem;
-  font-size: 1rem;
-  font-weight: 500;
-  color: white;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: all 0.2s ease-in-out;
-}
-
-.emoji-count-bubble:hover {
-  transform: scale(1.05);
 }

@@ -13,25 +13,29 @@
   }
   
   .share-modal {
-    background: #ffffff;
-    padding: 2rem 1.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
     border-radius: 1.5rem;
-    max-width: 360px;
+    padding: 2rem 1.5rem;
     width: 90%;
+    max-width: 380px;
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.25);
     text-align: center;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
+    color: white;
   }
   
   .share-title {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 700;
-    color: #111827;
+    background: linear-gradient(to right, #8e2de2, #ff69b4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin-bottom: 0.5rem;
   }
   
   .share-subtext {
-    font-size: 0.9rem;
-    color: #6b7280;
+    font-size: 0.92rem;
+    color: #e0e0e0;
     margin-bottom: 1.5rem;
   }
   
@@ -45,12 +49,13 @@
   .share-option-button {
     border: none;
     border-radius: 9999px;
-    padding: 0.65rem 1rem;
+    padding: 0.7rem 1.3rem;
     font-weight: 600;
+    font-size: 0.95rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
     color: white;
-    font-size: 0.95rem;
   }
   
   .share-option-button.twitter {
@@ -67,37 +72,39 @@
   
   .share-option-button:hover {
     transform: translateY(-2px);
-    opacity: 0.92;
+    opacity: 0.95;
+    filter: brightness(1.1);
   }
   
   .close-modal-button {
-    margin-top: 0.8rem;
-    background: #f3f4f6;
-    border: none;
+    margin-top: 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 9999px;
-    padding: 0.5rem 1.2rem;
+    padding: 0.5rem 1.4rem;
     font-weight: 500;
     font-size: 0.9rem;
-    color: #374151;
+    color: white;
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s ease;
   }
   
   .close-modal-button:hover {
-    background: #e5e7eb;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.02);
   }
   
   @media (max-width: 480px) {
     .share-modal {
       padding: 1.5rem 1rem;
-      max-width: 92%;
     }
   
     .share-title {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
   
     .share-option-button {
       font-size: 0.9rem;
+      padding: 0.6rem 1.1rem;
     }
   }  

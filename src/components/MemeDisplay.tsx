@@ -74,13 +74,7 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
         />
       )}
 
-      {showShareModal && (
-        <ShareOptionsModal
-          onClose={() => setShowShareModal(false)}
-          meme={meme}
-          memeRef={memeRef}
-        />
-      )}
+      {showShareModal && <ShareOptionsModal onClose={() => setShowShareModal(false)} meme={meme} memeRef={memeRef} />}
 
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
@@ -93,7 +87,7 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
         <p className="meme-text">{meme}</p>
 
         <div className="button-group">
-          <button className="tweet-button" onClick={() => setShowShareModal(true)}>📤 Share</button>
+          <button className="share-button" onClick={() => setShowShareModal(true)}>📤 Share</button>
           <button onClick={handleCopy} className="copy-button">
             {copied ? "✅ Copied!" : "📋 Copy Meme"}
           </button>
@@ -104,7 +98,6 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
 
         <div className="emoji-reaction-container">
           <p>How did this meme make you feel?</p>
-
           {!selectedEmoji ? (
             <div className="emoji-list">
               {["😂", "😐", "😮", "😢", "🔥"].map((emoji) => (
