@@ -5,6 +5,7 @@ import './styles/memeDisplay.css';
 import { toPng } from 'html-to-image';
 import { saveAs } from 'file-saver';
 import useWindowSize from 'react-use/lib/useWindowSize';
+import { sendEmojiReaction } from '../utils/sendEmojiReaction';
 
 interface MemeDisplayProps {
   meme: string;
@@ -13,6 +14,7 @@ interface MemeDisplayProps {
 const MemeDisplay = ({ meme }: MemeDisplayProps) => {
   const [showConfetti, setShowConfetti] = useState(true);
   const [copied, setCopied] = useState(false);
+  const [selectedEmoji, setSelectedEmoji] = useState<string | null>(null);
   const memeRef = useRef<HTMLDivElement>(null);
   const { width, height } = useWindowSize();
 
@@ -40,6 +42,12 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
         console.error('❌ PNG Download Error:', err);
         alert("Download failed. Check console.");
       });
+  };
+
+  const handleEmojiClick = (emoji: string) => {
+    if (selectedEmoji) return;
+    sendEmojiReaction(meme, emoji);
+    setSelectedEmoji(emoji);
   };
 
   return (
@@ -83,6 +91,22 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
           <button onClick={handleDownload} className="download-button">
             📥 Download PNG
           </button>
+        </div>
+
+        <div className="emoji-reaction-container">
+          <p>How did this meme make you feel?</p>
+          <div className="emoji-list">
+            {["😂", "😐", "😮", "😢", "🔥"].map((emoji) => (
+              <button
+                key={emoji}
+                className={`emoji-button ${selectedEmoji === emoji ? "selected" : ""}`}
+                onClick={() => handleEmojiClick(emoji)}
+              >
+                {emoji}
+              </button>
+            ))}
+          </div>
+          {selectedEmoji && <p className="thanks-text">Thanks for your feedback! 💜</p>}
         </div>
       </motion.div>
     </>

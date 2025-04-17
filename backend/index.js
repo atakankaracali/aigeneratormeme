@@ -7,13 +7,13 @@ import rateLimit from "express-rate-limit";
 import fs from "fs";
 import path from "path";
 import { sanitizeInput, hasAdvancedInjection, isTooLong } from "./utils/secureInput.js";
+import { db } from "./utils/firebaseAdmin.js";
+import emojiRouter from "./emojiRoute.js";
 
 dotenv.config();
 const app = express();
 
 if (!fs.existsSync("logs")) fs.mkdirSync("logs");
-
-const counterPath = path.join("utils", "memeCounter.json");
 
 app.use(helmet());
 app.use(express.json());
@@ -46,6 +46,7 @@ const limiter = rateLimit({
   message: "❌ Too many requests from this IP, slow down.",
 });
 app.use(limiter);
+app.use(emojiRouter);
 
 function logToFile(ip, data, ua = "") {
   const date = new Date().toISOString().split("T")[0];
@@ -101,7 +102,7 @@ app.post("/generate-meme-text", async (req, res) => {
       "unexpectedly deep and chaotic"
     ];
     const randomFlavor = flavors[Math.floor(Math.random() * flavors.length)];
-  
+
     prompt = `You're a ruthless internet comedian with viral-level roast skills. Your job is to write ONE roast meme caption (max 2 lines) that:
 
     - Hits with clever sarcasm  
@@ -112,14 +113,15 @@ app.post("/generate-meme-text", async (req, res) => {
     - Clever and creative  
     - Avoid generic tech jokes like “software updates” or “404 errors.”  
     - The person who reads it should be shocked and laugh a lot
-    
+    - Not do everytime this joke: "you're like a"
+
     Additional Style Instruction: Use the flavor "${randomFlavor}" in tone and delivery.
     
     Rules:  
     - No offensive, racist, sexist, or political content  
     - Use plain English only (A-Z), no emojis or symbols  
     - Be smart, bold, and funny  
-    - Return just the one roast caption. No explanation, no intro.`;    
+    - Return just the one roast caption. No explanation, no intro.`;
   } else if (mode === "manifest") {
     prompt = `You're a startup founder known for creating meme-style motivational quotes that are equal parts hilarious and real. Write ONE caption (max 2 lines) for a hustler who:
 - Dreams of: ${safeFeeling}
@@ -172,8 +174,6 @@ Rules:
         },
       }
     );
-    console.log("🔥 RAW RESPONSE from OpenRouter:");
-    console.log(JSON.stringify(response.data, null, 2));
 
     const memeText = response.data.choices?.[0]?.message?.content?.trim();
     const firstValidLine = memeText
@@ -183,13 +183,12 @@ Rules:
 
     if (!firstValidLine) throw new Error("AI response missing or invalid");
 
-    try {
-      const data = JSON.parse(fs.readFileSync(counterPath, "utf8"));
-      data.count += 1;
-      fs.writeFileSync(counterPath, JSON.stringify(data, null, 2));
-    } catch (err) {
-      console.error("Meme count update failed:", err.message);
-    }
+    const counterRef = db.collection("counters").doc("memes");
+    await db.runTransaction(async (t) => {
+      const doc = await t.get(counterRef);
+      const current = doc.exists && doc.data()?.count ? doc.data().count : 0;
+      t.set(counterRef, { count: current + 1 }, { merge: true });
+    });
 
     res.json({ memeText: firstValidLine });
   } catch (error) {
@@ -200,30 +199,19 @@ Rules:
     };
 
     console.error("❌ OpenRouter Error:", JSON.stringify(detailedError, null, 2));
-    logToFile(ip, { error: detailedError }, ua);
     res.status(500).json({ error: "AI failed to generate a meme." });
   }
 });
 
-app.get("/api/meme-count", (req, res) => {
+app.get("/api/meme-count", async (req, res) => {
   try {
-    const data = JSON.parse(fs.readFileSync(counterPath, "utf8"));
-    res.json({ count: data.count });
+    const counterRef = db.collection("counters").doc("memes");
+    const doc = await counterRef.get();
+    const count = doc.exists ? doc.data().count : 0;
+    res.json({ count });
   } catch (error) {
     console.error("Meme count read error:", error);
     res.status(500).json({ error: "Unable to get meme count." });
-  }
-});
-
-app.post("/api/meme-count", (req, res) => {
-  try {
-    const data = JSON.parse(fs.readFileSync(counterPath, "utf8"));
-    data.count += 1;
-    fs.writeFileSync(counterPath, JSON.stringify(data, null, 2));
-    res.json({ success: true, newCount: data.count });
-  } catch (error) {
-    console.error("Meme count write error:", error);
-    res.status(500).json({ error: "Unable to update meme count." });
   }
 });
 
