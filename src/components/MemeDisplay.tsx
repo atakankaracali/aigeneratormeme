@@ -74,7 +74,9 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
         />
       )}
 
-      {showShareModal && <ShareOptionsModal onClose={() => setShowShareModal(false)} meme={meme} memeRef={memeRef} />}
+      {showShareModal && (
+        <ShareOptionsModal onClose={() => setShowShareModal(false)} meme={meme} memeRef={memeRef} />
+      )}
 
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
@@ -117,14 +119,7 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
                   {selectedEmoji} {emojiCounts[selectedEmoji] || 1}
                 </button>
               </div>
-              <motion.p
-                className="thanks-text"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-              >
-                Thanks for your feedback! 💜
-              </motion.p>
+              <motion.p className="thanks-text">Thanks for your feedback! 💜</motion.p>
             </>
           )}
         </div>

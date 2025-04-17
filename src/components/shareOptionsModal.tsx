@@ -31,9 +31,8 @@ const ShareOptionsModal = ({ onClose, meme, memeRef }: ShareOptionsModalProps) =
   };
 
   const handleLinkedInShare = () => {
-    const shareText = `${meme}\n\n🔥 Try the AI Meme Generator: https://www.aigeneratememe.com/`;
-    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=https://www.aigeneratememe.com/&summary=${encodeURIComponent(shareText)}`;
-    window.open(linkedInUrl, "_blank");
+    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=https://www.aigeneratememe.com/&summary=${encodeURIComponent("🔥 AI Meme Generator 🔥\n" + meme + "\nTry it now: aigeneratememe.com")}`;
+    window.open(linkedInUrl, "_blank");    
   };
 
   return (
