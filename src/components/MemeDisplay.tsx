@@ -105,7 +105,7 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
         </div>
 
         <div className="emoji-reaction-container">
-          <p>How did this meme make you feel?</p>
+          <p className="emoji-question">How did this meme make you feel?</p>
           <div className="emoji-list">
             {["😂", "😐", "😮", "😢", "🔥"].map((emoji) => {
               const isSelected = selectedEmoji === emoji;

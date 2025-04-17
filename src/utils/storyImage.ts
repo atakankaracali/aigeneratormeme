@@ -29,8 +29,8 @@ export const downloadStoryImage = async (targetRef: React.RefObject<HTMLElement>
     ctx.fillRect(0, 0, storyWidth, storyHeight);
 
     const scaleFactor = Math.min(
-      storyWidth * 0.85 / memeCanvas.width,
-      storyHeight * 0.6 / memeCanvas.height
+      (storyWidth * 0.85) / memeCanvas.width,
+      (storyHeight * 0.6) / memeCanvas.height
     );
     const memeWidth = memeCanvas.width * scaleFactor;
     const memeHeight = memeCanvas.height * scaleFactor;
@@ -38,6 +38,11 @@ export const downloadStoryImage = async (targetRef: React.RefObject<HTMLElement>
     const y = (storyHeight - memeHeight) / 2;
 
     ctx.drawImage(memeCanvas, x, y, memeWidth, memeHeight);
+
+    ctx.font = "bold 28px Arial";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.4)";
+    ctx.textAlign = "center";
+    ctx.fillText("aigeneratememe.com", storyWidth / 2, storyHeight - 80);
 
     finalCanvas.toBlob((blob) => {
       if (blob) {
