@@ -6,7 +6,6 @@ import { toPng } from 'html-to-image';
 import { saveAs } from 'file-saver';
 import useWindowSize from 'react-use/lib/useWindowSize';
 import { sendEmojiReaction } from '../utils/sendEmojiReaction';
-import { listenToEmojiStats } from '../utils/getEmojiStats';
 import ShareOptionsModal from "./shareOptionsModal";
 import { downloadStoryImage } from '../utils/storyImage';
 
@@ -18,7 +17,6 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
   const [showConfetti, setShowConfetti] = useState(true);
   const [copied, setCopied] = useState(false);
   const [selectedEmoji, setSelectedEmoji] = useState<string | null>(null);
-  const [emojiCounts, setEmojiCounts] = useState<Record<string, number>>({});
   const [showShareModal, setShowShareModal] = useState(false);
   const memeRef = useRef<HTMLDivElement>(null!)
   const { width, height } = useWindowSize();
@@ -27,11 +25,6 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
     const timer = setTimeout(() => setShowConfetti(false), 5500);
     return () => clearTimeout(timer);
   }, []);
-
-  useEffect(() => {
-    const unsubscribe = listenToEmojiStats(meme, setEmojiCounts);
-    return () => unsubscribe();
-  }, [meme]);
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(meme);
@@ -115,7 +108,6 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
           <p>How did this meme make you feel?</p>
           <div className="emoji-list">
             {["😂", "😐", "😮", "😢", "🔥"].map((emoji) => {
-              const count = emojiCounts[emoji] || 0;
               const isSelected = selectedEmoji === emoji;
 
               return (
@@ -126,7 +118,6 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
                   disabled={!!selectedEmoji}
                 >
                   {emoji}
-                  {count > 0 && <span className="emoji-count"> {count}</span>}
                 </button>
               );
             })}
