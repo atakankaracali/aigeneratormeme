@@ -50,7 +50,8 @@
 
 .tweet-button,
 .copy-button,
-.download-button {
+.download-button,
+.share-button {
   padding: 0.6rem 1.5rem;
   border-radius: 9999px;
   font-size: 0.95rem;
@@ -76,16 +77,22 @@
   background: linear-gradient(135deg, #22c55e, #16a34a);
 }
 
+.share-button {
+  background: linear-gradient(135deg, #ec4899, #f472b6);
+}
+
 .tweet-button:hover,
 .copy-button:hover,
-.download-button:hover {
+.download-button:hover,
+.share-button:hover {
   transform: translateY(-2px);
   opacity: 0.9;
 }
 
 .tweet-button:focus,
 .copy-button:focus,
-.download-button:focus {
+.download-button:focus,
+.share-button:focus {
   outline: 2px solid rgba(255, 255, 255, 0.5);
   outline-offset: 2px;
 }
@@ -111,7 +118,8 @@
 
   .tweet-button,
   .copy-button,
-  .download-button {
+  .download-button,
+  .share-button {
     font-size: 0.85rem;
   }
 }
@@ -198,4 +206,30 @@
     opacity: 1;
     transform: translate(-50%, 0);
   }
+}
+
+.emoji-count-summary {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+  padding: 0 0.5rem;
+}
+
+.emoji-count-bubble {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+  padding: 0.3rem 0.8rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+}
+
+.emoji-count-bubble:hover {
+  transform: scale(1.05);
 }

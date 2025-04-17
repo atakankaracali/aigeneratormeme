@@ -18,7 +18,7 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
   const [copied, setCopied] = useState(false);
   const [selectedEmoji, setSelectedEmoji] = useState<string | null>(null);
   const [emojiCounts, setEmojiCounts] = useState<Record<string, number>>({});
-  const [showModal, setShowModal] = useState(false);
+  const [showShareModal, setShowShareModal] = useState(false);
   const memeRef = useRef<HTMLDivElement>(null);
   const { width, height } = useWindowSize();
 
@@ -73,6 +73,7 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
           initialVelocityY={5}
         />
       )}
+      {showShareModal && <ShareOptionsModal onClose={() => setShowShareModal(false)} meme={meme} />}
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -84,14 +85,10 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
         <p className="meme-text">{meme}</p>
 
         <div className="button-group">
-          <button onClick={() => setShowModal(true)} className="tweet-button">
-            📤 Share
-          </button>
-
+          <button className="tweet-button" onClick={() => setShowShareModal(true)}>📤 Share</button>
           <button onClick={handleCopy} className="copy-button">
             {copied ? "✅ Copied!" : "📋 Copy Meme"}
           </button>
-
           <button onClick={handleDownload} className="download-button">
             📥 Download PNG
           </button>
@@ -108,26 +105,29 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
                   className="emoji-button"
                   onClick={() => handleEmojiClick(emoji)}
                 >
-                  {emoji} {emojiCounts[emoji] || 0}
+                  {emoji}
                 </button>
               ))}
             </div>
           ) : (
-            <motion.p
-              className="thanks-text"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-            >
-              Thanks for your feedback! 💜
-            </motion.p>
+            <>
+              <div className="emoji-list">
+                <button className="emoji-button selected">
+                  {selectedEmoji} {emojiCounts[selectedEmoji] || 1}
+                </button>
+              </div>
+              <motion.p
+                className="thanks-text"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
+                Thanks for your feedback! 💜
+              </motion.p>
+            </>
           )}
         </div>
       </motion.div>
-
-      {showModal && (
-        <ShareOptionsModal meme={meme} onClose={() => setShowModal(false)} />
-      )}
     </>
   );
 };
