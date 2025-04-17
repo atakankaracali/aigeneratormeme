@@ -6,6 +6,8 @@ import { toPng } from 'html-to-image';
 import { saveAs } from 'file-saver';
 import useWindowSize from 'react-use/lib/useWindowSize';
 import { sendEmojiReaction } from '../utils/sendEmojiReaction';
+import { listenToEmojiStats } from '../utils/getEmojiStats';
+import ShareOptionsModal from "./shareOptionsModal";
 
 interface MemeDisplayProps {
   meme: string;
@@ -15,6 +17,8 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
   const [showConfetti, setShowConfetti] = useState(true);
   const [copied, setCopied] = useState(false);
   const [selectedEmoji, setSelectedEmoji] = useState<string | null>(null);
+  const [emojiCounts, setEmojiCounts] = useState<Record<string, number>>({});
+  const [showModal, setShowModal] = useState(false);
   const memeRef = useRef<HTMLDivElement>(null);
   const { width, height } = useWindowSize();
 
@@ -22,6 +26,11 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
     const timer = setTimeout(() => setShowConfetti(false), 5500);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    const unsubscribe = listenToEmojiStats(meme, setEmojiCounts);
+    return () => unsubscribe();
+  }, [meme]);
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(meme);
@@ -75,14 +84,9 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
         <p className="meme-text">{meme}</p>
 
         <div className="button-group">
-          <a
-            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(meme)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="tweet-button"
-          >
-            Tweet your meme!
-          </a>
+          <button onClick={() => setShowModal(true)} className="tweet-button">
+            📤 Share
+          </button>
 
           <button onClick={handleCopy} className="copy-button">
             {copied ? "✅ Copied!" : "📋 Copy Meme"}
@@ -104,7 +108,7 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
                   className="emoji-button"
                   onClick={() => handleEmojiClick(emoji)}
                 >
-                  {emoji}
+                  {emoji} {emojiCounts[emoji] || 0}
                 </button>
               ))}
             </div>
@@ -120,6 +124,10 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
           )}
         </div>
       </motion.div>
+
+      {showModal && (
+        <ShareOptionsModal meme={meme} onClose={() => setShowModal(false)} />
+      )}
     </>
   );
 };

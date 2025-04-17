@@ -1,0 +1,103 @@
+.share-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+  
+  .share-modal {
+    background: #ffffff;
+    padding: 2rem 1.5rem;
+    border-radius: 1.5rem;
+    max-width: 360px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
+  }
+  
+  .share-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 0.5rem;
+  }
+  
+  .share-subtext {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+  }
+  
+  .share-button-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .share-option-button {
+    border: none;
+    border-radius: 9999px;
+    padding: 0.65rem 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 0.95rem;
+  }
+  
+  .share-option-button.twitter {
+    background: linear-gradient(135deg, #1DA1F2, #0d8de1);
+  }
+  
+  .share-option-button.instagram {
+    background: linear-gradient(135deg, #f43f5e, #ec4899);
+  }
+  
+  .share-option-button.linkedin {
+    background: linear-gradient(135deg, #0a66c2, #2563eb);
+  }
+  
+  .share-option-button:hover {
+    transform: translateY(-2px);
+    opacity: 0.92;
+  }
+  
+  .close-modal-button {
+    margin-top: 0.8rem;
+    background: #f3f4f6;
+    border: none;
+    border-radius: 9999px;
+    padding: 0.5rem 1.2rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #374151;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .close-modal-button:hover {
+    background: #e5e7eb;
+  }
+  
+  @media (max-width: 480px) {
+    .share-modal {
+      padding: 1.5rem 1rem;
+      max-width: 92%;
+    }
+  
+    .share-title {
+      font-size: 1.2rem;
+    }
+  
+    .share-option-button {
+      font-size: 0.9rem;
+    }
+  }  
