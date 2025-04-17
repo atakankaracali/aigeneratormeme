@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import "./styles/shareModal.css";
 import { toPng } from "html-to-image";
 import { saveAs } from "file-saver";
-import { RefObject } from "react";
 
 interface ShareOptionsModalProps {
   onClose: () => void;
