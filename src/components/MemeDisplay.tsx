@@ -95,18 +95,29 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
 
         <div className="emoji-reaction-container">
           <p>How did this meme make you feel?</p>
-          <div className="emoji-list">
-            {["😂", "😐", "😮", "😢", "🔥"].map((emoji) => (
-              <button
-                key={emoji}
-                className={`emoji-button ${selectedEmoji === emoji ? "selected" : ""}`}
-                onClick={() => handleEmojiClick(emoji)}
-              >
-                {emoji}
-              </button>
-            ))}
-          </div>
-          {selectedEmoji && <p className="thanks-text">Thanks for your feedback! 💜</p>}
+
+          {!selectedEmoji ? (
+            <div className="emoji-list">
+              {["😂", "😐", "😮", "😢", "🔥"].map((emoji) => (
+                <button
+                  key={emoji}
+                  className="emoji-button"
+                  onClick={() => handleEmojiClick(emoji)}
+                >
+                  {emoji}
+                </button>
+              ))}
+            </div>
+          ) : (
+            <motion.p
+              className="thanks-text"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              Thanks for your feedback! 💜
+            </motion.p>
+          )}
         </div>
       </motion.div>
     </>
