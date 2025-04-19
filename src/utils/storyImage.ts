@@ -31,8 +31,8 @@ export const downloadStoryImage = async (targetRef: React.RefObject<HTMLElement>
     const robotImage = new Image();
     robotImage.src = "/assets/funny-robot.png";
     robotImage.onload = () => {
-      const logoWidth = 160;
-      const logoHeight = 160;
+      const logoWidth = 220;
+      const logoHeight = 220;
       const logoX = (storyWidth - logoWidth) / 2;
       const logoY = 80;
       
@@ -53,18 +53,18 @@ export const downloadStoryImage = async (targetRef: React.RefObject<HTMLElement>
 
       ctx.drawImage(memeCanvas, x, y, memeWidth, memeHeight);
 
-      ctx.font = "600 44px Arial";
+      ctx.font = "650 46px Arial";
       ctx.fillStyle = "#1f2937";
       ctx.textAlign = "center";
       ctx.fillText("✨ Let's try!", storyWidth / 2, y + memeHeight + 60);
 
-      ctx.font = "bold 44px Arial";
+      ctx.font = "bold 46px Arial";
       ctx.fillStyle = "#9333ea";
       ctx.shadowColor = "#00000055";
       ctx.shadowBlur = 8;
       ctx.fillText("aigeneratememe.com", storyWidth / 2, y + memeHeight + 120);
 
-      ctx.font = "normal 26px Arial";
+      ctx.font = "normal 32px Arial";
       ctx.fillStyle = "rgba(0,0,0,0.4)";
       ctx.shadowBlur = 0;
       ctx.fillText("Made with ❤️ by Atakan Karacali", storyWidth / 2, storyHeight - 70);

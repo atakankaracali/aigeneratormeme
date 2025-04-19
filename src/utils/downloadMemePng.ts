@@ -26,42 +26,52 @@ export const downloadMemePng = async (targetRef: React.RefObject<HTMLElement>) =
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, width, height);
 
-    const safeTop = 100;
-    const safeBottom = 180;
+    const robotImage = new Image();
+    robotImage.src = "/assets/funny-robot.png";
 
-    const scaleFactor = Math.min(
-      (width * 0.9) / memeCanvas.width,
-      (height - safeTop - safeBottom) / memeCanvas.height
-    );
-    const memeWidth = memeCanvas.width * scaleFactor;
-    const memeHeight = memeCanvas.height * scaleFactor;
-    const x = (width - memeWidth) / 2;
-    const y = safeTop;
+    robotImage.onload = () => {
+      ctx.drawImage(robotImage, width - 190, 40, 140, 140);
 
-    ctx.drawImage(memeCanvas, x, y, memeWidth, memeHeight);
+      const safeTop = 100;
+      const safeBottom = 180;
 
-    ctx.font = "bold 38px Arial";
-    ctx.fillStyle = "#1e1e1e";
-    ctx.textAlign = "center";
-    ctx.fillText("✨ Let's try!", width / 2, y + memeHeight + 60);
+      const scaleFactor = Math.min(
+        (width * 0.9) / memeCanvas.width,
+        (height - safeTop - safeBottom) / memeCanvas.height
+      );
+      const memeWidth = memeCanvas.width * scaleFactor;
+      const memeHeight = memeCanvas.height * scaleFactor;
+      const x = (width - memeWidth) / 2;
+      const y = safeTop;
 
-    ctx.font = "bold 36px Arial";
-    ctx.fillStyle = "#4c1d95";
-    ctx.shadowColor = "#00000033";
-    ctx.shadowBlur = 6;
-    ctx.fillText("aigeneratememe.com", width / 2, height - 80);
+      ctx.drawImage(memeCanvas, x, y, memeWidth, memeHeight);
 
-    ctx.font = "normal 22px Arial";
-    ctx.fillStyle = "rgba(0,0,0,0.4)";
-    ctx.shadowBlur = 0;
-    ctx.fillText("Made with ❤️ by Atakan Karacali", width / 2, height - 40);
+      ctx.font = "bold 42px Arial";
+      ctx.fillStyle = "#1e1e1e";
+      ctx.textAlign = "center";
+      ctx.fillText("✨ Let's try!", width / 2, y + memeHeight + 60);
 
-    canvas.toBlob((blob) => {
-      if (blob) {
-        saveAs(blob, "meme.png");
-      }
-    }, "image/png");
+      ctx.font = "bold 40px Arial";
+      ctx.fillStyle = "#4c1d95";
+      ctx.shadowColor = "#00000033";
+      ctx.shadowBlur = 6;
+      ctx.fillText("aigeneratememe.com", width / 2, height - 80);
 
+      ctx.font = "normal 32px Arial";
+      ctx.fillStyle = "rgba(0,0,0,0.4)";
+      ctx.shadowBlur = 0;
+      ctx.fillText("Made with ❤️ by Atakan Karacali", width / 2, height - 40);
+
+      canvas.toBlob((blob) => {
+        if (blob) {
+          saveAs(blob, "meme.png");
+        }
+      }, "image/png");
+    };
+
+    robotImage.onerror = () => {
+      alert("🚨 Robot image not found.");
+    };
   } catch (err) {
     console.error("❌ PNG Export Error:", err);
     alert("PNG export failed.");
