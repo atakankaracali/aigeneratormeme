@@ -96,15 +96,18 @@
   gap: 0.5rem;
   padding: 0 0.5rem;
   max-width: 100%;
+  margin: 0 auto;
 }
 
 .emoji-button {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
+  padding: 0.15rem;
+  min-width: 2.2rem;
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0.25rem;
   flex: 0 0 auto;
+  transition: transform 0.2s ease;
 }
 
 .emoji-button:hover {
@@ -117,7 +120,7 @@
   transform: scale(1.5);
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .meme-container {
     padding: 1.5rem;
     border-radius: 1rem;
@@ -153,8 +156,8 @@
   }
 
   .emoji-button {
-    font-size: 1.6rem;
-  }
+    font-size: 1.3rem;
+  }  
 }
 
 .thanks-text {
