@@ -53,21 +53,21 @@ export const downloadStoryImage = async (targetRef: React.RefObject<HTMLElement>
 
       ctx.drawImage(memeCanvas, x, y, memeWidth, memeHeight);
 
-      ctx.font = "650 46px Arial";
+      ctx.font = "650 48px Arial";
       ctx.fillStyle = "#1f2937";
       ctx.textAlign = "center";
       ctx.fillText("✨ Let's try!", storyWidth / 2, y + memeHeight + 60);
 
-      ctx.font = "bold 46px Arial";
+      ctx.font = "bold 50px Arial";
       ctx.fillStyle = "#9333ea";
       ctx.shadowColor = "#00000055";
-      ctx.shadowBlur = 8;
+      ctx.shadowBlur = 6;
       ctx.fillText("aigeneratememe.com", storyWidth / 2, y + memeHeight + 120);
 
-      ctx.font = "normal 32px Arial";
+      ctx.font = "normal 40px Arial";
       ctx.fillStyle = "rgba(0,0,0,0.4)";
       ctx.shadowBlur = 0;
-      ctx.fillText("Made with ❤️ by Atakan Karacali", storyWidth / 2, storyHeight - 70);
+      ctx.fillText("Made with ❤️ by Atakan Karacali", storyWidth / 2, storyHeight - 60);
 
       finalCanvas.toBlob((blob) => {
         if (blob) {
