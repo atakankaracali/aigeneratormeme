@@ -28,30 +28,32 @@ export const downloadStoryImage = async (targetRef: React.RefObject<HTMLElement>
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, storyWidth, storyHeight);
 
-    ctx.font = "bold 48px Arial";
+    ctx.font = "bold 50px Arial";
     ctx.fillStyle = "#ffffff";
+    ctx.shadowColor = "#00000055";
+    ctx.shadowBlur = 8;
     ctx.textAlign = "center";
     ctx.fillText("aigeneratememe.com", storyWidth / 2, 100);
 
+    const maxMemeHeight = storyHeight * 0.5;
     const scaleFactor = Math.min(
       (storyWidth * 0.85) / memeCanvas.width,
-      (storyHeight * 0.6) / memeCanvas.height
+      maxMemeHeight / memeCanvas.height
     );
     const memeWidth = memeCanvas.width * scaleFactor;
     const memeHeight = memeCanvas.height * scaleFactor;
     const x = (storyWidth - memeWidth) / 2;
-    const y = 200;
+    const y = (storyHeight - memeHeight) / 2 - 50;
 
     ctx.drawImage(memeCanvas, x, y, memeWidth, memeHeight);
 
-    ctx.font = "600 42px Arial";
-    ctx.fillStyle = "#1e1e1e";
-    ctx.textAlign = "center";
+    ctx.font = "600 44px Arial";
+    ctx.fillStyle = "#111827";
+    ctx.shadowBlur = 0;
     ctx.fillText("✨ Let's try!", storyWidth / 2, y + memeHeight + 60);
 
-    ctx.font = "normal 26px Arial";
-    ctx.fillStyle = "rgba(0,0,0,0.4)";
-    ctx.textAlign = "center";
+    ctx.font = "normal 30px Arial";
+    ctx.fillStyle = "rgba(18, 17, 17, 0.45)";
     ctx.fillText("Made with ❤️ by Atakan Karacali", storyWidth / 2, storyHeight - 60);
 
     finalCanvas.toBlob((blob) => {
