@@ -48,8 +48,7 @@
 }
 
 .share-button,
-.copy-button,
-.download-button {
+.copy-button {
   padding: 0.6rem 1.5rem;
   border-radius: 9999px;
   font-size: 0.95rem;
@@ -71,13 +70,8 @@
   background: linear-gradient(135deg, #6B7280, #4b5563);
 }
 
-.download-button {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
-}
-
 .share-button:hover,
-.copy-button:hover,
-.download-button:hover {
+.copy-button:hover{
   transform: translateY(-2px);
   opacity: 0.9;
 }
@@ -100,7 +94,7 @@
 }
 
 .emoji-button {
-  font-size: 1.4rem;
+  font-size: 1.55rem;
   padding: 0.15rem;
   min-width: 2.2rem;
   background: transparent;
@@ -141,8 +135,7 @@
   }
 
   .share-button,
-  .copy-button,
-  .download-button {
+  .copy-button {
     font-size: 0.85rem;
     width: 90%;
     max-width: none;
@@ -156,7 +149,7 @@
   }
 
   .emoji-button {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
   }  
 }
 

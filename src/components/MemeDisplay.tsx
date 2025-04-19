@@ -2,12 +2,9 @@ import { motion } from "framer-motion";
 import Confetti from "react-confetti";
 import { useEffect, useState, useRef } from "react";
 import './styles/memeDisplay.css';
-import { toPng } from 'html-to-image';
-import { saveAs } from 'file-saver';
 import useWindowSize from 'react-use/lib/useWindowSize';
 import { sendEmojiReaction } from '../utils/sendEmojiReaction';
 import ShareOptionsModal from "./shareOptionsModal";
-import { downloadStoryImage } from '../utils/storyImage';
 
 interface MemeDisplayProps {
   meme: string;
@@ -31,21 +28,6 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
     await navigator.clipboard.writeText(meme);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
-  };
-
-  const handleDownload = () => {
-    if (!memeRef.current) return;
-    toPng(memeRef.current, {
-      cacheBust: true,
-      backgroundColor: "#ffffff"
-    })
-      .then((dataUrl) => {
-        saveAs(dataUrl, 'meme.png');
-      })
-      .catch((err) => {
-        console.error('❌ PNG Download Error:', err);
-        alert("Download failed. Check console.");
-      });
   };
 
   const handleEmojiClick = (emoji: string) => {
@@ -73,7 +55,7 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
         <ShareOptionsModal
           onClose={() => setShowShareModal(false)}
           meme={meme}
-          memeRef={memeRef}
+          memeRef={contentRef}
         />
       )}
 
@@ -94,15 +76,6 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
           </button>
           <button onClick={handleCopy} className="copy-button">
             {copied ? "✅ Copied!" : "📋 Copy Meme"}
-          </button>
-          <button onClick={handleDownload} className="download-button">
-            📥 Download PNG
-          </button>
-          <button
-            onClick={() => downloadStoryImage(contentRef)}
-            className="download-button"
-          >
-            📲 Download for Story
           </button>
         </div>
 

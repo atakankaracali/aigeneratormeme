@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import "./styles/shareModal.css";
 import { RefObject } from "react";
 import { downloadStoryImage } from "../utils/storyImage";
+import { downloadMemePng } from "../utils/downloadMemePng";
 
 interface ShareOptionsModalProps {
   onClose: () => void;
@@ -14,6 +15,10 @@ const ShareOptionsModal = ({ onClose, meme, memeRef }: ShareOptionsModalProps) =
     const tweetText = `${meme}\n\n🔥 Try the AI Meme Generator: https://aigeneratememe.com`;
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
     window.open(twitterUrl, "_blank");
+  };
+  const handlePngDownload = () => {
+    if (!memeRef.current) return;
+    downloadMemePng(memeRef);
   };
 
   const handleInstagramShare = () => {
@@ -51,6 +56,9 @@ const ShareOptionsModal = ({ onClose, meme, memeRef }: ShareOptionsModalProps) =
           </button>
           <button className="share-option-button linkedin" onClick={handleLinkedInShare}>
             💼 LinkedIn
+          </button>
+          <button className="share-option-button png" onClick={handlePngDownload}>
+            🖼️ Download PNG
           </button>
         </div>
 
