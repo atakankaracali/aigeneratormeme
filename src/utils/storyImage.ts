@@ -28,39 +28,48 @@ export const downloadStoryImage = async (targetRef: React.RefObject<HTMLElement>
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, storyWidth, storyHeight);
 
-    ctx.font = "bold 50px Arial";
-    ctx.fillStyle = "#ffffff";
-    ctx.shadowColor = "#00000055";
-    ctx.shadowBlur = 8;
-    ctx.textAlign = "center";
-    ctx.fillText("aigeneratememe.com", storyWidth / 2, 100);
+    const robotImage = new Image();
+    robotImage.src = "/assets/funny-robot.png";
+    robotImage.onload = () => {
+      ctx.drawImage(robotImage, storyWidth - 220, 50, 150, 150);
 
-    const maxMemeHeight = storyHeight * 0.5;
-    const scaleFactor = Math.min(
-      (storyWidth * 0.85) / memeCanvas.width,
-      maxMemeHeight / memeCanvas.height
-    );
-    const memeWidth = memeCanvas.width * scaleFactor;
-    const memeHeight = memeCanvas.height * scaleFactor;
-    const x = (storyWidth - memeWidth) / 2;
-    const y = (storyHeight - memeHeight) / 2 - 50;
+      const safeTop = 250;
+      const safeBottom = 170;
+      const maxMemeHeight = storyHeight - safeTop - safeBottom - 250;
 
-    ctx.drawImage(memeCanvas, x, y, memeWidth, memeHeight);
+      const scaleFactor = Math.min(
+        (storyWidth * 0.85) / memeCanvas.width,
+        maxMemeHeight / memeCanvas.height
+      );
+      const memeWidth = memeCanvas.width * scaleFactor;
+      const memeHeight = memeCanvas.height * scaleFactor;
+      const x = (storyWidth - memeWidth) / 2;
+      const y = safeTop;
 
-    ctx.font = "600 44px Arial";
-    ctx.fillStyle = "#111827";
-    ctx.shadowBlur = 0;
-    ctx.fillText("✨ Let's try!", storyWidth / 2, y + memeHeight + 60);
+      ctx.drawImage(memeCanvas, x, y, memeWidth, memeHeight);
 
-    ctx.font = "normal 30px Arial";
-    ctx.fillStyle = "rgba(18, 17, 17, 0.45)";
-    ctx.fillText("Made with ❤️ by Atakan Karacali", storyWidth / 2, storyHeight - 60);
+      ctx.font = "600 44px Arial";
+      ctx.fillStyle = "#1f2937";
+      ctx.textAlign = "center";
+      ctx.fillText("✨ Let's try!", storyWidth / 2, y + memeHeight + 60);
 
-    finalCanvas.toBlob((blob) => {
-      if (blob) {
-        saveAs(blob, "story-meme.png");
-      }
-    }, "image/png");
+      ctx.font = "bold 40px Arial";
+      ctx.fillStyle = "#ffffff";
+      ctx.shadowColor = "#00000055";
+      ctx.shadowBlur = 8;
+      ctx.fillText("aigeneratememe.com", storyWidth / 2, storyHeight - 120);
+
+      ctx.font = "normal 26px Arial";
+      ctx.fillStyle = "rgba(0,0,0,0.4)";
+      ctx.shadowBlur = 0;
+      ctx.fillText("Made with ❤️ by Atakan Karacali", storyWidth / 2, storyHeight - 70);
+
+      finalCanvas.toBlob((blob) => {
+        if (blob) {
+          saveAs(blob, "story-meme.png");
+        }
+      }, "image/png");
+    };
   } catch (err) {
     console.error("❌ Story image error:", err);
     alert("Failed to create story image.");

@@ -93,20 +93,18 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 0.75rem;
-  padding: 0 1rem;
+  gap: 0.5rem;
+  padding: 0 0.5rem;
   max-width: 100%;
-  overflow-x: auto;
 }
 
 .emoji-button {
-  font-size: 1.75rem;
+  font-size: 1.6rem;
   background: transparent;
   border: none;
   cursor: pointer;
-  transition: transform 0.2s ease;
   padding: 0.25rem;
+  flex: 0 0 auto;
 }
 
 .emoji-button:hover {
