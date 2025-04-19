@@ -20,6 +20,7 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
   const [showShareModal, setShowShareModal] = useState(false);
   const memeRef = useRef<HTMLDivElement>(null!)
   const { width, height } = useWindowSize();
+  const contentRef = useRef<HTMLDivElement>(null!);
 
   useEffect(() => {
     const timer = setTimeout(() => setShowConfetti(false), 5500);
@@ -83,9 +84,10 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
         className="meme-container"
         ref={memeRef}
       >
-        <h3 className="meme-title">🔥 Your Meme 🔥</h3>
-        <p className="meme-text">{meme}</p>
-
+        <div ref={contentRef} className="meme-export-only">
+          <h3 className="meme-title">🔥 Your Meme 🔥</h3>
+          <p className="meme-text">{meme}</p>
+        </div>
         <div className="button-group">
           <button className="share-button" onClick={() => setShowShareModal(true)}>
             📤 Share
@@ -97,7 +99,7 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
             📥 Download PNG
           </button>
           <button
-            onClick={() => downloadStoryImage(memeRef)}
+            onClick={() => downloadStoryImage(contentRef)}
             className="download-button"
           >
             📲 Download for Story
