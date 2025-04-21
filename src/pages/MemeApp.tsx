@@ -124,7 +124,7 @@ const MemeApp = () => {
             title={isManifestMode ? "What's stopping you from achieving it?" : "What's your biggest problem?"}
             options={isManifestMode
               ? ['Self-doubt', 'Money', 'Bad luck', 'No opportunities', 'Laziness']
-              : ['Work', 'HR', 'Life', 'Money', 'Partner', 'School']}
+              : ['Work', 'HR', 'Life', 'Money', 'Partner', 'School', 'Manager', 'Unluck']}
             selected={problem}
             setSelected={(val) => { setProblem(val); setStep(3); }}
           />
@@ -135,7 +135,7 @@ const MemeApp = () => {
             title={isManifestMode ? "How would you feel if it came true tomorrow?" : "Last thing you enjoyed?"}
             options={isManifestMode
               ? ['Empowered', 'Grateful', 'Euphoric', 'Unstoppable', 'Peaceful']
-              : ['Movie', 'Food', 'Vacation', 'Partner', 'Friends']}
+              : ['Movie', 'Food', 'Vacation', 'Partner', 'Friends', 'Never', 'Games']}
             selected={lastEnjoyed}
             setSelected={(val) => { setLastEnjoyed(val); setStep(4); }}
           />
