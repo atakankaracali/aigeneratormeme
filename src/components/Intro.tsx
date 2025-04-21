@@ -22,7 +22,7 @@ const Intro = ({ onNext }: IntroProps) => (
         cursor
         cursorStyle="|"
         typeSpeed={50}
-        deleteSpeed={30}
+        deleteSpeed={50}
       />
     </h2>
 
