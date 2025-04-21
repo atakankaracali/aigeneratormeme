@@ -18,7 +18,7 @@ function hasInjection(text: string) {
 const MemeApp = () => {
   useCanonical();
   const [step, setStep] = useState(0);
-  const [mode, setMode] = useState<"classic" | "roast" | "manifest" | null>(null);
+  const [mode, setMode] = useState<"classic" | "roast" | "manifest" | "surprise" | "fortune" | null>(null);
   const [feeling, setFeeling] = useState('');
   const [problem, setProblem] = useState('');
   const [lastEnjoyed, setLastEnjoyed] = useState('');
@@ -94,9 +94,13 @@ const MemeApp = () => {
     setError('');
   };
 
-  const handleNextStep = (selectedMode: "classic" | "roast" | "manifest") => {
+  const handleNextStep = (selectedMode: "classic" | "roast" | "manifest" | "surprise" | "fortune") => {
     setMode(selectedMode);
-    setStep(1);
+    if (selectedMode === "surprise" || selectedMode === "fortune" || selectedMode === "roast") {
+      generateMeme();
+    } else {
+      setStep(1);
+    }
   };
 
   const isManifestMode = mode === "manifest";
@@ -113,7 +117,7 @@ const MemeApp = () => {
             title={isManifestMode ? "What is your biggest dream right now?" : "How do you feel today?"}
             options={isManifestMode
               ? ['Find love', 'Land a dream job', 'Become rich', 'Be truly happy', 'Travel the world']
-              : ['Happy', 'Sad', 'Angry', 'Relaxed', 'Tired']}
+              : ['Happy', 'Sad', 'Angry', 'Relaxed', 'Tired', 'Stressed', 'Motivated']}
             selected={feeling}
             setSelected={(val) => { setFeeling(val); setStep(2); }}
           />
@@ -144,7 +148,9 @@ const MemeApp = () => {
         {((step === 1 && isRoastMode && !meme && !loading) || (step === 4 && !loading && !meme)) && (
           <>
             <p className="text-title text-white mb-4">
-              Brutally honest, AI-powered roast. Ready to cry or laugh?
+              {mode === "roast" && "Brutally honest, AI-powered roast. Ready to cry or laugh?"}
+              {mode === "surprise" && "Expect the unexpected 👀"}
+              {mode === "fortune" && "🌸 Your daily cosmic message is loading..."}
             </p>
             <motion.button
               whileHover={{ scale: 1.1 }}
@@ -152,7 +158,10 @@ const MemeApp = () => {
               className="meme-button"
               onClick={generateMeme}
             >
-              {isRoastMode ? '🥩 Roast Me' : '🚀 Generate Meme'}
+              {mode === "roast" && '🥩 Roast Me'}
+              {mode === "surprise" && '🎲 Surprise Me'}
+              {mode === "fortune" && '🔮 Get Today’s Fortune'}
+              {mode === "classic" || mode === "manifest" ? '🚀 Generate Meme' : ''}
             </motion.button>
           </>
         )}

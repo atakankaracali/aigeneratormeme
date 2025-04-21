@@ -2,7 +2,11 @@ import { motion } from "framer-motion";
 import { Typewriter } from 'react-simple-typewriter';
 import './styles/intro.css';
 
-type IntroProps = { onNext: (mode: "classic" | "roast" | "manifest") => void };
+type IntroProps = {
+  onNext: (
+    mode: "classic" | "roast" | "manifest" | "surprise" | "fortune"
+  ) => void;
+};
 
 const Intro = ({ onNext }: IntroProps) => (
   <motion.div
@@ -22,32 +26,29 @@ const Intro = ({ onNext }: IntroProps) => (
       />
     </h2>
 
-    <div className="flex flex-col gap-4 items-center mt-4 w-full">
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        className="intro-button classic-btn"
-        onClick={() => onNext("classic")}
-      >
+    {/* Main Modes */}
+    <div className="button-group-section">
+      <h3 className="group-heading">🎯 Choose Your Meme Style</h3>
+      <p className="group-subtext">Pick your vibe and we will meme it up!</p>
+      <motion.button className="intro-button classic-btn" onClick={() => onNext("classic")}>
         🎨 Classic Mode
       </motion.button>
-
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        className="intro-button roast-btn"
-        onClick={() => onNext("roast")}
-      >
+      <motion.button className="intro-button roast-btn" onClick={() => onNext("roast")}>
         🥩 Roast Me Mode
       </motion.button>
-
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        className="intro-button hr-btn"
-        onClick={() => onNext("manifest")}
-      >
+      <motion.button className="intro-button hr-btn" onClick={() => onNext("manifest")}>
         🕶 Manifest Mode
+      </motion.button>
+    </div>
+
+    <div className="button-group-section">
+      <h3 className="group-heading">🌀 Feeling Adventurous?</h3>
+      <p className="group-subtext">Get a wild or cosmic message from the meme gods 👽</p>
+      <motion.button className="intro-button surprise-btn" onClick={() => onNext("surprise")}>
+        🎲 Surprise Me!
+      </motion.button>
+      <motion.button className="intro-button fortune-btn" onClick={() => onNext("fortune")}>
+        🔮 Daily Fortune
       </motion.button>
     </div>
   </motion.div>
