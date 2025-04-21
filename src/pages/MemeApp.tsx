@@ -119,7 +119,7 @@ const MemeApp = () => {
 
         {step === 0 && <Intro onNext={handleNextStep} />}
 
-        {step === 1 && (
+        {step === 1 && !["roast", "surprise", "fortune"].includes(mode!) && (
           <Question
             title={isManifestMode ? "What is your biggest dream right now?" : "How do you feel today?"}
             options={isManifestMode
@@ -130,7 +130,7 @@ const MemeApp = () => {
           />
         )}
 
-        {step === 2 && (
+        {step === 2 && !["roast", "surprise", "fortune"].includes(mode!) && (
           <Question
             title={isManifestMode ? "What's stopping you from achieving it?" : "What's your biggest problem?"}
             options={isManifestMode
@@ -141,7 +141,7 @@ const MemeApp = () => {
           />
         )}
 
-        {step === 3 && (
+        {step === 3 && !["roast", "surprise", "fortune"].includes(mode!) && (
           <Question
             title={isManifestMode ? "How would you feel if it came true tomorrow?" : "Last thing you enjoyed?"}
             options={isManifestMode
@@ -152,19 +152,34 @@ const MemeApp = () => {
           />
         )}
 
-        {(step === 4 && !loading && !meme) && (
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            className="meme-button"
-            onClick={generateMeme}
-          >
-            🚀 Generate Meme
-          </motion.button>
-        )}
+        {((["roast", "surprise", "fortune"].includes(mode!) && step === 1 && !meme && !loading) ||
+          (step === 4 && !loading && !meme)) && (
+            <>
+              <p className="text-title text-white mb-4">
+                {mode === "roast" && "Brutally honest, AI-powered roast. Ready to cry or laugh?"}
+                {mode === "surprise" && "Expect the unexpected 👀"}
+                {mode === "fortune" && "🌸 Your daily cosmic message is waiting..."}
+              </p>
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="meme-button"
+                onClick={() => {
+                  generateMeme();
+                  setStep(99);
+                }}
+              >
+                {mode === "roast" && '🥩 Roast Me'}
+                {mode === "surprise" && '🎲 Surprise Me'}
+                {mode === "fortune" && '🔮 Get Today’s Fortune'}
+                {(mode === "classic" || mode === "manifest") && '🚀 Generate Meme'}
+              </motion.button>
+            </>
+          )}
 
         {step === 99 && loading && <Loader />}
-        {step === 99 && !loading && meme && (
+
+        {meme && (
           <>
             <MemeDisplay meme={meme} />
             <motion.button

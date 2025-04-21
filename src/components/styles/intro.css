@@ -37,7 +37,13 @@
   font-weight: 500;
   width: 90%;
   max-width: 300px;
+  min-width: 260px;
+  height: 48px;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
   will-change: transform;
 }
 
