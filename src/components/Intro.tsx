@@ -26,7 +26,6 @@ const Intro = ({ onNext }: IntroProps) => (
       />
     </h2>
 
-    {/* Main Modes */}
     <div className="button-group-section">
       <h3 className="group-heading">🎯 Choose Your Meme Style</h3>
       <p className="group-subtext">Pick your vibe and we will meme it up!</p>
@@ -39,11 +38,6 @@ const Intro = ({ onNext }: IntroProps) => (
       <motion.button className="intro-button hr-btn" onClick={() => onNext("manifest")}>
         🕶 Manifest Mode
       </motion.button>
-    </div>
-
-    <div className="button-group-section">
-      <h3 className="group-heading">🌀 Feeling Adventurous?</h3>
-      <p className="group-subtext">Get a wild or cosmic message from the meme gods 👽</p>
       <motion.button className="intro-button surprise-btn" onClick={() => onNext("surprise")}>
         🎲 Surprise Me!
       </motion.button>
