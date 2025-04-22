@@ -32,23 +32,20 @@ const MemeApp = () => {
     setMemeHistory(history);
   }, []);
 
-  useEffect(() => {
-    if (step === 99 && mode) {
-      generateMeme();
-    }
-  }, [step, mode]);
-
   const generateMeme = async () => {
     setLoading(true);
     setError('');
 
-    if (!["roast", "surprise", "fortune"].includes(mode || "") && [feeling, problem, lastEnjoyed].some(field => field.length > 100)) {
+    const isFreeMode = ["roast", "surprise", "fortune"].includes(mode || "");
+    const inputs = [feeling, problem, lastEnjoyed];
+
+    if (!isFreeMode && inputs.some(field => field.length > 100)) {
       setError("Inputs are too long (max 100 characters)");
       setLoading(false);
       return;
     }
 
-    if (!["roast", "surprise", "fortune"].includes(mode || "") && [feeling, problem, lastEnjoyed].some(field => hasInjection(field))) {
+    if (!isFreeMode && inputs.some(field => hasInjection(field))) {
       setError("Potentially harmful input detected!");
       setLoading(false);
       return;
@@ -71,8 +68,8 @@ const MemeApp = () => {
       const signature = ceoNames[Math.floor(Math.random() * ceoNames.length)];
       memeText += `\n\n${signature}`;
 
-      setMeme(memeText);
       const updatedHistory = [memeText, ...memeHistory].slice(0, 10);
+      setMeme(memeText);
       setMemeHistory(updatedHistory);
       localStorage.setItem("memeHistory", JSON.stringify(updatedHistory));
     } catch (err: any) {
@@ -99,19 +96,17 @@ const MemeApp = () => {
     setError('');
   };
 
-  const handleNextStep = (
-    selectedMode: "classic" | "roast" | "manifest" | "surprise" | "fortune"
-  ) => {
+  const handleNextStep = (selectedMode: typeof mode) => {
     setMode(selectedMode);
-
-    if (["roast", "surprise", "fortune"].includes(selectedMode)) {
-      setStep(99);
-    } else {
-      setStep(1);
-    }
+    setStep(1);
   };
 
+  const isFreeMode = ["roast", "surprise", "fortune"].includes(mode!);
   const isManifestMode = mode === "manifest";
+
+  const shouldShowGenerateScreen =
+    (isFreeMode && step === 1 && !meme && !loading) ||
+    (!isFreeMode && step === 4 && !meme && !loading);
 
   return (
     <div className="app-wrapper">
@@ -119,7 +114,7 @@ const MemeApp = () => {
 
         {step === 0 && <Intro onNext={handleNextStep} />}
 
-        {step === 1 && !["roast", "surprise", "fortune"].includes(mode!) && (
+        {step === 1 && !isFreeMode && (
           <Question
             title={isManifestMode ? "What is your biggest dream right now?" : "How do you feel today?"}
             options={isManifestMode
@@ -130,7 +125,7 @@ const MemeApp = () => {
           />
         )}
 
-        {step === 2 && !["roast", "surprise", "fortune"].includes(mode!) && (
+        {step === 2 && !isFreeMode && (
           <Question
             title={isManifestMode ? "What's stopping you from achieving it?" : "What's your biggest problem?"}
             options={isManifestMode
@@ -141,7 +136,7 @@ const MemeApp = () => {
           />
         )}
 
-        {step === 3 && !["roast", "surprise", "fortune"].includes(mode!) && (
+        {step === 3 && !isFreeMode && (
           <Question
             title={isManifestMode ? "How would you feel if it came true tomorrow?" : "Last thing you enjoyed?"}
             options={isManifestMode
@@ -152,32 +147,33 @@ const MemeApp = () => {
           />
         )}
 
-        {((["roast", "surprise", "fortune"].includes(mode!) && step === 1 && !meme && !loading) ||
-          (step === 4 && !loading && !meme)) && (
-            <>
-              <p className="text-title text-white mb-4">
-                {mode === "roast" && "Brutally honest, AI-powered roast. Ready to cry or laugh?"}
-                {mode === "surprise" && "Expect the unexpected 👀"}
-                {mode === "fortune" && "🌸 Your daily cosmic message is waiting..."}
-              </p>
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="meme-button"
-                onClick={() => {
-                  generateMeme();
-                  setStep(99);
-                }}
-              >
-                {mode === "roast" && '🥩 Roast Me'}
-                {mode === "surprise" && '🎲 Surprise Me'}
-                {mode === "fortune" && '🔮 Get Today’s Fortune'}
-                {(mode === "classic" || mode === "manifest") && '🚀 Generate Meme'}
-              </motion.button>
-            </>
-          )}
+        {shouldShowGenerateScreen && (
+          <>
+            <p className="text-title text-white mb-4">
+              {mode === "roast" && "Brutally honest, AI-powered roast. Ready to cry or laugh?"}
+              {mode === "surprise" && "Expect the unexpected 👀"}
+              {mode === "fortune" && "🌸 Your daily cosmic message is waiting..."}
+              {mode === "classic" && "Let’s create a meme based on your mood 🎨"}
+              {mode === "manifest" && "Crafting your motivational meme... 💼"}
+            </p>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="meme-button"
+              onClick={() => {
+                generateMeme();
+                setStep(99);
+              }}
+            >
+              {mode === "roast" && '🥩 Roast Me'}
+              {mode === "surprise" && '🎲 Surprise Me'}
+              {mode === "fortune" && '🔮 Get Today’s Fortune'}
+              {(mode === "classic" || mode === "manifest") && '🚀 Generate Meme'}
+            </motion.button>
+          </>
+        )}
 
-        {step === 99 && loading && <Loader />}
+        {loading && step === 99 && <Loader />}
 
         {meme && (
           <>
@@ -194,19 +190,6 @@ const MemeApp = () => {
         )}
 
         {error && <p className="text-red-500 mt-4">{error}</p>}
-        {meme && step !== 99 && (
-          <>
-            <MemeDisplay meme={meme} />
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={restart}
-              className="restart-button"
-            >
-              🔄 Create Another Meme
-            </motion.button>
-          </>
-        )}
       </div>
     </div>
   );
