@@ -103,9 +103,10 @@
 }
 .emoji-leaderboard-text {
   margin-top: 0.5rem;
-  font-size: 1rem;
-  color: #f1f1f1;
-  font-weight: 500;
+  font-size: 1.1rem;
+  color: #4a00e0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  font-weight: 600;
   text-align: center;
   line-height: 1.6;
 }
