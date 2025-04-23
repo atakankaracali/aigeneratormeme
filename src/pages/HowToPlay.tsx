@@ -67,19 +67,19 @@ const HowToPlay = () => {
       <div className="seo-howto-block">
         <h2>What Makes Each Mode Special with AI Meme?</h2>
         <p>
-            Looking for the best <strong>AI meme generator</strong> in 2025? Our platform lets you create
+            Looking for the best <strong> I meme generator</strong> in 2025? Our platform lets you create
             <strong> funny memes</strong>, <strong> motivational memes</strong>,
-            <strong> roast me memes</strong>, <strong>daily fortunes</strong>, and even 
-            <strong> flavor-inspired meme captions</strong> — all instantly, using cutting-edge artificial intelligence.
+            <strong> roast me memes</strong>, <strong> daily fortunes</strong>, and even 
+            <strong> flavor-inspired meme captions</strong> - all instantly, using cutting-edge artificial intelligence.
             No login, no cost — just laughs, vibes, and unexpected brilliance.
           </p>
         <ul>
-          <li><strong>🎨 Classic:</strong> Based on your feelings and problems; funny, relatable, witty.</li>
-          <li><strong>🥩 Roast Me:</strong> Savage, sarcastic, Twitter-style roast memes with random “flavor.”</li>
-          <li><strong>🕶 Manifest:</strong> Motivational startup-style captions; ironic and inspiring.</li>
-          <li><strong>🎲 Surprise:</strong> Completely random and chaotic; expect the unexpected!</li>
-          <li><strong>🔮 Fortune:</strong> Daily cosmic advice, cryptic truths, or meme horoscopes.</li>
-          <li><strong>🧠 Flavor:</strong> Pick a meme “flavor” (like Tumblr wisdom or dark irony) and let AI vibe with it.</li>
+          <li><strong> 🎨 Classic:</strong> Based on your feelings and problems; funny, relatable, witty.</li>
+          <li><strong> 🥩 Roast Me:</strong> Savage, sarcastic, Twitter-style roast memes with random “flavor.”</li>
+          <li><strong> 🕶 Manifest:</strong> Motivational startup-style captions; ironic and inspiring.</li>
+          <li><strong> 🎲 Surprise:</strong> Completely random and chaotic; expect the unexpected!</li>
+          <li><strong> 🔮 Fortune:</strong> Daily cosmic advice, cryptic truths, or meme horoscopes.</li>
+          <li><strong> 🧠 Flavor:</strong> Pick a meme “flavor” (like Tumblr wisdom or dark irony) and let AI vibe with it.</li>
         </ul>
         <p>
           No accounts. No limits. Just you, your mood, and a fire meme delivered by AI. Ready to laugh?

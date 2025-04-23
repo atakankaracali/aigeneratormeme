@@ -23,11 +23,11 @@ const About = () => {
           transition={{ duration: 0.5 }}
         >
           <h2>👨‍💻 Creator</h2>
-          <p><strong>Hey, I'm Atakan Karacali!</strong></p>
+          <p><strong> Hey, I'm Atakan Karacali!</strong></p>
           <p>
             I'm a senior frontend developer based in Europe building fun, creative tools powered by AI.
             This is a passion project — crafted to turn your thoughts into <strong>funny</strong>, <strong>relatable</strong>, 
-            or downright <strong>chaotic memes</strong> in seconds.
+            or downright <strong> chaotic memes</strong> in seconds.
           </p>
           <p>
             Want to collaborate or just say hi? <br />
@@ -50,23 +50,23 @@ const About = () => {
         >
           <h3>About AI Meme Generator</h3>
           <p>
-            <strong>AI Meme Generator</strong> is a free meme creation platform powered by OpenAI and built with love by Atakan Karacali. 
+            <strong> AI Meme Generator</strong> is a free meme creation platform powered by OpenAI and built with love by Atakan Karacali. 
             Whether you're looking to laugh, vent, motivate yourself, or just enjoy some weird internet vibes — this tool's got you.
           </p>
           <p>
             Choose from 6 unique meme modes:
             <ul>
-              <li><strong>Classic:</strong> Based on your mood and struggles — relatable and funny.</li>
-              <li><strong>Roast Me:</strong> Savage, sarcastic, and spicy internet roast vibes with random “flavors.”</li>
-              <li><strong>Manifest:</strong> Startup-style motivational meme captions — inspiring but honest.</li>
-              <li><strong>Surprise:</strong> Wild, chaotic, unexpected — you never know what you will get.</li>
-              <li><strong>Fortune:</strong> Daily fortune-cookie wisdom, AI-style. Cryptic and cute.</li>
-              <li><strong>Flavor:</strong> Pick your flavor like “Tumblr wisdom” or “Dark Reddit” and let the AI riff on it.</li>
+              <li><strong> Classic:</strong> Based on your mood and struggles — relatable and funny.</li>
+              <li><strong> Roast Me:</strong> Savage, sarcastic, and spicy internet roast vibes with random “flavors.”</li>
+              <li><strong> Manifest:</strong> Startup-style motivational meme captions — inspiring but honest.</li>
+              <li><strong> Surprise:</strong> Wild, chaotic, unexpected — you never know what you will get.</li>
+              <li><strong> Fortune:</strong> Daily fortune-cookie wisdom, AI-style. Cryptic and cute.</li>
+              <li><strong> Flavor:</strong> Pick your flavor like “Tumblr wisdom” or “Dark Reddit” and let the AI riff on it.</li>
             </ul>
           </p>
           <p>
             There is no sign-up, no payment — just pure, weird, viral meme energy. 
-            <strong>Generate, copy, react with emojis, and share!</strong>
+            <strong> Generate, copy, react with emojis, and share!</strong>
           </p>
         </motion.div>
       </div>

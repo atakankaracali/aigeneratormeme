@@ -85,19 +85,19 @@ const Home = () => {
         <div className="seo-content-block">
           <h2>Why Choose Our AI Meme Generator?</h2>
           <p>
-            Looking for the best <strong>AI meme generator</strong> in 2025? Our platform lets you create
+            Looking for the best <strong> AI meme generator</strong> in 2025? Our platform lets you create
             <strong> funny memes</strong>, <strong> motivational memes</strong>,
-            <strong> roast me memes</strong>, <strong>daily fortunes</strong>, and even 
+            <strong> roast me memes</strong>, <strong> daily fortunes</strong>, and even 
             <strong> flavor-inspired meme captions</strong> — all instantly, using cutting-edge artificial intelligence.
             No login, no cost — just laughs, vibes, and unexpected brilliance.
           </p>
           <p>
             Whether you're in the mood for a chaotic roast, a Tumblr-style quote, or a feel-good fortune, our
-            <strong>meme creator AI</strong> has you covered. Built for speed, fun, and creativity — it's the perfect
+            <strong> meme creator AI</strong> has you covered. Built for speed, fun, and creativity — it's the perfect
             tool for anyone who wants a fast, free meme maker without sign-ups or boring templates.
           </p>
           <p>
-            Join thousands already using our <strong>viral meme generator</strong> to share laughs, express their mood,
+            Join thousands already using our <strong> viral meme generator</strong> to share laughs, express their mood,
             and unleash meme magic. Try modes like <em>Classic</em>, <em>Roast</em>, <em>Manifest</em>, <em>Surprise</em>,
             <em>Fortune</em>, and the all-new <em>Flavor</em> mode for a meme experience you have never seen before.
           </p>
