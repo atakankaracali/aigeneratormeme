@@ -24,12 +24,10 @@ const ShareOptionsModal = ({ onClose, meme, memeRef }: ShareOptionsModalProps) =
   const handleInstagramShare = () => {
     if (!memeRef.current) return;
     downloadStoryImage(memeRef);
-    alert("📸 Instagram Story image downloaded!\nNow open Instagram and upload it manually.\nDon't forget to tag https://aigeneratememe.com 🚀");
   };
 
   const handleLinkedInShare = () => {
     navigator.clipboard.writeText(meme);
-    alert("💼 LinkedIn: Meme copied to clipboard!\nPaste it in your post and inspire others. You got this 💪");
     const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=https://www.aigeneratememe.com/`;
     window.open(linkedInUrl, "_blank");
   };

@@ -8,6 +8,17 @@ import QuestionMark from '../components/QuestionMark';
 const Home = () => {
   const navigate = useNavigate();
   const [memeCount, setMemeCount] = useState<number | null>(null);
+  const [emojiStats, setEmojiStats] = useState<Record<string, number> | null>(null);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/emoji-leaderboard`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.totals) setEmojiStats(data.totals);
+      })
+      .catch(() => setEmojiStats(null));
+  }, []);
+
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/api/meme-count`)
@@ -49,6 +60,15 @@ const Home = () => {
           {memeCount !== null && (
             <p className="meme-count-text">
               🎉 <strong>{memeCount.toLocaleString()}</strong> memes generated so far!
+            </p>
+          )}
+          {emojiStats && (
+            <p className="emoji-leaderboard-text">
+              <strong>Top Emoji Reactions This Week:</strong>{' '}
+              {['😂', '😐', '😮', '😢', '🔥']
+                .filter((emoji) => emojiStats[emoji])
+                .map((emoji) => `${emoji}: ${emojiStats[emoji]}`)
+                .join('  ')}
             </p>
           )}
 
