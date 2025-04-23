@@ -74,6 +74,10 @@
   background: linear-gradient(135deg, #c084fc, #8b5cf6);
 }
 
+.flavor-btn {
+  background: linear-gradient(135deg, #fdba74, #f97316);
+}
+
 .button-group-section {
   display: flex;
   flex-direction: column;

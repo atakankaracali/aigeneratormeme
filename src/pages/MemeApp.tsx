@@ -18,7 +18,7 @@ function hasInjection(text: string) {
 const MemeApp = () => {
   useCanonical();
   const [step, setStep] = useState(0);
-  const [mode, setMode] = useState<"classic" | "roast" | "manifest" | "surprise" | "fortune" | null>(null);
+  const [mode, setMode] = useState<"classic" | "roast" | "manifest" | "surprise" | "fortune" | "flavor" |  null>(null);
   const [feeling, setFeeling] = useState('');
   const [problem, setProblem] = useState('');
   const [lastEnjoyed, setLastEnjoyed] = useState('');
@@ -36,7 +36,7 @@ const MemeApp = () => {
     setLoading(true);
     setError('');
 
-    const isFreeMode = ["roast", "surprise", "fortune"].includes(mode || "");
+    const isFreeMode = ["roast", "surprise", "fortune", "flavor"].includes(mode || "");
     const inputs = [feeling, problem, lastEnjoyed];
 
     if (!isFreeMode && inputs.some(field => field.length > 100)) {
@@ -101,7 +101,7 @@ const MemeApp = () => {
     setStep(1);
   };
 
-  const isFreeMode = ["roast", "surprise", "fortune"].includes(mode!);
+  const isFreeMode = ["roast", "surprise", "fortune", "flavor"].includes(mode!);
   const isManifestMode = mode === "manifest";
 
   const shouldShowGenerateScreen =
@@ -153,6 +153,7 @@ const MemeApp = () => {
               {mode === "roast" && "Brutally honest, AI-powered roast. Ready to cry or laugh?"}
               {mode === "surprise" && "Expect the unexpected 👀"}
               {mode === "fortune" && "🌸 Your daily cosmic message is waiting..."}
+              {mode === "flavor" && "Today’s flavor will surprise you 🍜"}
               {mode === "classic" && "Let’s create a meme based on your mood 🎨"}
               {mode === "manifest" && "Crafting your motivational meme... 💼"}
             </p>
@@ -168,6 +169,7 @@ const MemeApp = () => {
               {mode === "roast" && '🥩 Roast Me'}
               {mode === "surprise" && '🎲 Surprise Me'}
               {mode === "fortune" && '🔮 Get Today’s Fortune'}
+              {mode === "flavor" && '🍜 Reveal Today’s Flavor'}
               {(mode === "classic" || mode === "manifest") && '🚀 Generate Meme'}
             </motion.button>
           </>

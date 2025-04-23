@@ -4,7 +4,7 @@ import './styles/intro.css';
 
 type IntroProps = {
   onNext: (
-    mode: "classic" | "roast" | "manifest" | "surprise" | "fortune"
+    mode: "classic" | "roast" | "manifest" | "surprise" | "fortune" | "flavor"
   ) => void;
 };
 
@@ -43,6 +43,9 @@ const Intro = ({ onNext }: IntroProps) => (
       </motion.button>
       <motion.button className="intro-button fortune-btn" onClick={() => onNext("fortune")}>
         🔮 Daily Fortune
+      </motion.button>
+      <motion.button className="intro-button flavor-btn" onClick={() => onNext("flavor")}>
+        🍜 Flavor Mode
       </motion.button>
     </div>
   </motion.div>

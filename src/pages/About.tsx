@@ -25,21 +25,21 @@ const About = () => {
           <h2>👨‍💻 Creator</h2>
           <p><strong>Hey, I'm Atakan Karacali!</strong></p>
           <p>
-            I'm a senior frontend developer based in Europe building fun AI-powered web tools.
-            This project is a weekend passion project to bring you laughs, motivation,
-            or brutal truths, all with memes 🤖✨
+            I'm a senior frontend developer based in Europe building fun, creative tools powered by AI.
+            This is a passion project — crafted to turn your thoughts into <strong>funny</strong>, <strong>relatable</strong>, 
+            or downright <strong>chaotic memes</strong> in seconds.
           </p>
           <p>
-            Want to collaborate or say hi? <br />
+            Want to collaborate or just say hi? <br />
             Portfolio: <a href="https://atakankaracali.com" target="_blank" rel="noopener noreferrer">atakankaracali.com</a>
           </p>
           <p>
             GitHub: <a href="https://github.com/atakankaracali" target="_blank" rel="noopener noreferrer">github.com/atakankaracali</a>
           </p>
           <p>
-            Linkedin: <a href="https://linkedin.com/in/atakankaracali" target="_blank" rel="noopener noreferrer">in/atakankaracali</a>
+            LinkedIn: <a href="https://linkedin.com/in/atakankaracali" target="_blank" rel="noopener noreferrer">in/atakankaracali</a>
           </p>
-          <p style={{ fontStyle: 'italic' }}>Thanks for stopping by! 😊</p>
+          <p style={{ fontStyle: 'italic' }}>Thanks for stopping by — and go make some memes! 😎</p>
         </motion.div>
 
         <motion.div
@@ -50,13 +50,23 @@ const About = () => {
         >
           <h3>About AI Meme Generator</h3>
           <p>
-            AI Meme Generator is a free online tool created by Atakan Karacali — a frontend developer passionate about AI and creative web tools.
-            This platform helps users easily create <strong>funny memes</strong>, <strong>motivational AI memes</strong>,
-            or even <strong>brutal roast memes</strong> using artificial intelligence.
+            <strong>AI Meme Generator</strong> is a free meme creation platform powered by OpenAI and built with love by Atakan Karacali. 
+            Whether you're looking to laugh, vent, motivate yourself, or just enjoy some weird internet vibes — this tool's got you.
           </p>
           <p>
-            Whether you're a meme lover, a social media content creator, or just here for fun,
-            our <strong>AI-powered meme generator</strong> delivers quick and entertaining results without any sign-up.
+            Choose from 6 unique meme modes:
+            <ul>
+              <li><strong>Classic:</strong> Based on your mood and struggles — relatable and funny.</li>
+              <li><strong>Roast Me:</strong> Savage, sarcastic, and spicy internet roast vibes with random “flavors.”</li>
+              <li><strong>Manifest:</strong> Startup-style motivational meme captions — inspiring but honest.</li>
+              <li><strong>Surprise:</strong> Wild, chaotic, unexpected — you never know what you will get.</li>
+              <li><strong>Fortune:</strong> Daily fortune-cookie wisdom, AI-style. Cryptic and cute.</li>
+              <li><strong>Flavor:</strong> Pick your flavor like “Tumblr wisdom” or “Dark Reddit” and let the AI riff on it.</li>
+            </ul>
+          </p>
+          <p>
+            There is no sign-up, no payment — just pure, weird, viral meme energy. 
+            <strong>Generate, copy, react with emojis, and share!</strong>
           </p>
         </motion.div>
       </div>
