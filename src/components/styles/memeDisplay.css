@@ -111,7 +111,10 @@
 }
 
 .emoji-button.selected {
-  transform: scale(1.5);
+  transform: scale(1.6);
+  background: radial-gradient(circle, rgba(255,255,255,0.3), rgba(255,255,255,0.1));
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
 }
 
 @media (max-width: 600px) {

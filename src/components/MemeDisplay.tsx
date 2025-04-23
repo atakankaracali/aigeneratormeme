@@ -86,14 +86,17 @@ const MemeDisplay = ({ meme }: MemeDisplayProps) => {
               const isSelected = selectedEmoji === emoji;
 
               return (
-                <button
+                <motion.button
                   key={emoji}
                   className={`emoji-button ${isSelected ? "selected" : ""}`}
                   onClick={() => handleEmojiClick(emoji)}
                   disabled={!!selectedEmoji}
+                  whileTap={{ scale: 1.8 }}
+                  animate={isSelected ? { scale: [1, 1.4, 1.2], rotate: [0, 10, -10, 0] } : {}}
+                  transition={{ duration: 0.6 }}
                 >
                   {emoji}
-                </button>
+                </motion.button>
               );
             })}
           </div>
