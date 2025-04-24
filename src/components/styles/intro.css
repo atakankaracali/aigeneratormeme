@@ -88,7 +88,7 @@
 }
 
 .group-heading {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: #8e2de2;
   margin-bottom: 0.3rem;
@@ -97,7 +97,7 @@
 }
 
 .group-subtext {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #8e2de2;
   margin-bottom: 0.8rem;
   max-width: 90%;
@@ -121,11 +121,11 @@
   }
 
   .group-heading {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
   .group-subtext {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 }
 
