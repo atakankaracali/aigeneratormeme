@@ -5,4 +5,5 @@ Sitemap: https://www.aigeneratememe.com/sitemap.xml
 Host: https://www.aigeneratememe.com
 
 # Allow all bots to crawl everything
+# Sitemap includes /stats (meme count, emoji leaderboard, mode popularity)
 # Made with ❤️ by https://atakankaracali.com

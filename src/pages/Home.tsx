@@ -8,17 +8,6 @@ import QuestionMark from '../components/QuestionMark';
 const Home = () => {
   const navigate = useNavigate();
   const [memeCount, setMemeCount] = useState<number | null>(null);
-  const [emojiStats, setEmojiStats] = useState<Record<string, number> | null>(null);
-
-  useEffect(() => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/emoji-leaderboard`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.totals) setEmojiStats(data.totals);
-      })
-      .catch(() => setEmojiStats(null));
-  }, []);
-
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/api/meme-count`)
@@ -51,24 +40,15 @@ const Home = () => {
 
         <div className="home-card">
           <h1 className="home-title">
-            <strong>AI Meme Generator</strong> - Instantly Create Funny, Roasty, Motivational Memes
+            <strong>AI Meme Generator</strong> - Instantly Create Funny, Roasty, Flavor, Motivational Memes Using AI
           </h1>
           <p className="home-subtitle">
-            Instantly generate funny, roasty, or motivational memes using AI. No login, no cost - just laughs.
+            Instantly generate funny, roasty, flavor or motivational memes using AI. No login, no cost, no ads; just laughs.
           </p>
 
           {memeCount !== null && (
             <p className="meme-count-text">
               🎉 <strong>{memeCount.toLocaleString()}</strong> memes generated so far!
-            </p>
-          )}
-          {emojiStats && (
-            <p className="emoji-leaderboard-text">
-              <strong>Top Emoji Reactions This Week:</strong>{' '}
-              {['😂', '😐', '😮', '😢', '🔥']
-                .filter((emoji) => emojiStats[emoji])
-                .map((emoji) => `${emoji}: ${emojiStats[emoji]}`)
-                .join('  ')}
             </p>
           )}
 

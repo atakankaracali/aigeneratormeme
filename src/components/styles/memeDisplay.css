@@ -79,7 +79,7 @@
 .emoji-reaction-container {
   margin-top: 1.5rem;
   text-align: center;
-  color: white;
+  color: #4a00e0;
 }
 
 .emoji-list {
@@ -170,6 +170,6 @@
 
 .meme-export-only {
   padding: 2rem;
-  background-color: white;
+  background-color: #4a00e0;
   border-radius: 1rem;
 }

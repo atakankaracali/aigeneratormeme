@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Intro from '../components/Intro';
 import Question from '../components/Question';
@@ -17,8 +18,9 @@ function hasInjection(text: string) {
 
 const MemeApp = () => {
   useCanonical();
+  const navigate = useNavigate();
   const [step, setStep] = useState(0);
-  const [mode, setMode] = useState<"classic" | "roast" | "manifest" | "surprise" | "fortune" | "flavor" |  null>(null);
+  const [mode, setMode] = useState<"classic" | "roast" | "manifest" | "surprise" | "fortune" | "flavor" | null>(null);
   const [feeling, setFeeling] = useState('');
   const [problem, setProblem] = useState('');
   const [lastEnjoyed, setLastEnjoyed] = useState('');
@@ -180,20 +182,32 @@ const MemeApp = () => {
         {meme && (
           <>
             <MemeDisplay meme={meme} />
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={restart}
-              className="restart-button"
-            >
-              🔄 Create Another Meme
-            </motion.button>
+            <div className="meme-actions">
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={restart}
+                className="restart-button"
+              >
+                🔄 Create Another Meme
+              </motion.button>
+
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => navigate('/')}
+                className="home-button"
+              >
+                🏠 Go to Home Page
+              </motion.button>
+            </div>
           </>
         )}
 
+
         {error && <p className="text-red-500 mt-4">{error}</p>}
       </div>
-    </div>
+    </div >
   );
 };
 
