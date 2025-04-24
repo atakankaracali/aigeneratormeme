@@ -28,8 +28,14 @@ export const downloadStoryImage = async (targetRef: React.RefObject<HTMLElement>
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, storyWidth, storyHeight);
 
+    function supportsWebP() {
+      return document.createElement('canvas').toDataURL('image/webp').indexOf('data:image/webp') === 0;
+    }
+
     const robotImage = new Image();
-    robotImage.src = "/assets/funny-robot.png";
+    robotImage.src = supportsWebP()
+      ? "/assets/funny-robot.webp"
+      : "/assets/funny-robot.png";
     robotImage.onload = () => {
       const logoWidth = 220;
       const logoHeight = 220;

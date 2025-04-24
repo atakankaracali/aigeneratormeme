@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import './styles/header.css';
-import logo from '/icon-256.png';
+import logo from '/icons/icon-96x96.png';
 import { useState, useEffect } from 'react';
 
 const Header = () => {
