@@ -8,9 +8,10 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 import '../styles/stats.css';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
 const Stats = () => {
     const navigate = useNavigate();
@@ -49,6 +50,18 @@ const Stats = () => {
 
     const chartOptions = {
         plugins: {
+            datalabels: {
+                color: '#fff',
+                font: {
+                    weight: 600,
+                    size: 14,
+                },
+                formatter: (value: number, context: any) => {
+                    const percentage = ((value / total) * 100).toFixed(1);
+                    const label = context.chart.data.labels[context.dataIndex];
+                    return `${label}\n${percentage}%`;
+                },
+            },
             tooltip: {
                 callbacks: {
                     label: (context: any) => {
