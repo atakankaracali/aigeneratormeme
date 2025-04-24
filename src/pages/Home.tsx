@@ -67,7 +67,7 @@ const Home = () => {
           <p>
             Looking for the best <strong> AI meme generator</strong> in 2025? Our platform lets you create
             <strong> funny memes</strong>, <strong> motivational memes</strong>,
-            <strong> roast me memes</strong>, <strong> daily fortunes</strong>, and even 
+            <strong> roast me memes</strong>, <strong> daily fortunes</strong>, and even
             <strong> flavor-inspired meme captions</strong> — all instantly, using cutting-edge artificial intelligence.
             No login, no cost — just laughs, vibes, and unexpected brilliance.
           </p>

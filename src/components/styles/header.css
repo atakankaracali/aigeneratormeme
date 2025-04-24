@@ -68,9 +68,11 @@
 .rotate-top {
   transform: rotate(45deg) translateY(8px);
 }
+
 .fade-out {
   opacity: 0;
 }
+
 .rotate-bottom {
   transform: rotate(-45deg) translateY(-8px);
 }

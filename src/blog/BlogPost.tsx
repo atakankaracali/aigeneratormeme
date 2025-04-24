@@ -79,7 +79,7 @@ const BlogPost = () => {
         document.head.removeChild(script);
       };
     }
-    return () => {};
+    return () => { };
   }, [title, slug, date]);
 
   return (

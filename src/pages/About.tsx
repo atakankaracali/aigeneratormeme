@@ -26,7 +26,7 @@ const About = () => {
           <p><strong> Hey, I'm Atakan Karacali!</strong></p>
           <p>
             I'm a senior frontend developer based in Europe building fun, creative tools powered by AI.
-            This is a passion project — crafted to turn your thoughts into <strong>funny</strong>, <strong>relatable</strong>, 
+            This is a passion project — crafted to turn your thoughts into <strong>funny</strong>, <strong>relatable</strong>,
             or downright <strong> chaotic memes</strong> in seconds.
           </p>
           <p>
@@ -50,7 +50,7 @@ const About = () => {
         >
           <h3>About AI Meme Generator</h3>
           <p>
-            <strong> AI Meme Generator</strong> is a free meme creation platform powered by OpenAI and built with love by Atakan Karacali. 
+            <strong> AI Meme Generator</strong> is a free meme creation platform powered by OpenAI and built with love by Atakan Karacali.
             Whether you're looking to laugh, vent, motivate yourself, or just enjoy some weird internet vibes — this tool's got you.
           </p>
           <p>
@@ -65,7 +65,7 @@ const About = () => {
             </ul>
           </p>
           <p>
-            There is no sign-up, no payment — just pure, weird, viral meme energy. 
+            There is no sign-up, no payment — just pure, weird, viral meme energy.
             <strong> Generate, copy, react with emojis, and share!</strong>
           </p>
         </motion.div>

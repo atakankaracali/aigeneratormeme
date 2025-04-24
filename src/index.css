@@ -10,9 +10,19 @@ body {
   width: 100%;
   overflow-x: hidden;
 }
+
 @keyframes gradientXY {
-  0%, 100% { background-size: 200% 200%; background-position: left bottom; }
-  50% { background-size: 200% 200%; background-position: right top; }
+
+  0%,
+  100% {
+    background-size: 200% 200%;
+    background-position: left bottom;
+  }
+
+  50% {
+    background-size: 200% 200%;
+    background-position: right top;
+  }
 }
 
 .animate-gradient-xy {

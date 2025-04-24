@@ -31,7 +31,7 @@ const HowToPlay = () => {
           <span className="step-number">1️⃣</span>
           <h3>Choose Your Meme Mode</h3>
           <p>
-            Pick from 6 unique styles: <strong>Classic</strong>, <strong>Roast Me</strong>, <strong>Manifest</strong>, 
+            Pick from 6 unique styles: <strong>Classic</strong>, <strong>Roast Me</strong>, <strong>Manifest</strong>,
             <strong> Surprise</strong>, <strong>Fortune</strong>, or <strong>Flavor</strong>. Each mode brings a fresh twist!
           </p>
         </motion.div>
@@ -67,12 +67,12 @@ const HowToPlay = () => {
       <div className="seo-howto-block">
         <h2>What Makes Each Mode Special with AI Meme?</h2>
         <p>
-            Looking for the best <strong> I meme generator</strong> in 2025? Our platform lets you create
-            <strong> funny memes</strong>, <strong> motivational memes</strong>,
-            <strong> roast me memes</strong>, <strong> daily fortunes</strong>, and even 
-            <strong> flavor-inspired meme captions</strong> - all instantly, using cutting-edge artificial intelligence.
-            No login, no cost — just laughs, vibes, and unexpected brilliance.
-          </p>
+          Looking for the best <strong> I meme generator</strong> in 2025? Our platform lets you create
+          <strong> funny memes</strong>, <strong> motivational memes</strong>,
+          <strong> roast me memes</strong>, <strong> daily fortunes</strong>, and even
+          <strong> flavor-inspired meme captions</strong> - all instantly, using cutting-edge artificial intelligence.
+          No login, no cost — just laughs, vibes, and unexpected brilliance.
+        </p>
         <ul>
           <li><strong> 🎨 Classic:</strong> Based on your feelings and problems; funny, relatable, witty.</li>
           <li><strong> 🥩 Roast Me:</strong> Savage, sarcastic, Twitter-style roast memes with random “flavor.”</li>
