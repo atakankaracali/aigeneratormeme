@@ -4,16 +4,16 @@
     margin: auto;
     color: #8e2de2;
     text-align: center;
-  }
-  
-  .stats-container h1 {
+}
+
+.stats-container h1 {
     font-size: 2.2rem;
     font-weight: 700;
     margin-bottom: 2rem;
     color: #4a00e0;
-  }
-  
-  .stat-card {
+}
+
+.stat-card {
     background: rgba(255, 255, 255, 0.12);
     border-radius: 1rem;
     padding: 1.5rem;
@@ -21,25 +21,54 @@
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     text-align: center;
     margin-bottom: 1.5rem;
-  }
-  
-  .stat-card h2 {
+}
+
+.stat-card h2 {
     font-size: 1.2rem;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     color: #8e2de2;
-  }
-  
-  .stat-card p, .stat-card ul, .stat-card li {
+}
+
+.stat-card p,
+.stat-card ul,
+.stat-card li {
     font-size: 0.95rem;
     opacity: 0.9;
     color: #1f1f1f;
     list-style: none;
     padding: 0;
     margin: 0.25rem 0;
-  }
-  
-  .chart-wrapper {
+}
+
+.chart-wrapper {
     max-width: 300px;
     margin: 0 auto;
-  }  
+}
+
+.stats-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.stats-buttons .home-button,
+.stats-buttons .meme-button {
+    background: linear-gradient(135deg, #8e2de2, #4a00e0);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.stats-buttons .home-button:hover,
+.stats-buttons .meme-button:hover {
+    transform: scale(1.05);
+}

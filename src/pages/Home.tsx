@@ -56,7 +56,7 @@ const Home = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => navigate('/meme')}
-            className="home-button"
+            className="start-button"
           >
             🚀 Try It Now
           </motion.button>

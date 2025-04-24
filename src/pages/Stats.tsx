@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Pie } from 'react-chartjs-2';
 import {
@@ -12,6 +13,7 @@ import '../styles/stats.css';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Stats = () => {
+  const navigate = useNavigate();
   const [memeCount, setMemeCount] = useState<number>(0);
   const [emojiStats, setEmojiStats] = useState<Record<string, number>>({});
   const [modeStats, setModeStats] = useState<Record<string, number>>({});
@@ -64,6 +66,26 @@ const Stats = () => {
           <Pie data={chartData} />
         </div>
       </motion.div>
+
+      <div className="stats-buttons">
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="home-button"
+          onClick={() => navigate('/')}
+        >
+          🏠 Go to Home
+        </motion.button>
+
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="meme-button"
+          onClick={() => navigate('/meme')}
+        >
+          🚀 Try Meme Generator
+        </motion.button>
+      </div>
     </div>
   );
 };
