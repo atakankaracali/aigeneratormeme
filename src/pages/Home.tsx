@@ -29,15 +29,17 @@ const Home = () => {
         exit={{ opacity: 0, y: -30 }}
         transition={{ duration: 0.5 }}
       >
-        <picture>
+        <picture onClick={() => navigate('/meme')} style={{ cursor: 'pointer' }}>
           <source srcSet="/assets/funny-robot.webp" type="image/webp" />
           <motion.img
             src="/assets/funny-robot.png"
-            alt="Funny Robot Image for AI Meme Generator, best free Meme Generator in 2025"
+            alt="Funny Robot Image for AI Meme Generator, best free Meme Generator in 2025, Meme maker with AI."
             className="funny-robot"
             initial={{ scale: 0.8, rotate: -5, opacity: 0 }}
             animate={{ scale: 1, rotate: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           />
         </picture>
 
