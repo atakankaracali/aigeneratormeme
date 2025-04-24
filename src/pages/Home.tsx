@@ -40,7 +40,7 @@ const Home = () => {
 
         <div className="home-card">
           <h1 className="home-title">
-            <strong>AI Meme Generator</strong> - Instantly Create Funny, Roasty, Flavor, Motivational Memes Using AI
+            <strong>AI Meme Generator</strong> - Instantly Create Funny, Roasty, Flavor Memes Using AI
           </h1>
           <p className="home-subtitle">
             Instantly generate funny, roasty, flavor or motivational memes using AI. No login, no cost, no ads; just laughs.
