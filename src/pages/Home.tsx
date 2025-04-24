@@ -43,10 +43,10 @@ const Home = () => {
 
         <div className="home-card">
           <h1 className="home-title">
-            <strong>AI Meme Generator</strong> - Instantly Create Funny, Roasty, Flavor Memes Using AI
+            <strong>AI Meme Generator</strong> 2025, Instantly Create Funny, Roasty, Flavor Memes Making Using AI
           </h1>
           <p className="home-subtitle">
-            Instantly generate funny, roasty, flavor or motivational memes using AI. No login, no cost, no ads; just laughs.
+            Instantly generate funny, roasty, flavor or motivational memes using AI. No login, no cost, no ads; just laughs. Meme maker with AI. Let's Try now!
           </p>
 
           {memeCount !== null && (
@@ -70,7 +70,7 @@ const Home = () => {
           <p>
             <strong>AI Meme Generator 2025</strong>, your ultimate <strong>free meme maker</strong> powered by artificial intelligence.
             Instantly create <strong>funny</strong>, <strong>motivational</strong>, or <strong>roast-style memes</strong> with just one click.
-            No sign-up, no watermark, no hassle — just fast, viral memes for every vibe.
+            No sign-up, no watermark, no hassle; just fast, viral memes for every vibe.
           </p>
           <p>
             Our AI understands humor and emotion, allowing you to create everything from <strong>chaotic Tumblr quotes</strong>
@@ -80,7 +80,7 @@ const Home = () => {
           <p>
             Join thousands who use our <strong>AI-powered meme generator</strong> to express themselves, make friends laugh, or
             just brighten their feed. Try popular modes like <em>Roast</em>, <em>Surprise</em>, <em>Manifest</em>, and the
-            exclusive <em>Flavor</em> mode — a whole new way to vibe online.
+            exclusive <em>Flavor</em> mode, a whole new way to vibe online.
           </p>
         </div>
       </motion.div>
