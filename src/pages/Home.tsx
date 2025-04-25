@@ -29,6 +29,39 @@ const Home = () => {
         exit={{ opacity: 0, y: -30 }}
         transition={{ duration: 0.5 }}
       >
+        <div className="home-card" style={{ marginTop: '50px' }}>
+          <h1 className="home-title">
+            <strong>AI Meme Generator</strong> 2025 - Free Create Funny, Roasty, Flavor Memes Instantly!
+          </h1>
+          <p className="home-subtitle">
+            Instantly generate funny, roasty, flavor or motivational memes using AI. No login, no cost, no ads; just laughs. Let's vibe! 🎉
+          </p>
+
+          {memeCount !== null && (
+            <p className="meme-count-text">
+              🎉 <strong>{memeCount.toLocaleString()}</strong> memes generated so far!
+            </p>
+          )}
+
+          <motion.button
+            whileHover={{ scale: 1.1, backgroundColor: "#7e22ce" }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => navigate('/meme')}
+            className="start-button"
+            style={{
+              marginTop: '20px',
+              fontSize: '20px',
+              padding: '14px 28px',
+              backgroundColor: '#9333ea',
+              color: '#fff',
+              fontWeight: 'bold',
+              borderRadius: '999px',
+              transition: 'background-color 0.3s ease'
+            }}
+          >
+            🚀 Generate Your Meme Now
+          </motion.button>
+        </div>
 
         <div style={{ textAlign: 'center', marginTop: '30px' }}>
           <motion.div
@@ -69,7 +102,15 @@ const Home = () => {
               textAlign: 'center',
               padding: '0 20px'
             }}>
-              👇 Tap the Robot to Instantly Get a Meme That Matches Your Mood; Funny, Roasty, or Totally Random. 
+              👇 Tap the Robot to Instantly Get a Meme That Matches Your Mood; Funny, Roasty, or Totally Random.
+            </p>
+            <p style={{
+              fontSize: '23px',
+              fontWeight: 650,
+              color: '#7e22ce',
+              textAlign: 'center',
+              padding: '0 20px'
+            }}>
               Try it for free now.
             </p>
             <p style={{
@@ -82,40 +123,6 @@ const Home = () => {
               No login, no ads, no waiting, just pure meme magic.
             </p>
           </motion.div>
-        </div>
-
-        <div className="home-card" style={{ marginTop: '50px' }}>
-          <h1 className="home-title">
-            <strong>AI Meme Generator</strong> 2025 - Free Create Funny, Roasty, Flavor Memes Instantly!
-          </h1>
-          <p className="home-subtitle">
-            Instantly generate funny, roasty, flavor or motivational memes using AI. No login, no cost, no ads; just laughs. Let's vibe! 🎉
-          </p>
-
-          {memeCount !== null && (
-            <p className="meme-count-text">
-              🎉 <strong>{memeCount.toLocaleString()}</strong> memes generated so far!
-            </p>
-          )}
-
-          <motion.button
-            whileHover={{ scale: 1.1, backgroundColor: "#7e22ce" }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => navigate('/meme')}
-            className="start-button"
-            style={{
-              marginTop: '20px',
-              fontSize: '20px',
-              padding: '14px 28px',
-              backgroundColor: '#9333ea',
-              color: '#fff',
-              fontWeight: 'bold',
-              borderRadius: '999px',
-              transition: 'background-color 0.3s ease'
-            }}
-          >
-            🚀 Generate Your Meme Now
-          </motion.button>
         </div>
 
         <div className="seo-content-block">
