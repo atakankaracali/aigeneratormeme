@@ -17,7 +17,13 @@ const Intro = ({ onNext }: IntroProps) => (
   >
     <h2 className="intro-title" aria-label="AI Meme Generator animated title">
       <Typewriter
-        words={['😂 AI Meme Generator', '🔥 Meme Your Life', '🚀 Boost Your Mood!']}
+        words={[
+          '😂 AI Meme Generator',
+          '🔥 Roast Yourself with AI',
+          '💫 Get a Fortune Meme',
+          '😎 Meme Your Mood',
+          '🚀 Boost Your Vibe Instantly'
+        ]}
         loop={0}
         cursor
         cursorStyle="|"
@@ -27,24 +33,62 @@ const Intro = ({ onNext }: IntroProps) => (
     </h2>
 
     <div className="button-group-section">
-      <h3 className="group-heading">🎯 Choose Your Meme Style</h3>
-      <p className="group-subtext">Pick your vibe and we will meme it up!</p>
-      <motion.button className="intro-button classic-btn" onClick={() => onNext("classic")}>
+      <h3 className="group-heading">🎯 Pick Your Meme Style Below</h3>
+      <p className="group-subtext">
+        No login, no stress; just one click to unleash a meme made just for your mood. 🧠💥
+      </p>
+
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="intro-button classic-btn"
+        onClick={() => onNext("classic")}
+      >
         🎨 Classic Mode
       </motion.button>
-      <motion.button className="intro-button roast-btn" onClick={() => onNext("roast")}>
+
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="intro-button roast-btn"
+        onClick={() => onNext("roast")}
+      >
         🥩 Roast Me Mode
       </motion.button>
-      <motion.button className="intro-button hr-btn" onClick={() => onNext("manifest")}>
+
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="intro-button hr-btn"
+        onClick={() => onNext("manifest")}
+      >
         🕶 Manifest Mode
       </motion.button>
-      <motion.button className="intro-button surprise-btn" onClick={() => onNext("surprise")}>
+
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="intro-button surprise-btn"
+        onClick={() => onNext("surprise")}
+      >
         🎲 Surprise Me!
       </motion.button>
-      <motion.button className="intro-button fortune-btn" onClick={() => onNext("fortune")}>
+
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="intro-button fortune-btn"
+        onClick={() => onNext("fortune")}
+      >
         🔮 Daily Fortune
       </motion.button>
-      <motion.button className="intro-button flavor-btn" onClick={() => onNext("flavor")}>
+
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="intro-button flavor-btn"
+        onClick={() => onNext("flavor")}
+      >
         🍜 Flavor Mode
       </motion.button>
     </div>
