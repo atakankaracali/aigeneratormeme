@@ -58,16 +58,16 @@ const Home = () => {
               textAlign: 'center',
               padding: '0 20px'
             }}>
-              👇 Tap the Robot to Instantly Create Your Own AI Meme! Free and No Ads.
+              👇 Tap the Robot to Instantly Create Your Own AI Meme! Try to free.
             </p>
             <p style={{
               fontSize: '16px',
               fontWeight: 400,
-              color: '#444',
+              color: '#7e22ce',
               textAlign: 'center',
               marginTop: '6px'
             }}>
-              No login, no ads, no waiting — just pure meme magic.
+              No login, no ads, no waiting, just pure meme magic.
             </p>
           </motion.div>
         </div>
