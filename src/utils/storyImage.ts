@@ -9,6 +9,12 @@ export const downloadStoryImage = async (targetRef: React.RefObject<HTMLElement>
       cacheBust: true,
       backgroundColor: "transparent",
       pixelRatio: 2,
+      filter: (node) => {
+        if (node.tagName === "LINK" && node.getAttribute('href')?.includes('fonts.googleapis.com')) {
+          return false;
+        }
+        return true;
+      },
     });
 
     const storyWidth = 1080;
@@ -33,15 +39,16 @@ export const downloadStoryImage = async (targetRef: React.RefObject<HTMLElement>
     }
 
     const robotImage = new Image();
+    robotImage.crossOrigin = "anonymous";
     robotImage.src = supportsWebP()
       ? "/assets/funny-robot.webp"
       : "/assets/funny-robot.png";
     robotImage.onload = () => {
-      const logoWidth = 220;
-      const logoHeight = 220;
+      const logoWidth = 230;
+      const logoHeight = 230;
       const logoX = (storyWidth - logoWidth) / 2;
       const logoY = 80;
-      
+
       ctx.drawImage(robotImage, logoX, logoY, logoWidth, logoHeight);
       
       const safeTop = 250;

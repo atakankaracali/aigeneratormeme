@@ -9,6 +9,12 @@ export const downloadMemePng = async (targetRef: React.RefObject<HTMLElement>) =
       cacheBust: true,
       backgroundColor: "transparent",
       pixelRatio: 2,
+      filter: (node) => {
+        if (node.tagName === "LINK" && node.getAttribute('href')?.includes('fonts.googleapis.com')) {
+          return false;
+        }
+        return true;
+      },
     });
 
     const width = 1080;
@@ -29,14 +35,20 @@ export const downloadMemePng = async (targetRef: React.RefObject<HTMLElement>) =
     function supportsWebP() {
       return document.createElement('canvas').toDataURL('image/webp').indexOf('data:image/webp') === 0;
     }
-    
+
     const robotImage = new Image();
+    robotImage.crossOrigin = "anonymous";
     robotImage.src = supportsWebP()
       ? "/assets/funny-robot.webp"
       : "/assets/funny-robot.png";
 
     robotImage.onload = () => {
-      ctx.drawImage(robotImage, width - 190, 40, 140, 140);
+      const logoWidth = 230;
+      const logoHeight = 230;
+      const logoX = (width - logoWidth) / 2;
+      const logoY = 80;
+
+      ctx.drawImage(robotImage, logoX, logoY, logoWidth, logoHeight);
 
       const safeTop = 100;
       const safeBottom = 180;
