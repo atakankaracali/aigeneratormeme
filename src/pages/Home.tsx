@@ -31,20 +31,31 @@ const Home = () => {
       >
 
         <div style={{ textAlign: 'center', marginTop: '30px' }}>
-          <picture onClick={() => navigate('/meme')} style={{ cursor: 'pointer', position: 'relative', display: 'inline-block' }}>
-            <source srcSet="/assets/funny-robot.webp" type="image/webp" />
-            <motion.img
-              src="/assets/funny-robot.png"
-              alt="Funny Robot Image for AI Meme Generator"
-              className="funny-robot"
-              initial={{ scale: 0.8, rotate: -5, opacity: 0 }}
-              animate={{ scale: 1, rotate: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            />
-          </picture>
-
+          <motion.div
+            animate={{
+              scale: [1, 1.03, 1],
+              rotate: [0, 2, -2, 0],
+            }}
+            transition={{
+              repeat: Infinity,
+              duration: 2,
+              ease: "easeInOut",
+            }}
+          >
+            <picture onClick={() => navigate('/meme')} style={{ cursor: 'pointer', position: 'relative', display: 'inline-block' }}>
+              <source srcSet="/assets/funny-robot.webp" type="image/webp" />
+              <motion.img
+                src="/assets/funny-robot.png"
+                alt="Funny Robot Image for AI Meme Generator"
+                className="funny-robot"
+                initial={{ scale: 0.8, rotate: -5, opacity: 0 }}
+                animate={{ scale: 1, rotate: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              />
+            </picture>
+          </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -52,17 +63,17 @@ const Home = () => {
             style={{ marginTop: '18px' }}
           >
             <p style={{
-              fontSize: '20px',
-              fontWeight: 600,
+              fontSize: '21px',
+              fontWeight: 650,
               color: '#7e22ce',
               textAlign: 'center',
               padding: '0 20px'
             }}>
-              👇 Tap the Robot to Instantly Create Your Own AI Meme! Try it for free now.
+              👇 Tap the Robot to Instantly Get a Meme That Matches Your Mood; Funny, Roasty, or Totally Random. Try it for free now.
             </p>
             <p style={{
-              fontSize: '16px',
-              fontWeight: 400,
+              fontSize: '17px',
+              fontWeight: 450,
               color: '#7e22ce',
               textAlign: 'center',
               marginTop: '6px'
@@ -87,11 +98,20 @@ const Home = () => {
           )}
 
           <motion.button
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.1, backgroundColor: "#7e22ce" }}
             whileTap={{ scale: 0.95 }}
             onClick={() => navigate('/meme')}
             className="start-button"
-            style={{ marginTop: '20px', fontSize: '20px', padding: '14px 28px', backgroundColor: '#9333ea', color: '#fff', fontWeight: 'bold', borderRadius: '999px' }}
+            style={{
+              marginTop: '20px',
+              fontSize: '20px',
+              padding: '14px 28px',
+              backgroundColor: '#9333ea',
+              color: '#fff',
+              fontWeight: 'bold',
+              borderRadius: '999px',
+              transition: 'background-color 0.3s ease'
+            }}
           >
             🚀 Generate Your Meme Now
           </motion.button>
