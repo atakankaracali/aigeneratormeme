@@ -31,7 +31,7 @@ const Home = () => {
       >
         <div className="home-card" style={{ marginTop: '50px' }}>
           <h1 className="home-title">
-            <strong>AI Meme Generator</strong> 2025 - Free Create Funny, Roasty, Flavor Memes Instantly!
+            <strong>AI Meme Generator</strong> 2025 - Create Free Funny, Roasty, Flavor Memes Instantly!
           </h1>
           <p className="home-subtitle">
             Instantly generate funny, roasty, flavor or motivational memes using AI. No login, no cost, no ads; just laughs. Let's vibe! 🎉
