@@ -58,7 +58,7 @@ const Home = () => {
               textAlign: 'center',
               padding: '0 20px'
             }}>
-              👇 Tap the Robot to Instantly Create Your Own AI Meme! Try to free.
+              👇 Tap the Robot to Instantly Create Your Own AI Meme! Try it for free now.
             </p>
             <p style={{
               fontSize: '16px',
