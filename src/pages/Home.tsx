@@ -69,7 +69,8 @@ const Home = () => {
               textAlign: 'center',
               padding: '0 20px'
             }}>
-              👇 Tap the Robot to Instantly Get a Meme That Matches Your Mood; Funny, Roasty, or Totally Random. Try it for free now.
+              👇 Tap the Robot to Instantly Get a Meme That Matches Your Mood; Funny, Roasty, or Totally Random. 
+              Try it for free now.
             </p>
             <p style={{
               fontSize: '17px',
