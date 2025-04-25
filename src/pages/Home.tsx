@@ -29,26 +29,56 @@ const Home = () => {
         exit={{ opacity: 0, y: -30 }}
         transition={{ duration: 0.5 }}
       >
-        <picture onClick={() => navigate('/meme')} style={{ cursor: 'pointer' }}>
-          <source srcSet="/assets/funny-robot.webp" type="image/webp" />
-          <motion.img
-            src="/assets/funny-robot.png"
-            alt="Funny Robot Image for AI Meme Generator, best free Meme Generator in 2025, Meme maker with AI."
-            className="funny-robot"
-            initial={{ scale: 0.8, rotate: -5, opacity: 0 }}
-            animate={{ scale: 1, rotate: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          />
-        </picture>
 
-        <div className="home-card">
+        <motion.div
+          className="example-meme"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          style={{ marginBottom: '20px', textAlign: 'center' }}
+        >
+          <p style={{ fontSize: '18px', marginBottom: '10px' }}>🚀 Just Generated Meme Example:</p>
+          <img 
+            src="/assets/sample-meme.png" 
+            alt="Example Meme" 
+            style={{ width: '250px', borderRadius: '12px', boxShadow: '0 4px 8px rgba(0,0,0,0.2)', cursor: 'pointer' }} 
+            onClick={() => navigate('/meme')}
+          />
+        </motion.div>
+
+        <div style={{ textAlign: 'center', marginTop: '10px' }}>
+          <picture onClick={() => navigate('/meme')} style={{ cursor: 'pointer', position: 'relative', display: 'inline-block' }}>
+            <source srcSet="/assets/funny-robot.webp" type="image/webp" />
+            <motion.img
+              src="/assets/funny-robot.png"
+              alt="Funny Robot Image for AI Meme Generator, best free Meme Generator in 2025, Meme maker with AI."
+              className="funny-robot"
+              initial={{ scale: 0.8, rotate: -5, opacity: 0 }}
+              animate={{ scale: 1, rotate: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            />
+            <span style={{
+              position: 'absolute', 
+              bottom: '-20px', 
+              width: '100%', 
+              textAlign: 'center', 
+              fontSize: '16px', 
+              color: '#6b21a8', 
+              fontWeight: '600'
+            }}>
+              👉 Tap the Robot to Create Your Meme!
+            </span>
+          </picture>
+        </div>
+
+        <div className="home-card" style={{ marginTop: '50px' }}>
           <h1 className="home-title">
-            <strong>AI Meme Generator</strong> 2025, Instantly Create Funny, Roasty, Flavor Memes Making Using AI
+            <strong>AI Meme Generator</strong> 2025 - Create Funny, Roasty, Flavor Memes Instantly!
           </h1>
           <p className="home-subtitle">
-            Instantly generate funny, roasty, flavor or motivational memes using AI. No login, no cost, no ads; just laughs. Meme maker with AI. Let's Try now!
+            Instantly generate funny, roasty, flavor or motivational memes using AI. No login, no cost, no ads; just laughs. Let's vibe! 🎉
           </p>
 
           {memeCount !== null && (
@@ -62,8 +92,9 @@ const Home = () => {
             whileTap={{ scale: 0.95 }}
             onClick={() => navigate('/meme')}
             className="start-button"
+            style={{ marginTop: '20px', fontSize: '20px', padding: '14px 28px', backgroundColor: '#9333ea', color: '#fff', fontWeight: 'bold', borderRadius: '999px' }}
           >
-            🚀 Try It Now
+            🚀 Generate Your First Meme Now!
           </motion.button>
         </div>
 
@@ -86,8 +117,8 @@ const Home = () => {
           </p>
         </div>
       </motion.div>
-      <QuestionMark />
 
+      <QuestionMark />
       <Footer />
     </>
   );
