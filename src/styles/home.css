@@ -102,6 +102,10 @@
   filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.15));
 }
 
+.funny-robot:hover {
+  filter: drop-shadow(0 0 8px #9333ea);
+}
+
 .emoji-leaderboard-text {
   margin-top: 0.5rem;
   font-size: 1.1rem;
