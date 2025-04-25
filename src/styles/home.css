@@ -103,7 +103,7 @@
 }
 
 .funny-robot:hover {
-  filter: drop-shadow(0 0 8px #9333ea);
+  filter: drop-shadow(0 0 10px #9333ea);
 }
 
 .emoji-leaderboard-text {
