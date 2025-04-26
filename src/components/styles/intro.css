@@ -147,3 +147,25 @@
     font-size: 0.8rem;
   }
 }
+
+.challenge-btn {
+  background: linear-gradient(135deg, #ff6b6b, #f06595, #845ef7);
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+  color: #ffffff;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

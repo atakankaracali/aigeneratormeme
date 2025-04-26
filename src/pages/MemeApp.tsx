@@ -16,12 +16,26 @@ function hasInjection(text: string) {
   return forbiddenWords.some(word => lowerText.includes(word));
 }
 
+function getChallengeInfo() {
+  const days = [
+    { title: "Survive Monday (Again)", subtitle: "You survived worse. Probably. Maybe. Barely." },
+    { title: "Taco-less Tuesday", subtitle: "Pretend you’re thriving... without tacos." },
+    { title: "Midweek Crisis Club", subtitle: "You’re halfway dead. Congrats!" },
+    { title: "Almost Weekend, Almost Alive", subtitle: "Manifest weekend. Mentally, you’re already drunk." },
+    { title: "Friyay or Fry-day?", subtitle: "Work died. Soul revived. Party time?" },
+    { title: "Weekend Warrior Mode", subtitle: "Do something crazy. Like, go outside maybe." },
+    { title: "Sunday Scaries Speedrun", subtitle: "Try not to think about Monday. You just did." },
+  ];
+  const today = new Date().getDay();
+  return days[today] || { title: "Challenge Mode", subtitle: "Let's create something weird!" };
+}
+
 const MemeApp = () => {
   useCanonical();
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const location = useLocation();
   const [step, setStep] = useState(0);
-  const [mode, setMode] = useState<"classic" | "roast" | "manifest" | "surprise" | "fortune" | "flavor" | null>(null);
+  const [mode, setMode] = useState<"classic" | "roast" | "manifest" | "surprise" | "fortune" | "flavor" | "challenge" | null>(null);
   const [feeling, setFeeling] = useState('');
   const [problem, setProblem] = useState('');
   const [lastEnjoyed, setLastEnjoyed] = useState('');
@@ -67,7 +81,7 @@ const MemeApp = () => {
     setLoading(true);
     setError('');
 
-    const isFreeMode = ["roast", "surprise", "fortune", "flavor"].includes(mode || "");
+    const isFreeMode = ["roast", "surprise", "fortune", "flavor", "challenge"].includes(mode || "");
     const inputs = [feeling, problem, lastEnjoyed];
 
     if (!isFreeMode && inputs.some(field => field.length > 100)) {
@@ -144,18 +158,42 @@ const MemeApp = () => {
     setStep(1);
   };
 
-  const isFreeMode = ["roast", "surprise", "fortune", "flavor"].includes(mode!);
+  const isFreeMode = ["roast", "surprise", "fortune", "flavor", "challenge"].includes(mode!);
   const isManifestMode = mode === "manifest";
 
   const shouldShowGenerateScreen =
     (isFreeMode && step === 1 && !meme && !loading) ||
     (!isFreeMode && step === 4 && !meme && !loading);
 
+  const challengeInfo = getChallengeInfo();
+
   return (
     <div className="app-wrapper">
       <div className="app-card">
 
         {step === 0 && <Intro onNext={handleNextStep} />}
+
+        {step === 1 && mode === "challenge" && (
+          <>
+            <p className="text-title text-white mb-4">
+              🎯 Today’s Challenge: {challengeInfo.title}
+            </p>
+            <p className="text-white mb-6" style={{ fontSize: '18px' }}>
+              {challengeInfo.subtitle}
+            </p>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="meme-button"
+              onClick={() => {
+                generateMeme();
+                setStep(99);
+              }}
+            >
+              🚀 Start Today's Challenge
+            </motion.button>
+          </>
+        )}
 
         {step === 1 && !isFreeMode && (
           <Question
@@ -190,7 +228,7 @@ const MemeApp = () => {
           />
         )}
 
-        {shouldShowGenerateScreen && (
+        {shouldShowGenerateScreen && mode !== "challenge" && (
           <>
             <p className="text-title text-white mb-4">
               {mode === "roast" && "Brutally honest, AI-powered roast. Ready to cry or laugh?"}
@@ -209,11 +247,7 @@ const MemeApp = () => {
                 setStep(99);
               }}
             >
-              {mode === "roast" && '🥩 Roast Me'}
-              {mode === "surprise" && '🎲 Surprise Me'}
-              {mode === "fortune" && '🔮 Get Today’s Fortune'}
-              {mode === "flavor" && '🍜 Reveal Today’s Flavor'}
-              {(mode === "classic" || mode === "manifest") && '🚀 Generate Meme'}
+              🚀 Generate Meme
             </motion.button>
           </>
         )}

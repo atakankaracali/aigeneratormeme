@@ -4,7 +4,7 @@ import './styles/intro.css';
 
 type IntroProps = {
   onNext: (
-    mode: "classic" | "roast" | "manifest" | "surprise" | "fortune" | "flavor"
+    mode: "classic" | "roast" | "manifest" | "surprise" | "fortune" | "flavor" | "challenge"
   ) => void;
 };
 
@@ -91,6 +91,16 @@ const Intro = ({ onNext }: IntroProps) => (
       >
         🍜 Flavor Mode
       </motion.button>
+
+      <motion.button
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.95 }}
+        className="intro-button challenge-btn"
+        onClick={() => onNext("challenge")}
+      >
+        🔥 Today's Challenge
+      </motion.button>
+
     </div>
   </motion.div>
 );
