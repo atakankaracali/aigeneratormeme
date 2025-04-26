@@ -9,6 +9,7 @@ import Stats from './pages/Stats';
 import NotFound from './pages/NotFound';
 import BlogHome from './blog/BlogHome';
 import BlogPost from './blog/BlogPost';
+import ScrollToTop from './components/ScrollToTop';
 
 const App = () => {
   const location = useLocation();
@@ -17,6 +18,7 @@ const App = () => {
     <>
       <Header />
       <AnimatePresence mode="wait" initial={false}>
+        <ScrollToTop />
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
           <Route path="/meme" element={<MemeApp />} />
