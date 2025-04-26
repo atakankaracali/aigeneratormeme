@@ -107,7 +107,7 @@ const MemeApp = () => {
       localStorage.setItem("memeHistory", JSON.stringify(updatedHistory));
 
       const elapsed = Date.now() - startTime;
-      const minimumLoadingTime = 1700;
+      const minimumLoadingTime = 1400;
       if (elapsed < minimumLoadingTime) {
         setTimeout(() => {
           setLoading(false);

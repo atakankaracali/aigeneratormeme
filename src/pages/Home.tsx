@@ -21,7 +21,7 @@ const Home = () => {
   }, []);
 
   const goToRandomMeme = () => {
-    const randomModes = ['surprise', 'flavor', 'roast' ];
+    const randomModes = ['surprise', 'flavor' ];
     const randomMode = randomModes[Math.floor(Math.random() * randomModes.length)];
     navigate(`/meme?autoMode=${randomMode}`);
   };
