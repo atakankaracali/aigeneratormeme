@@ -20,6 +20,12 @@ const Home = () => {
       .catch(() => setMemeCount(null));
   }, []);
 
+  const goToRandomMeme = () => {
+    const randomModes = ['surprise', 'flavor'];
+    const randomMode = randomModes[Math.floor(Math.random() * randomModes.length)];
+    navigate(`/meme?autoMode=${randomMode}`);
+  };
+
   return (
     <>
       <motion.div
@@ -43,24 +49,47 @@ const Home = () => {
             </p>
           )}
 
-          <motion.button
-            whileHover={{ scale: 1.1, backgroundColor: "#7e22ce" }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => navigate('/meme')}
-            className="start-button"
-            style={{
-              marginTop: '20px',
-              fontSize: '20px',
-              padding: '14px 28px',
-              backgroundColor: '#9333ea',
-              color: '#fff',
-              fontWeight: 'bold',
-              borderRadius: '999px',
-              transition: 'background-color 0.3s ease'
-            }}
-          >
-            🚀 Generate Your Meme Now
-          </motion.button>
+          <div style={{ display: 'flex', gap: '16px', marginTop: '24px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <motion.button
+              whileHover={{ scale: 1.08, rotate: [-1, 1, -1], transition: { duration: 0.5, repeat: Infinity, repeatType: "reverse" } }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => navigate('/meme')}
+              className="start-button"
+              style={{
+                fontSize: '20px',
+                padding: '14px 28px',
+                background: 'linear-gradient(135deg, #8e2de2, #4a00e0)',
+                color: '#fff',
+                fontWeight: 'bold',
+                borderRadius: '999px',
+                boxShadow: '0 6px 18px rgba(142, 45, 226, 0.5)',
+                transition: 'all 0.4s ease',
+                minWidth: '220px'
+              }}
+            >
+              🎨 Pick Your Meme Mode
+            </motion.button>
+
+            <motion.button
+              whileHover={{ scale: 1.08, rotate: [1, -1, 1], transition: { duration: 0.5, repeat: Infinity, repeatType: "reverse" } }}
+              whileTap={{ scale: 0.95 }}
+              onClick={goToRandomMeme}
+              className="start-button"
+              style={{
+                fontSize: '20px',
+                padding: '14px 28px',
+                background: 'linear-gradient(135deg, #9333ea, #7e22ce)',
+                color: '#fff',
+                fontWeight: 'bold',
+                borderRadius: '999px',
+                boxShadow: '0 6px 18px rgba(147, 51, 234, 0.5)',
+                transition: 'all 0.4s ease',
+                minWidth: '220px'
+              }}
+            >
+              🎲 Instant Random Meme
+            </motion.button>
+          </div>
         </div>
 
         <div style={{ textAlign: 'center', marginTop: '30px' }}>

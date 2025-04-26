@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Intro from '../components/Intro';
 import Question from '../components/Question';
@@ -19,6 +19,7 @@ function hasInjection(text: string) {
 const MemeApp = () => {
   useCanonical();
   const navigate = useNavigate();
+  const location = useLocation();
   const [step, setStep] = useState(0);
   const [mode, setMode] = useState<"classic" | "roast" | "manifest" | "surprise" | "fortune" | "flavor" | null>(null);
   const [feeling, setFeeling] = useState('');
@@ -42,6 +43,20 @@ const MemeApp = () => {
       });
     }
   }, [step]);
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const autoMode = params.get('autoMode') as "surprise" | "flavor" | null;
+
+    if (autoMode === "surprise" || autoMode === "flavor") {
+      setMode(autoMode);
+      setStep(1);
+      setTimeout(() => {
+        generateMeme();
+        setStep(99);
+      }, 500);
+    }
+  }, []);
 
   const generateMeme = async () => {
     setLoading(true);
