@@ -34,6 +34,15 @@ const MemeApp = () => {
     setMemeHistory(history);
   }, []);
 
+  useEffect(() => {
+    if (step !== 0) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
+  }, [step]);
+
   const generateMeme = async () => {
     setLoading(true);
     setError('');
