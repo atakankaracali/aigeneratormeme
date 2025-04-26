@@ -18,13 +18,13 @@ function hasInjection(text: string) {
 
 function getChallengeInfo() {
   const days = [
-    { title: "Survive Monday (Again)", subtitle: "You survived worse. Probably. Maybe. Barely." },
-    { title: "Taco-less Tuesday", subtitle: "Pretend you’re thriving... without tacos." },
-    { title: "Midweek Crisis Club", subtitle: "You’re halfway dead. Congrats!" },
-    { title: "Almost Weekend, Almost Alive", subtitle: "Manifest weekend. Mentally, you’re already drunk." },
-    { title: "Friyay or Fry-day?", subtitle: "Work died. Soul revived. Party time?" },
-    { title: "Weekend Warrior Mode", subtitle: "Do something crazy. Like, go outside maybe." },
     { title: "Sunday Scaries Speedrun", subtitle: "Try not to think about Monday. You just did." },
+    { title: "Survive Monday (Again)", subtitle: "You survived worse. Probably. Maybe. Barely." },
+    { title: "Taco-less Tuesday", subtitle: "Pretend you are thriving... without tacos." },
+    { title: "Midweek Crisis Club", subtitle: "You are halfway dead. Congrats!" },
+    { title: "Almost Weekend, Almost Alive", subtitle: "Manifest weekend. Mentally, you are already drunk." },
+    { title: "Friyay or Fry-day?", subtitle: "Work died. Soul revived. Party time?" },
+    { title: "Weekend Warrior Mode", subtitle: "Do something crazy. Like, go outside maybe." }
   ];
   const today = new Date().getDay();
   return days[today] || { title: "Challenge Mode", subtitle: "Let's create something weird!" };
