@@ -69,13 +69,17 @@ const MemeApp = () => {
   }, []);
 
   useEffect(() => {
-    if ((mode === 'surprise' || mode === 'flavor') && step === 1) {
+    const params = new URLSearchParams(location.search);
+    const autoMode = params.get('autoMode') as "surprise" | "flavor" | null;
+    if (!mode || !autoMode) return;
+
+    if ((mode === 'surprise' || mode === 'flavor') && step === 1 && autoMode) {
       setTimeout(() => {
         generateMeme();
         setStep(99);
       }, 500);
     }
-  }, [mode, step]);
+  }, [mode, step, location.search]);
 
   const generateMeme = async () => {
     setLoading(true);
