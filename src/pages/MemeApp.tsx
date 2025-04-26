@@ -18,7 +18,7 @@ function hasInjection(text: string) {
 
 const MemeApp = () => {
   useCanonical();
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
   const location = useLocation();
   const [step, setStep] = useState(0);
   const [mode, setMode] = useState<"classic" | "roast" | "manifest" | "surprise" | "fortune" | "flavor" | null>(null);
@@ -48,15 +48,20 @@ const MemeApp = () => {
     const params = new URLSearchParams(location.search);
     const autoMode = params.get('autoMode') as "surprise" | "flavor" | null;
 
-    if (autoMode === "surprise" || autoMode === "flavor") {
+    if (autoMode) {
       setMode(autoMode);
       setStep(1);
+    }
+  }, []);
+
+  useEffect(() => {
+    if ((mode === 'surprise' || mode === 'flavor') && step === 1) {
       setTimeout(() => {
         generateMeme();
         setStep(99);
       }, 500);
     }
-  }, []);
+  }, [mode, step]);
 
   const generateMeme = async () => {
     setLoading(true);
@@ -231,7 +236,7 @@ const MemeApp = () => {
 
         {error && <p className="text-red-500 mt-4">{error}</p>}
       </div>
-    </div >
+    </div>
   );
 };
 
