@@ -21,7 +21,7 @@ const Home = () => {
   }, []);
 
   const goToRandomMeme = () => {
-    const randomModes = ['surprise', 'flavor'];
+    const randomModes = ['surprise', 'flavor', 'roast' ];
     const randomMode = randomModes[Math.floor(Math.random() * randomModes.length)];
     navigate(`/meme?autoMode=${randomMode}`);
   };
@@ -51,40 +51,24 @@ const Home = () => {
 
           <div style={{ display: 'flex', gap: '16px', marginTop: '24px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <motion.button
-              whileHover={{ scale: 1.08, rotate: [-1, 1, -1], transition: { duration: 0.5, repeat: Infinity, repeatType: "reverse" } }}
+              whileHover={{ scale: 1.07 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => navigate('/meme')}
               className="start-button"
               style={{
-                fontSize: '20px',
-                padding: '14px 28px',
                 background: 'linear-gradient(135deg, #8e2de2, #4a00e0)',
-                color: '#fff',
-                fontWeight: 'bold',
-                borderRadius: '999px',
-                boxShadow: '0 6px 18px rgba(142, 45, 226, 0.5)',
-                transition: 'all 0.4s ease',
-                minWidth: '220px'
               }}
             >
               🎨 Pick Your Meme Mode
             </motion.button>
 
             <motion.button
-              whileHover={{ scale: 1.08, rotate: [1, -1, 1], transition: { duration: 0.5, repeat: Infinity, repeatType: "reverse" } }}
+              whileHover={{ scale: 1.07 }}
               whileTap={{ scale: 0.95 }}
               onClick={goToRandomMeme}
               className="start-button"
               style={{
-                fontSize: '20px',
-                padding: '14px 28px',
                 background: 'linear-gradient(135deg, #9333ea, #7e22ce)',
-                color: '#fff',
-                fontWeight: 'bold',
-                borderRadius: '999px',
-                boxShadow: '0 6px 18px rgba(147, 51, 234, 0.5)',
-                transition: 'all 0.4s ease',
-                minWidth: '220px'
               }}
             >
               🎲 Instant Random Meme
@@ -94,15 +78,8 @@ const Home = () => {
 
         <div style={{ textAlign: 'center', marginTop: '30px' }}>
           <motion.div
-            animate={{
-              scale: [1, 1.03, 1],
-              rotate: [0, 2, -2, 0],
-            }}
-            transition={{
-              repeat: Infinity,
-              duration: 2,
-              ease: "easeInOut",
-            }}
+            animate={{ scale: [1, 1.03, 1], rotate: [0, 2, -2, 0] }}
+            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
           >
             <picture onClick={() => navigate('/meme')} style={{ cursor: 'pointer', position: 'relative', display: 'inline-block' }}>
               <source srcSet="/assets/funny-robot.webp" type="image/webp" />
@@ -118,28 +95,17 @@ const Home = () => {
               />
             </picture>
           </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
             style={{ marginTop: '18px' }}
           >
-            <p style={{
-              fontSize: '21px',
-              fontWeight: 650,
-              color: '#7e22ce',
-              textAlign: 'center',
-              padding: '0 20px'
-            }}>
+            <p style={{ fontSize: '21px', fontWeight: 650, color: '#7e22ce', padding: '0 20px', textAlign: 'center' }}>
               👇 Tap the Robot to Instantly Get a Meme That Matches Your Mood; Funny, Roasty, or Totally Random.
             </p>
-            <p style={{
-              fontSize: '23px',
-              fontWeight: 650,
-              color: '#7e22ce',
-              textAlign: 'center',
-              padding: '0 20px'
-            }}>
+            <p style={{ fontSize: '23px', fontWeight: 650, color: '#7e22ce', padding: '0 20px', textAlign: 'center' }}>
               Try it for free now.
             </p>
             <p style={{

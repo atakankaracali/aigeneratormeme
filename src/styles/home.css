@@ -39,12 +39,17 @@
   font-size: 1.2rem;
   border-radius: 999px;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-  transition: all 0.3s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-width: 220px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .start-button:hover {
-  transform: scale(1.05);
+  transform: scale(1.07);
+  box-shadow: 0 8px 24px rgba(142, 45, 226, 0.6);
 }
 
 @media (max-width: 480px) {

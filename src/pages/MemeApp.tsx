@@ -82,6 +82,8 @@ const MemeApp = () => {
       return;
     }
 
+    const startTime = Date.now();
+
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/generate-meme-text`,
@@ -103,6 +105,17 @@ const MemeApp = () => {
       setMeme(memeText);
       setMemeHistory(updatedHistory);
       localStorage.setItem("memeHistory", JSON.stringify(updatedHistory));
+
+      const elapsed = Date.now() - startTime;
+      const minimumLoadingTime = 1700;
+      if (elapsed < minimumLoadingTime) {
+        setTimeout(() => {
+          setLoading(false);
+        }, minimumLoadingTime - elapsed);
+      } else {
+        setLoading(false);
+      }
+
     } catch (err: any) {
       if (err.response?.status === 429) {
         setError("Too many requests. Slow down!");
@@ -112,7 +125,6 @@ const MemeApp = () => {
         setError('Failed to generate meme.');
       }
       console.error(err);
-    } finally {
       setLoading(false);
     }
   };
@@ -232,7 +244,6 @@ const MemeApp = () => {
             </div>
           </>
         )}
-
 
         {error && <p className="text-red-500 mt-4">{error}</p>}
       </div>
