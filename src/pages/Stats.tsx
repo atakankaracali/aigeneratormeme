@@ -19,6 +19,16 @@ const Stats = () => {
     const [emojiStats, setEmojiStats] = useState<Record<string, number>>({});
     const [modeStats, setModeStats] = useState<Record<string, number>>({});
 
+    const colorMap: Record<string, string> = {
+        challenge: '#facc15',
+        classic: '#f472b6',
+        flavor: '#34d399',
+        fortune: '#60a5fa',
+        manifest: '#a78bfa',
+        roast: '#fb923c',
+        surprise: '#fbbf24',
+    };
+
     useEffect(() => {
         fetch(`${import.meta.env.VITE_BACKEND_URL}/api/meme-count`)
             .then(res => res.json())
@@ -40,7 +50,7 @@ const Stats = () => {
         datasets: [
             {
                 data: Object.values(modeStats),
-                backgroundColor: ['#facc15', '#f472b6', '#34d399', '#60a5fa', '#a78bfa', '#fb923c'],
+                backgroundColor: Object.keys(modeStats).map(mode => colorMap[mode] || '#ddd'),
                 borderColor: '#fff',
                 borderWidth: 2,
                 hoverOffset: 10,
@@ -110,6 +120,22 @@ const Stats = () => {
                 <h2>📈 Meme Mode Popularity</h2>
                 <div className="chart-wrapper">
                     <Pie data={chartData} options={chartOptions} />
+                </div>
+                <div className="top-modes">
+                    <h3 className="top-modes-title">🏆 Top 3 Meme Modes</h3>
+                    <div className="top-modes-list">
+                        {Object.entries(modeStats)
+                            .sort(([, a], [, b]) => b - a)
+                            .slice(0, 3)
+                            .map(([mode, count], index) => {
+                                const percentage = ((count / total) * 100).toFixed(1);
+                                return (
+                                    <div key={mode} className="top-mode-item" style={{ color: colorMap[mode] || '#8e2de2' }}>
+                                        {index === 0 && '🥇'}{index === 1 && '🥈'}{index === 2 && '🥉'} {mode.charAt(0).toUpperCase() + mode.slice(1)} ({percentage}%)
+                                    </div>
+                                );
+                            })}
+                    </div>
                 </div>
             </motion.div>
 
