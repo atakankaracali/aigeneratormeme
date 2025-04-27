@@ -1,6 +1,7 @@
 # AI Meme Generator
 
-Generate funny, dark, motivational, or sarcastic memes powered by AI. Supports Classic, Roast, and Manifest modes. Built with React, Express, OpenRouter, and hosted on Vercel & Railway.
+Create funny, dark, motivational, random, or daily challenge memes powered by AI.
+Supports Classic, Roast Me, Manifest, Surprise, Fortune, Flavor, and Challenge modes.
 
 Link: [aigeneratememe.com](https://www.aigeneratememe.com/)
 
@@ -8,14 +9,16 @@ Link: [aigeneratememe.com](https://www.aigeneratememe.com/)
 
 ## ✨ Features
 
-- Three Meme Modes: Classic, Roast Me, and Manifest (motivational)
+- Seven Meme Modes: Classic, Roast Me, Manifest, Surprise, Fortune, Flavor, Challange
+- Daily Challenge Mode (changes every day)
 - AI-powered Captions using OpenRouter (ChatGPT-level results)
 - Secure Backend with Anti-Prompt-Injection + Rate Limiting
 - Meme History with LocalStorage
-- Framer Motion animations + Confetti FX
+- Framer Motion animations + Confetti FX + Share Animations
 - Mobile-first, fully responsive UI
-- Helmet, CORS, and sanitized inputs
-- Logs + Monitoring enabled
+- Emoji Reactions with Firebase (😂 🔥 😢 etc.)
+- Helmet, CORS, sanitized inputs, logs and monitoring
+- SEO Optimized (Canonical URLs, Meta Tags)
 
 ---
 
@@ -23,6 +26,7 @@ Link: [aigeneratememe.com](https://www.aigeneratememe.com/)
 
 - Frontend: React + Vite + Framer Motion
 - Backend: Express + OpenRouter AI
+- Database: Firebase Firestore
 - Deployment: Vercel (Frontend) + Railway (Backend)
 - Security: Helmet, CORS, Rate Limiter, Custom Prompt Injection Protection
 
@@ -46,11 +50,16 @@ OPENROUTER_API_KEY=your_key
 ALLOWED_ORIGINS=https://www.aigeneratememe.com
 RATE_LIMIT_WINDOW=15
 RATE_LIMIT_MAX=100
+FIREBASE_ADMIN_KEY_BASE64=your_base64_key
+FIREBASE_PROJECT_ID=your_project_id
 ```
 
 #### For Frontend (`.env`)
 ```
 VITE_BACKEND_URL=https://your-backend
+VITE_FIREBASE_API_KEY=your_firebase_api_key
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_APP_ID=your_app_id
 ```
 
 ---
@@ -93,6 +102,7 @@ Backend will be available at `http://localhost:8080`
 
 - Frontend: Deploy to Vercel
 - Backend: Deploy to Railway
+- Firebase: Free Spark Plan is enough
 
 ---
 
@@ -105,6 +115,7 @@ Backend will be available at `http://localhost:8080`
 - Inputs are sanitized to avoid prompt injection
 - Rate limit = 100 req / 15 min
 - Logs saved under /logs folder
+- Emoji Reactions are stored in Firestore
 
 ---
 
@@ -114,3 +125,7 @@ Atakan Karacali
 - Portfolio: [atakankaracali.com](https://atakankaracali.com/)
 - LinkedIn: [in/atakankaracali](https://www.linkedin.com/in/atakankaracali)
 - GitHub: [github.com/atakankaracali](https://github.com/atakankaracali)
+
+## 🌟 Support
+If you like this project, please star it on GitHub!
+Your support helps a lot! ⭐
