@@ -45,6 +45,15 @@ const MemeApp = () => {
   const [memeHistory, setMemeHistory] = useState<string[]>([]);
   const [showCongrats, setShowCongrats] = useState(false);
   const [memeCounter, setMemeCounter] = useState(0);
+  const [showTip, setShowTip] = useState(false);
+  const [currentTip, setCurrentTip] = useState('');
+
+  const tips = [
+    "💡 You can copy the meme and share it anywhere!",
+    "🎲 Try different meme modes for surprises!",
+    "🚀 Sharing memes increases your XP!",
+    "✨ Check the stats page to see your impact!",
+  ];
 
   useEffect(() => {
     const history = JSON.parse(localStorage.getItem("memeHistory") || "[]");
@@ -137,6 +146,12 @@ const MemeApp = () => {
         setShowCongrats(true);
       }
 
+      if (Math.random() < 0.4) {
+        const randomTip = tips[Math.floor(Math.random() * tips.length)];
+        setCurrentTip(randomTip);
+        setShowTip(true);
+      }
+
       const elapsed = Date.now() - startTime;
       const minimumLoadingTime = 1400;
       if (elapsed < minimumLoadingTime) {
@@ -168,6 +183,7 @@ const MemeApp = () => {
     setLastEnjoyed('');
     setMeme('');
     setError('');
+    setShowTip(false);
   };
 
   const handleNextStep = (selectedMode: typeof mode) => {
@@ -305,6 +321,13 @@ const MemeApp = () => {
             >
               ✨ Thanks!
             </button>
+          </div>
+        )}
+
+        {showTip && (
+          <div className="tips-popup">
+            <p>{currentTip}</p>
+            <button className="tips-button" onClick={() => setShowTip(false)}>Got it!</button>
           </div>
         )}
 

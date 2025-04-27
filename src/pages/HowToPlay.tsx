@@ -31,8 +31,8 @@ const HowToPlay = () => {
           <span className="step-number">1️⃣</span>
           <h3>Choose Your Meme Mode</h3>
           <p>
-            Pick from 6 unique styles: <strong>Classic</strong>, <strong>Roast Me</strong>, <strong>Manifest</strong>,
-            <strong> Surprise</strong>, <strong>Fortune</strong>, or <strong>Flavor</strong>. Each mode brings a fresh twist!
+            Pick from 7 unique styles: <strong>Classic</strong>, <strong>Roast Me</strong>, <strong>Manifest</strong>,
+            <strong> Surprise</strong>, <strong>Fortune</strong>, <strong>Challange</strong> or <strong>Flavor</strong>. Each mode brings a fresh twist!
           </p>
         </motion.div>
 
@@ -80,6 +80,7 @@ const HowToPlay = () => {
           <li><strong> 🎲 Surprise:</strong> Completely random and chaotic; expect the unexpected!</li>
           <li><strong> 🔮 Fortune:</strong> Daily cosmic advice, cryptic truths, or meme horoscopes.</li>
           <li><strong> 🧠 Flavor:</strong> Pick a meme “flavor” (like Tumblr wisdom or dark irony) and let AI vibe with it.</li>
+          <li><strong> 🔥 Challange:</strong> A powerful, funny and moving mood for each day, a meme that will tell you about yourself and show your feelings.</li>
         </ul>
         <p>
           No accounts. No limits. Just you, your mood, and a fire meme delivered by AI. Ready to laugh?

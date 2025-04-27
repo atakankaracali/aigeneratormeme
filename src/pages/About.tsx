@@ -50,8 +50,9 @@ const About = () => {
         >
           <h3>About AI Meme Generator</h3>
           <p>
-            <strong> AI Meme Generator</strong> is a free meme creation platform powered by OpenAI and built with love by Atakan Karacali.
+            <strong> AI Meme Generator</strong> is a free meme creation platform powered by OpenAI API and built with love by Atakan Karacali.
             Whether you're looking to laugh, vent, motivate yourself, or just enjoy some weird internet vibes — this tool's got you.
+            Launched in April 2025 🚀 | Built with ❤️ by Atakan Karacali
           </p>
           <p>
             Choose from 6 unique meme modes:
@@ -62,6 +63,7 @@ const About = () => {
               <li><strong> Surprise:</strong> Wild, chaotic, unexpected — you never know what you will get.</li>
               <li><strong> Fortune:</strong> Daily fortune-cookie wisdom, AI-style. Cryptic and cute.</li>
               <li><strong> Flavor:</strong> Pick your flavor like “Tumblr wisdom” or “Dark Reddit” and let the AI riff on it.</li>
+              <li><strong> Challange:</strong> A powerful, funny and moving mood for each day, a meme that will tell you about yourself and show your feelings.</li>
             </ul>
           </p>
           <p>

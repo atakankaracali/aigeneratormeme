@@ -126,6 +126,7 @@ const Home = () => {
             <strong>AI Meme Generator 2025</strong>, your ultimate <strong>free meme maker</strong> powered by artificial intelligence.
             Instantly create <strong>funny</strong>, <strong>motivational</strong>, or <strong>roast-style memes</strong> with just one click.
             No sign-up, no watermark, no hassle; just fast, viral memes for every vibe.
+            <strong> with Challange mod</strong> a powerful, funny and moving mood for each day, a meme that will tell you about yourself and show your feelings.
           </p>
           <p>
             Our AI understands humor and emotion, allowing you to create everything from <strong>chaotic Tumblr quotes</strong>
@@ -134,7 +135,7 @@ const Home = () => {
           </p>
           <p>
             Join thousands who use our <strong>AI-powered meme generator</strong> to express themselves, make friends laugh, or
-            just brighten their feed. Try popular modes like <em>Roast</em>, <em>Surprise</em>, <em>Manifest</em>, and the
+            just brighten their feed. Try popular modes like <em>Roast</em>, <em>Challange</em>,  <em>Surprise</em>, <em>Manifest</em>, and the
             exclusive <em>Flavor</em> mode, a whole new way to vibe online.
           </p>
         </div>
