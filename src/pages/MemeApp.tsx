@@ -43,10 +43,15 @@ const MemeApp = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [memeHistory, setMemeHistory] = useState<string[]>([]);
+  const [showCongrats, setShowCongrats] = useState(false);
+  const [memeCounter, setMemeCounter] = useState(0);
 
   useEffect(() => {
     const history = JSON.parse(localStorage.getItem("memeHistory") || "[]");
     setMemeHistory(history);
+
+    const storedCounter = parseInt(localStorage.getItem("memeCounter") || "0", 10);
+    setMemeCounter(storedCounter);
   }, []);
 
   useEffect(() => {
@@ -123,6 +128,14 @@ const MemeApp = () => {
       setMeme(memeText);
       setMemeHistory(updatedHistory);
       localStorage.setItem("memeHistory", JSON.stringify(updatedHistory));
+
+      const newCounter = memeCounter + 1;
+      setMemeCounter(newCounter);
+      localStorage.setItem("memeCounter", newCounter.toString());
+
+      if (newCounter === 5 || newCounter === 10 || newCounter === 20) {
+        setShowCongrats(true);
+      }
 
       const elapsed = Date.now() - startTime;
       const minimumLoadingTime = 1400;
@@ -281,6 +294,18 @@ const MemeApp = () => {
               </motion.button>
             </div>
           </>
+        )}
+
+        {showCongrats && (
+          <div className="congrats-popup">
+            🎉 Congratulations! You have generated {memeCounter} memes!
+            <button
+              onClick={() => setShowCongrats(false)}
+              className="congrats-button"
+            >
+              ✨ Thanks!
+            </button>
+          </div>
         )}
 
         {error && <p className="text-red-500 mt-4">{error}</p>}
