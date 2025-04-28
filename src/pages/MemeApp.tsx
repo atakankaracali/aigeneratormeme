@@ -20,7 +20,7 @@ function getChallengeInfo() {
   const days = [
     { title: "Sunday Scaries Speedrun", subtitle: "Try not to think about Monday. You just did." },
     { title: "Survive Monday (Again)", subtitle: "You survived worse. Probably. Maybe. Barely." },
-    { title: "Taco-less Tuesday", subtitle: "Pretend you are thriving... without tacos." },
+    { title: "Energy-less Tuesday", subtitle: "Pretend you are thriving... without energy." },
     { title: "Midweek Crisis Club", subtitle: "You are halfway dead. Congrats!" },
     { title: "Almost Weekend, Almost Alive", subtitle: "Manifest weekend. Mentally, you are already drunk." },
     { title: "Friyay or Fry-day?", subtitle: "Work died. Soul revived. Party time?" },
