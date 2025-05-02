@@ -12,7 +12,7 @@ import { db } from "../firebase";
 import { normalizeMemeText } from "./normalizeMemeText";
 
 export const sendEmojiReaction = async (memeText: string, emoji: string) => {
-  const normalized = normalizeMemeText(memeText);
+  const normalized: string = normalizeMemeText(memeText);
 
   try {
     await addDoc(collection(db, "emojiReactions"), {
@@ -20,7 +20,6 @@ export const sendEmojiReaction = async (memeText: string, emoji: string) => {
       emoji,
       timestamp: serverTimestamp(),
     });
-    console.log("✅ Emoji reaction saved!");
 
     const emojiDocRef = doc(db, "emojiStats", normalized);
 
@@ -35,7 +34,6 @@ export const sendEmojiReaction = async (memeText: string, emoji: string) => {
       });
     }
 
-    console.log("📊 Emoji count updated!");
   } catch (err) {
     console.error("❌ Failed to send emoji:", err);
   }

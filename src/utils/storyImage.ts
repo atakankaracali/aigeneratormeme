@@ -10,10 +10,10 @@ export const downloadStoryImage = async (targetRef: React.RefObject<HTMLElement>
       backgroundColor: "transparent",
       pixelRatio: 2,
       filter: (node) => {
-        if (node.tagName === "LINK" && node.getAttribute('href')?.includes('fonts.googleapis.com')) {
-          return false;
-        }
-        return true;
+        const isFontLink = node.tagName === "LINK" && node.getAttribute('href')?.includes('fonts.googleapis.com');
+        const isStyle = node.tagName === "STYLE" && node.textContent?.includes("@font-face");
+      
+        return !isFontLink && !isStyle;
       },
     });
 
