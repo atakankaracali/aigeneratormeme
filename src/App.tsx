@@ -10,6 +10,7 @@ import NotFound from './pages/NotFound';
 import BlogHome from './blog/BlogHome';
 import BlogPost from './blog/BlogPost';
 import ScrollToTop from './components/ScrollToTop';
+import './styles/fonts.css';
 
 const App = () => {
   const location = useLocation();
