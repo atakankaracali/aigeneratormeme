@@ -50,24 +50,10 @@ export const downloadMemePng = async (targetRef: React.RefObject<HTMLElement>) =
 
       ctx.drawImage(robotImage, logoX, logoY, logoWidth, logoHeight);
 
-      const safeTop = 100;
-      const safeBottom = 180;
-
-      const scaleFactor = Math.min(
-        (width * 0.9) / memeCanvas.width,
-        (height - safeTop - safeBottom) / memeCanvas.height
-      );
-      const memeWidth = memeCanvas.width * scaleFactor;
-      const memeHeight = memeCanvas.height * scaleFactor;
-      const x = (width - memeWidth) / 2;
-      const y = safeTop;
-
-      ctx.drawImage(memeCanvas, x, y, memeWidth, memeHeight);
-
       ctx.font = "bold 42px Arial";
       ctx.fillStyle = "#1e1e1e";
       ctx.textAlign = "center";
-      ctx.fillText("✨ Let's try!", width / 2, y + memeHeight + 60);
+      ctx.fillText("✨ Let's try!", width / 2, height - 150);
 
       ctx.font = "bold 40px Arial";
       ctx.fillStyle = "#4c1d95";
@@ -79,6 +65,19 @@ export const downloadMemePng = async (targetRef: React.RefObject<HTMLElement>) =
       ctx.fillStyle = "rgba(0,0,0,0.4)";
       ctx.shadowBlur = 0;
       ctx.fillText("Made with ❤️ by Atakan Karacali", width / 2, height - 40);
+
+      const safeTop = 340;
+      const safeBottom = 200;
+      const scaleFactor = Math.min(
+        (width * 0.9) / memeCanvas.width,
+        (height - safeTop - safeBottom) / memeCanvas.height
+      );
+      const memeWidth = memeCanvas.width * scaleFactor;
+      const memeHeight = memeCanvas.height * scaleFactor;
+      const x = (width - memeWidth) / 2;
+      const y = safeTop;
+
+      ctx.drawImage(memeCanvas, x, y, memeWidth, memeHeight);
 
       canvas.toBlob((blob) => {
         if (blob) {
