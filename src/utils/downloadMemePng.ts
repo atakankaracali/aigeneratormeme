@@ -10,10 +10,23 @@ export const downloadMemePng = async (targetRef: React.RefObject<HTMLElement>) =
       backgroundColor: "transparent",
       pixelRatio: 2,
       filter: (node) => {
-        const isFontLink = node.tagName === "LINK" && node.getAttribute('href')?.includes('fonts.googleapis.com');
-        const isStyle = node.tagName === "STYLE" && node.textContent?.includes("@font-face");
+        if (node.tagName === "LINK" && node.getAttribute("href")?.includes("fonts.googleapis.com")) {
+          return false;
+        }
       
-        return !isFontLink && !isStyle;
+        if (node.tagName === "STYLE") {
+          return false;
+        }
+      
+        try {
+          if ((node as HTMLStyleElement).sheet?.cssRules) {
+            return true;
+          }
+        } catch {
+          return false;
+        }
+      
+        return true;
       },
     });
 
