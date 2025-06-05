@@ -2,7 +2,11 @@ import { toCanvas } from "html-to-image";
 import { saveAs } from "file-saver";
 
 export const downloadStoryImage = async (targetRef: React.RefObject<HTMLElement>) => {
-  if (!targetRef.current) return;
+  if (!targetRef?.current) {
+    console.error("❌ Story meme element not found.");
+    alert("Story meme is not ready to download.");
+    return;
+  }
 
   try {
     const memeCanvas = await toCanvas(targetRef.current, {
@@ -13,11 +17,11 @@ export const downloadStoryImage = async (targetRef: React.RefObject<HTMLElement>
         if (node.tagName === "LINK" && node.getAttribute("href")?.includes("fonts.googleapis.com")) {
           return false;
         }
-      
+
         if (node.tagName === "STYLE") {
           return false;
         }
-      
+
         try {
           if ((node as HTMLStyleElement).sheet?.cssRules) {
             return true;
@@ -25,7 +29,7 @@ export const downloadStoryImage = async (targetRef: React.RefObject<HTMLElement>
         } catch {
           return false;
         }
-      
+
         return true;
       },
     });
@@ -37,18 +41,20 @@ export const downloadStoryImage = async (targetRef: React.RefObject<HTMLElement>
     finalCanvas.height = storyHeight;
 
     const ctx = finalCanvas.getContext("2d");
-    if (!ctx) return;
+    if (!ctx) {
+      alert("Canvas context error.");
+      return;
+    }
 
     const gradient = ctx.createLinearGradient(0, 0, storyWidth, storyHeight);
     gradient.addColorStop(0, "#ca98fc");
     gradient.addColorStop(0.5, "#f0abfc");
     gradient.addColorStop(1, "#a5b4fc");
-
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, storyWidth, storyHeight);
 
     function supportsWebP() {
-      return document.createElement('canvas').toDataURL('image/webp').indexOf('data:image/webp') === 0;
+      return document.createElement("canvas").toDataURL("image/webp").indexOf("data:image/webp") === 0;
     }
 
     const robotImage = new Image();
@@ -56,6 +62,7 @@ export const downloadStoryImage = async (targetRef: React.RefObject<HTMLElement>
     robotImage.src = supportsWebP()
       ? "/assets/funny-robot.webp"
       : "/assets/funny-robot.png";
+
     robotImage.onload = () => {
       const logoWidth = 230;
       const logoHeight = 230;
@@ -63,7 +70,7 @@ export const downloadStoryImage = async (targetRef: React.RefObject<HTMLElement>
       const logoY = 80;
 
       ctx.drawImage(robotImage, logoX, logoY, logoWidth, logoHeight);
-      
+
       const safeTop = 250;
       const safeBottom = 170;
       const maxMemeHeight = storyHeight - safeTop - safeBottom - 250;
@@ -98,8 +105,21 @@ export const downloadStoryImage = async (targetRef: React.RefObject<HTMLElement>
       finalCanvas.toBlob((blob) => {
         if (blob) {
           saveAs(blob, "story-meme.png");
+        } else {
+          const dataUrl = finalCanvas.toDataURL("image/png");
+          const link = document.createElement("a");
+          link.href = dataUrl;
+          link.download = "story-meme.png";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
         }
       }, "image/png");
+    };
+
+    robotImage.onerror = (err) => {
+      console.error("🚨 Robot image load failed:", err);
+      alert("Failed to load robot image.");
     };
   } catch (err) {
     console.error("❌ Story image error:", err);

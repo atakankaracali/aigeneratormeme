@@ -2,7 +2,11 @@ import { toCanvas } from "html-to-image";
 import { saveAs } from "file-saver";
 
 export const downloadMemePng = async (targetRef: React.RefObject<HTMLElement>) => {
-  if (!targetRef.current) return;
+  if (!targetRef?.current) {
+    console.error("❌ Meme element not found.");
+    alert("Meme is not ready to download.");
+    return;
+  }
 
   try {
     const memeCanvas = await toCanvas(targetRef.current, {
@@ -13,11 +17,11 @@ export const downloadMemePng = async (targetRef: React.RefObject<HTMLElement>) =
         if (node.tagName === "LINK" && node.getAttribute("href")?.includes("fonts.googleapis.com")) {
           return false;
         }
-      
+
         if (node.tagName === "STYLE") {
           return false;
         }
-      
+
         try {
           if ((node as HTMLStyleElement).sheet?.cssRules) {
             return true;
@@ -25,7 +29,7 @@ export const downloadMemePng = async (targetRef: React.RefObject<HTMLElement>) =
         } catch {
           return false;
         }
-      
+
         return true;
       },
     });
@@ -37,7 +41,10 @@ export const downloadMemePng = async (targetRef: React.RefObject<HTMLElement>) =
     canvas.height = height;
 
     const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    if (!ctx) {
+      alert("Canvas context error.");
+      return;
+    }
 
     const gradient = ctx.createLinearGradient(0, 0, width, height);
     gradient.addColorStop(0, "#f0abfc");
@@ -46,7 +53,7 @@ export const downloadMemePng = async (targetRef: React.RefObject<HTMLElement>) =
     ctx.fillRect(0, 0, width, height);
 
     function supportsWebP() {
-      return document.createElement('canvas').toDataURL('image/webp').indexOf('data:image/webp') === 0;
+      return document.createElement("canvas").toDataURL("image/webp").indexOf("data:image/webp") === 0;
     }
 
     const robotImage = new Image();
@@ -95,12 +102,21 @@ export const downloadMemePng = async (targetRef: React.RefObject<HTMLElement>) =
       canvas.toBlob((blob) => {
         if (blob) {
           saveAs(blob, "meme.png");
+        } else {
+          const dataUrl = canvas.toDataURL("image/png");
+          const link = document.createElement("a");
+          link.href = dataUrl;
+          link.download = "meme.png";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
         }
       }, "image/png");
     };
 
-    robotImage.onerror = () => {
-      alert("🚨 Robot image not found.");
+    robotImage.onerror = (err) => {
+      console.error("🚨 Robot image load failed:", err);
+      alert("Failed to load robot image.");
     };
   } catch (err) {
     console.error("❌ PNG Export Error:", err);
