@@ -110,9 +110,11 @@ const Stats = () => {
             <motion.div className="stat-card" whileHover={{ scale: 1.02 }}>
                 <h2>😂 Top Emoji Reactions</h2>
                 <ul>
-                    {Object.entries(emojiStats).map(([emoji, count]) => (
-                        <li key={emoji}>{emoji}: {count}</li>
-                    ))}
+                    {Object.entries(emojiStats)
+                        .sort(([, a], [, b]) => b - a)
+                        .map(([emoji, count]) => (
+                            <li key={emoji}>{emoji}: {count}</li>
+                        ))}
                 </ul>
             </motion.div>
 
@@ -134,7 +136,7 @@ const Stats = () => {
                                     <div key={mode} className="top-mode-item">
                                         {index === 0 && '🥇'}
                                         {index === 1 && '🥈'}
-                                        {index === 2 && '🥉'} 
+                                        {index === 2 && '🥉'}
                                         <span style={{ color: '#4a00e0', fontWeight: 600 }}>
                                             {mode.charAt(0).toUpperCase() + mode.slice(1)} ({percentage}%)
                                         </span>
