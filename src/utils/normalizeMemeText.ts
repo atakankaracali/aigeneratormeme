@@ -1,2 +1,6 @@
 export const normalizeMemeText = (text: string): string =>
-    text.trim().replace(/\s+/g, " ");
+  text
+    .trim()
+    .toLowerCase()
+    .replace(/[^\w\s]/g, "")
+    .replace(/\s+/g, "-");
