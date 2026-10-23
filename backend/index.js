@@ -128,43 +128,61 @@ app.post("/generate-meme-text", async (req, res) => {
   let prompt = "";
 
   if (mode === "roast") {
-    const flavors = [
-      "short and brutal",
-      "short and sharp",
-      "a sarcastic genius voice",
-      "dry and dark Reddit-style wit",
-      "savage but clever",
-      "savage but witty",
-      "Gen Z internet humor",
-      "internet Gen Z humor style",
-      "roast style like a viral tweet",
-      "ghost of Twitter 2012",
-      "ironic and absurd",
-      "weird and unhinged",
-      "weird but brilliant like Tumblr in 2014",
-      "unexpectedly deep and chaotic"
+    const targets = [
+      "sets 7 alarms and snoozes every single one",
+      "says 'I'll start on Monday' every week",
+      "has 63 browser tabs open and refuses to close any",
+      "pays for a gym membership they never use",
+      "replies 'haha' without even smiling",
+      "watches 3 hours of productivity videos instead of working",
+      "orders food while there is food at home",
+      "opens the fridge every 10 minutes hoping something new appeared",
+      "starts a new side project instead of finishing the old one",
+      "checks their phone, puts it down, immediately checks it again",
+      "says 'one more episode' at 2am",
+      "reads the group chat but never replies",
+      "buys books to feel smart and never opens them",
+      "rehearses arguments in the shower that will never happen",
+      "makes a to-do list just to feel productive and then naps",
     ];
-    const randomFlavor = flavors[Math.floor(Math.random() * flavors.length)];
+    const formats = [
+      "POV: ... (one sharp line)",
+      "Nobody: / You: ... (two lines)",
+      "Me: ... / Also me: ... (two lines, contradiction)",
+      "Top text setup / bottom text punchline (two lines)",
+      "A fake 'achievement unlocked' or notification style line",
+    ];
 
-    prompt = `You're a ruthless internet comedian with viral-level roast skills. Your job is to write ONE roast meme caption (max 2 lines) that:
+    const userTarget =
+      safeFeeling || safeProblem || safeLastEnjoyed
+        ? `someone who feels ${safeFeeling || "tired"}, struggles with ${safeProblem || "life"}, and last enjoyed ${safeLastEnjoyed || "nothing"}`
+        : null;
 
-    - Hits with clever sarcasm  
-    - Feels like something from Reddit roast threads or Twitter dark humor  
-    - Makes people laugh out loud, not just smile  
-    - Uses real internet wit, not dad jokes  
-    - No weak wordplay or puns  
-    - Clever and creative  
-    - Avoid generic tech jokes like “software updates” or “404 errors.”  
-    - The person who reads it should be shocked and laugh a lot
-    - Not do everytime this joke: "you're like a"
+    const target = userTarget || targets[Math.floor(Math.random() * targets.length)];
+    const format = formats[Math.floor(Math.random() * formats.length)];
 
-    Additional Style Instruction: Use the flavor "${randomFlavor}" in tone and delivery.
-    
-    Rules:  
-    - No offensive, racist, sexist, or political content  
-    - Use plain English only (A-Z), no emojis or symbols  
-    - Be smart, bold, and funny  
-    - Return just the one roast caption. No explanation, no intro.`;
+    prompt = `Write ONE roast meme caption about a person who ${target}.
+
+  This is a MEME, not a stand-up insult. It must read like a viral meme caption on Instagram or Reddit: a specific, relatable situation, then a punchline that exposes them.
+
+  Format to use: ${format}
+
+  Good examples (do not copy, match the energy):
+  - POV: you set 7 alarms just to disappoint yourself 7 different times
+  - Me: I need to save money / Also me: adds 4 things to cart to get free shipping
+  - Nobody: / You at 2am: one more episode wont hurt my career
+  - Achievement unlocked: opened the fridge 14 times, found the same cheese 14 times
+
+  Hard bans:
+  - No "human equivalent of", "you're like a", "participation trophy", "walking", "the type of person"
+  - No similes or comparisons to objects
+  - No vague personality insults, roast a SPECIFIC behavior
+  - No tech jokes, no politics, nothing racist, sexist or about appearance
+
+  Rules:
+  - Max 2 lines, under 25 words
+  - English letters only, no emojis
+  - Output only the caption, nothing else.`;
   } else if (mode === "manifest") {
     prompt = `You're a startup founder known for creating meme-style motivational quotes that are equal parts hilarious and real. Write ONE caption (max 2 lines) for a hustler who:
 - Dreams of: ${safeFeeling}
