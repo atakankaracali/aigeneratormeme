@@ -282,10 +282,10 @@ Output: Only the meme sentence, no extra text.`;
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
-        model: "openai/gpt-4o-mini",
-        temperature: 1.3,
+        models: ["anthropic/claude-haiku-5.5", "deepseek/deepseek-v4-flash"],
+        temperature: 1.0,
         top_p: 0.95,
-        presence_penalty: 0.5,
+        max_tokens: 80,
         messages: [{ role: "user", content: prompt }],
       },
       {
