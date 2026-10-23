@@ -317,7 +317,7 @@ Output: Only the meme sentence, no extra text.`;
     );
 
     const memeText = response.data.choices?.[0]?.message?.content?.trim();
-    const firstValidLine = memeText
+    const firstValidLine = memeText 
       ?.split("\n")
       .map((line) => line.trim())
       .find((line) => line.length > 0);
